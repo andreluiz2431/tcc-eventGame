@@ -34,7 +34,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Inscrito no evento tall</a>
                         <a class="dropdown-item" href="#">...</a>
-                        <a class="dropdown-item" href="#">...</a>
+                        <a class="dropdown-item" href="#">Notificações aqui!</a>
                         <a class="dropdown-item" href="#">...</a>
                         <a class="dropdown-item" href="#">...</a>
                     </div>
