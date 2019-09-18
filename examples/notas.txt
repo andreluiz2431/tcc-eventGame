@@ -1,0 +1,16 @@
+não funciona a alteração de dados do usuario na tela do usuario
+
+falta o cadastro de imagens dos eventos
+
+falta melhorar o css do cadastro de eventos
+
+falta fazer as telas SOBRE
+
+falta fazer a codificação de skin e temas
+
+falta fazer tela de inscrissão, missão e skin
+
+falta fazer o buscar eventos
+
+
+***** refazer css do login e cadastro *******
