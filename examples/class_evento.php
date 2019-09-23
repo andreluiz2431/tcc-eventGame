@@ -57,21 +57,6 @@ class Evento{
 
     }
 
-    public function deletar(){
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=id10120250_banco', 'id10120250_root', 'andre2001');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $stmt = $pdo->prepare('DELETE FROM Usuario WHERE idUsuario = :idUsuario');
-            $stmt->bindParam(':idUsuario', $this->id); 
-            $stmt->execute();
-
-            echo $stmt->rowCount(); 
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-    }
-
     public function alterar(){
         try {
             $pdo = new PDO('mysql:host=localhost;dbname=id10120250_banco', 'id10120250_root', 'andre2001');
@@ -333,6 +318,8 @@ class Evento{
         echo "</div>";
     }
 
+
+    // bora fazer*
     public function inscricao(){
         try {
             $this->conectarBD();
