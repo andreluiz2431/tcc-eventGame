@@ -320,17 +320,17 @@ class Evento{
 
 
     // bora fazer*
-    public function inscricao(){
+    public function inscricao($idEvento, $tipoInscricao, $valorInscricao, $pagoInscricao){
         try {
             $this->conectarBD();
 
             $stmt = $this->pdo->prepare("INSERT INTO inscricao(idUsuario, idEvento, tipoInscricao, valorInscricao, pagoInscricao) VALUES (:idUsuario, :idEvento, :tipoInscricao, :valorInscricao, :pagoInscricao)");
             $stmt->execute(array(
-                ':idUsuario' => "$idanfitriao",
-                ':idEvento' => "$this->id", // fverificar
-                ':tipoInscricao' => "", // falta fazer
-                ':valorInscricao' => "", // falta fazer
-                ':pagoInscricao' => "" // falta fazer
+                ':idUsuario' => "$_SESSION['idUsuario']",
+                ':idEvento' => "$idEvento", // fverificar
+                ':tipoInscricao' => "$tipoInscricao", // falta fazer
+                ':valorInscricao' => "$valorInscricao", // falta fazer
+                ':pagoInscricao' => "$pagoInscricao" // falta fazer
             ));
 
             echo 'Inscrito';
