@@ -319,7 +319,7 @@ class Evento{
     }
 
 
-    // bora fazer*
+    // bora fazer* dia 25/09/2019
     public function inscricao($idEvento, $tipoInscricao, $valorInscricao, $pagoInscricao){
         try {
             $this->conectarBD();
