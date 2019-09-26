@@ -298,6 +298,12 @@ class Evento{
                 $situacao = 'Pendente';
             }
 
+            if($valorInscricao == 0){
+                $valorInscricao = 'Free';
+            }else{
+                $valorInscricao = 'R$ '.$valorInscricao;
+            }
+
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
@@ -308,7 +314,7 @@ class Evento{
                     <i class='material-icons'>amp_stories</i>
                   </div>
                   <p class='card-category'>Evento</p>
-                  <h3 class='card-title'>R$ ".$valorInscricao."</h3>
+                  <h3 class='card-title'>".$valorInscricao."</h3>
                 </div>
                 <div class='card-footer'>
                   <div class='stats'>
