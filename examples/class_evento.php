@@ -252,9 +252,17 @@ class Evento{
                                     <div class="clearfix"></div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-primary">
-										Inscreva-se
-									</button> 
+                                    <div style="display: block">
+                                        <form method="POST" action"pagina_eventos.php">
+                                            <input type="hidden" name="idEventoInsc" value="'.$results.'">
+                                            <select name="tipoInsc" style="float: left; margin-right: 120px;">
+                                                <option value="Ouvinte">Ouvinte</option>
+                                                <option value="Palestrante">Palestrante</option>
+                                                <option value="Técnico">Técnico</option>
+                                            </select>
+                                            <input type="submit" name="btnInsc" class="btn btn-primary" style="display: block" value="Inscreva-se">
+                                        </form>
+                                    </div>
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">
 										Fechar
 									</button>
@@ -320,17 +328,20 @@ class Evento{
 
 
     // bora fazer* dia 26/09/2019
-    public function inscricao($idEvento, $tipoInscricao, $valorInscricao, $pagoInscricao){
+    public function inscricao($idEvento, $tipoInscricao){
+        $valorInscricao = 0;
+        $pagoInscricao = 0;
+
         try {
             $this->conectarBD();
 
             $stmt = $this->pdo->prepare("INSERT INTO inscricao(idUsuario, idEvento, tipoInscricao, valorInscricao, pagoInscricao) VALUES (:idUsuario, :idEvento, :tipoInscricao, :valorInscricao, :pagoInscricao)");
             $stmt->execute(array(
                 ':idUsuario' => $_SESSION['idUsuario'],
-                ':idEvento' => "$idEvento", // fverificar
-                ':tipoInscricao' => "$tipoInscricao", // falta fazer
-                ':valorInscricao' => "$valorInscricao", // falta fazer
-                ':pagoInscricao' => "$pagoInscricao" // falta fazer
+                ':idEvento' => $idEvento, // fverificar
+                ':tipoInscricao' => $tipoInscricao, // falta fazer
+                ':valorInscricao' => $valorInscricao, // falta fazer
+                ':pagoInscricao' => $pagoInscricao // falta fazer
             ));
 
             echo 'Inscrito';

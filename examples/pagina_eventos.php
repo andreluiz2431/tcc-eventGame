@@ -91,6 +91,10 @@ if(!empty($_POST['busca'])){
                                 $busca = new Evento();
                                 $busca->consultar();
 
+                                $idEventoInsc = $_POST['idEventoInsc'];
+                                $tipoInsc = $_POST['tipoInsc'];
+
+                                $busca->inscricao($idEventoInsc, $tipoInsc);
                                 ?>
                             </div>
                         </div>
