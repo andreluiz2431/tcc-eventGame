@@ -319,14 +319,14 @@ class Evento{
     }
 
 
-    // bora fazer* dia 25/09/2019
+    // bora fazer* dia 26/09/2019
     public function inscricao($idEvento, $tipoInscricao, $valorInscricao, $pagoInscricao){
         try {
             $this->conectarBD();
 
             $stmt = $this->pdo->prepare("INSERT INTO inscricao(idUsuario, idEvento, tipoInscricao, valorInscricao, pagoInscricao) VALUES (:idUsuario, :idEvento, :tipoInscricao, :valorInscricao, :pagoInscricao)");
             $stmt->execute(array(
-                ':idUsuario' => "$_SESSION['idUsuario']",
+                ':idUsuario' => $_SESSION['idUsuario'],
                 ':idEvento' => "$idEvento", // fverificar
                 ':tipoInscricao' => "$tipoInscricao", // falta fazer
                 ':valorInscricao' => "$valorInscricao", // falta fazer
