@@ -52,14 +52,14 @@ if(!empty($_POST['busca'])){
                 margin-top: 1%;
                 margin-left: 1%;
             }
-            
+
             #corTitulo{
                 background-color: #9368E9;
                 height: 300px;
                 align-items: center;
                 padding: 14%;                
             }
-            
+
             label{
                 font-size: 130%;
             }
@@ -91,10 +91,13 @@ if(!empty($_POST['busca'])){
                                 $busca = new Evento();
                                 $busca->consultar();
 
-                                $idEventoInsc = $_POST['idEventoInsc'];
-                                $tipoInsc = $_POST['tipoInsc'];
+                                if(!empty($_POST['idEventoInsc'])&&!empty($_POST['tipoInsc'])){
+                                    $idEventoInsc = $_POST['idEventoInsc'];
+                                    $tipoInsc = $_POST['tipoInsc'];
 
-                                $busca->inscricao($idEventoInsc, $tipoInsc);
+                                    $busca->inscricao($idEventoInsc, $tipoInsc);
+                                }
+
                                 ?>
                             </div>
                         </div>

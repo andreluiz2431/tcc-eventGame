@@ -292,6 +292,14 @@ class Evento{
             $valorInscricao = $linha["valorInscricao"];
             $pagoInscricao = $linha["pagoInscricao"];
 
+            $this->conectarBD();
+
+            $consultaNomeEvento = $this->pdo->query("SELECT * FROM evento WHERE idEvento = '$results'");
+
+            while ($linhaNomeEvento = $consultaNomeEvento->fetch(PDO::FETCH_ASSOC)) {
+                $nomeEvento = $linhaNomeEvento['tituloEvento'];
+            }
+
             if($pagoInscricao == 1){
                 $situacao = 'Pago';
             } else {
@@ -313,7 +321,7 @@ class Evento{
                   <div class='card-icon'>
                     <i class='material-icons'>amp_stories</i>
                   </div>
-                  <p class='card-category'>Evento</p>
+                  <p class='card-category'>".$nomeEvento."</p>
                   <h3 class='card-title'>".$valorInscricao."</h3>
                 </div>
                 <div class='card-footer'>
