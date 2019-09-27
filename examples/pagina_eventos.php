@@ -96,6 +96,8 @@ if(!empty($_POST['busca'])){
                                     $tipoInsc = $_POST['tipoInsc'];
 
                                     $busca->inscricao($idEventoInsc, $tipoInsc);
+
+
                                 }
 
                                 ?>

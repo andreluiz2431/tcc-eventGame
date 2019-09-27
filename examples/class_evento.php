@@ -358,7 +358,7 @@ class Evento{
                 ':pagoInscricao' => $pagoInscricao // falta fazer
             ));
 
-            echo 'Inscrito';
+            return 'inscrito';
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return -1;
