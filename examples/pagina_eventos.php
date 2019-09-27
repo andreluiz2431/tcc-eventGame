@@ -95,9 +95,9 @@ if(!empty($_POST['busca'])){
                                     $idEventoInsc = $_POST['idEventoInsc'];
                                     $tipoInsc = $_POST['tipoInsc'];
 
-                                    $busca->inscricao($idEventoInsc, $tipoInsc);
-
-
+                                    if($busca->inscricao($idEventoInsc, $tipoInsc) == 'inscrito'){
+                                        echo"<script language='javascript' type='text/javascript'> alert('Parabéns, você está inscrito!');</script>";
+                                    }
                                 }
 
                                 ?>
