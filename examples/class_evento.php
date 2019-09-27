@@ -97,6 +97,15 @@ class Evento{
             $pais = $linha["paisEvento"];
             $area_academica = $linha["areaAcademicaEvento"];
 
+            // consulta de quantas inscriçoes
+            $this->conectarBD();
+
+            $consultaInsc = $this->pdo->query("SELECT idUsuario FROM inscricao WHERE idEvento = '$results'");
+
+            while ($linhaInsc = $consultaInsc->fetch(PDO::FETCH_ASSOC)) {
+                $quantInsc = rowCount($linhaInsc['idUsuario']);
+            }
+
             // consulta da missão para evento
             $this->conectarBD();
 
@@ -172,13 +181,20 @@ class Evento{
                         <tr>
 
                           <td>Inscritos</td>
-                          <td class="text-center">999999(falta)</td>
+                          <td class="text-center">'.$quantInsc.'</td>
                         </tr>
                         <tr>
-                          <td>Valor inscrição</td>
-                          <td class="text-center">FREE(falta)</td>
+                          <td></td>
+                          <td></td>
                         </tr>
-                        <hr>
+                        <tr>
+                          <td>Missão</td>
+                          <td class="text-center"><b>'.$tituloMissao.'</b>'.$sobreMissao.'</td>
+                        </tr>
+                        <tr>
+                          <td>Recompensa</td>
+                          <td class="text-center"><b>'.$tipoRecompensa.'</b>'.$nomeRecompensa.'</td>
+                        </tr>
                         <tr>
                          <td><a class="nav-link" href="#'.++$results.'">Próximo</a></td>
                           <td class="text-center">
