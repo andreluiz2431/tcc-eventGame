@@ -208,6 +208,15 @@ class Evento{
                 $idRecompensa = $linhaMissao['idRecomensa'];
             }
 
+            $this->conectarBD();
+
+            $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = '$idRecompensa'");
+
+            while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
+                $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
+                $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
+            }
+
             echo '<div class="col-md-3" id="titulo2">
                 <div class="card" style="width: 18rem;height: 400px; overflow: auto;">
                     <div id="corTitulo">
@@ -247,7 +256,7 @@ class Evento{
                                         <hr>
                                         <li class="list-group-item">Missão: '.$tituloMissao.'</li>
                                         <li class="list-group-item">Sobre: '.$sobreMissao.'</li>
-                                        <li class="list-group-item">Recompensa: '.$idRecompensa.'</li>
+                                        <li class="list-group-item">Recompensa: '.$tipoRecompensa.' '.$nomeRecompensa.'</li>
                                     </ul>
                                     <div class="clearfix"></div>
 								</div>
@@ -298,6 +307,9 @@ class Evento{
 
             while ($linhaNomeEvento = $consultaNomeEvento->fetch(PDO::FETCH_ASSOC)) {
                 $nomeEvento = $linhaNomeEvento['tituloEvento'];
+                $dataEvento = $linhaNomeEvento['dataInicioEvento'];
+                $horaEvento = $linhaNomeEvento['horaInicioEvento'];
+                $cidade = $linhaNomeEvento['cidadeEvento'];
             }
 
             if($pagoInscricao == 1){
@@ -326,7 +338,7 @@ class Evento{
                 </div>
                 <div class='card-footer'>
                   <div class='stats'>
-                    <i class='material-icons'>date_range</i> Hora, Data, Cidade
+                    <i class='material-icons'>date_range</i> ".date("H:i", strtotime($horaEvento))." de ".date('d/m/Y', strtotime($dataEvento))." ".$cidade."
                   </div>
                   <label style='margin-left: 10%'>".$tipoInscricao."</label>
                 </div>
