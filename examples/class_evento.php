@@ -100,17 +100,20 @@ class Evento{
             // consulta de quantas inscriçoes
             $this->conectarBD();
 
-            $consultaInsc = $this->pdo->query("SELECT idUsuario FROM inscricao WHERE idEvento = '$results'");
+            //$consultaInsc
+                $quantInsc= $this->pdo->query("SELECT idUsuario FROM inscricao WHERE idEvento = $results")->rowCount();
+echo "SELECT idUsuario FROM inscricao WHERE idEvento = '$results'";
 
-            while ($linhaInsc = $consultaInsc->fetch(PDO::FETCH_ASSOC)) {
+            //$quantInsc = count($consultaInsc);
+            /*while ($linhaInsc = $consultaInsc->fetch(PDO::FETCH_ASSOC)) {
                 $quantInsc = rowCount($linhaInsc['idUsuario']);
-            }
+            }*/
 
             // consulta da missão para evento
             $this->conectarBD();
 
             $consultaMissaoEvento = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$results'");
-
+            $idMissao = 0;
             while ($linhaMissaoEvento = $consultaMissaoEvento->fetch(PDO::FETCH_ASSOC)) {
                 $idMissao = $linhaMissaoEvento['idMissao'];
             }
@@ -119,7 +122,9 @@ class Evento{
             $this->conectarBD();
 
             $consultaMissao = $this->pdo->query("SELECT * FROM missao WHERE idMissao = '$idMissao'");
-
+            $tituloMissao = 0;
+            $sobreMissao = 0;
+            $idRecompensa = 0;
             while ($linhaMissao = $consultaMissao->fetch(PDO::FETCH_ASSOC)) {
                 $tituloMissao = $linhaMissao['tituloMissao'];
                 $sobreMissao = $linhaMissao['sobreMissao'];
@@ -130,7 +135,8 @@ class Evento{
             $this->conectarBD();
 
             $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = '$idRecompensa'");
-
+            $nomeRecompensa = 0;
+            $tipoRecompensa = 0;
             while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
                 $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
                 $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
