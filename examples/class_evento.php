@@ -97,6 +97,36 @@ class Evento{
             $pais = $linha["paisEvento"];
             $area_academica = $linha["areaAcademicaEvento"];
 
+            // consulta da missão para evento
+            $this->conectarBD();
+
+            $consultaMissaoEvento = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$results'");
+
+            while ($linhaMissaoEvento = $consultaMissaoEvento->fetch(PDO::FETCH_ASSOC)) {
+                $idMissao = $linhaMissaoEvento['idMissao'];
+            }
+
+            // consulta missao
+            $this->conectarBD();
+
+            $consultaMissao = $this->pdo->query("SELECT * FROM missao WHERE idMissao = '$idMissao'");
+
+            while ($linhaMissao = $consultaMissao->fetch(PDO::FETCH_ASSOC)) {
+                $tituloMissao = $linhaMissao['tituloMissao'];
+                $sobreMissao = $linhaMissao['sobreMissao'];
+                $idRecompensa = $linhaMissao['idRecomensa'];
+            }
+
+            // conmsulta recompensa
+            $this->conectarBD();
+
+            $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = '$idRecompensa'");
+
+            while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
+                $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
+                $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
+            }
+
             echo '
 
             <div class="tab-pane active" id="'.$results.'">
@@ -148,6 +178,7 @@ class Evento{
                           <td>Valor inscrição</td>
                           <td class="text-center">FREE(falta)</td>
                         </tr>
+                        <hr>
                         <tr>
                          <td><a class="nav-link" href="#'.++$results.'">Próximo</a></td>
                           <td class="text-center">

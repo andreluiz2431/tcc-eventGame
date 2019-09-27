@@ -99,7 +99,6 @@ if(!empty($_POST['busca'])){
                                         echo"<script language='javascript' type='text/javascript'> alert('Parabéns, você está inscrito!');</script>";
                                     }
                                 }
-
                                 ?>
                             </div>
                         </div>
