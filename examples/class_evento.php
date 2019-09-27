@@ -353,7 +353,7 @@ class Evento{
     }
 
 
-    // bora fazer* dia 26/09/2019
+    // bora fazer* dia 27/09/2019
     public function inscricao($idEvento, $tipoInscricao){
         $valorInscricao = 0;
         $pagoInscricao = 0;
