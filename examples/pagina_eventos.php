@@ -45,7 +45,7 @@ if(!empty($_POST['busca'])){
 
             #titulo2{
                 margin-bottom: -2.8%;
-                margin-right: 5%;
+                margin-right: 8%;
             }
 
             #rowEvent{
