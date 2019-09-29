@@ -1,19 +1,5 @@
 <?php
 class Evento{
-    public $id;
-    public $titulo;
-    public $idusuario;
-    public $data_inicio;
-    public $data_fim;
-    public $hora_inicio;
-    public $hora_fim;
-    public $local;
-    public $cidade;
-    public $estado;
-    public $pais;
-    public $area_academica;
-    public $sobre_evento;
-
     public $pdo;
 
     public $busca;
@@ -23,7 +9,7 @@ class Evento{
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function inserir(){
+    public function inserir($titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento){
 
         try {
             $this->conectarBD();
@@ -31,23 +17,23 @@ class Evento{
             $stmt = $this->pdo->prepare("INSERT INTO evento (tituloEvento, idUsuario, dataInicioEvento, dataFimEvento, horaInicioEvento, horaFimEvento, localEvento, cidadeEvento, estadoEvento, paisEvento, areaAcademicaEvento, sobreEvento) VALUES(:tituloEvento, :idUsuario, :dataInicioEvento, :dataFimEvento, :horaInicioEvento, :horaFimEvento, :localEvento, :cidadeEvento, :estadoEvento, :paisEvento, :areaAcademicaEvento, :sobreEvento)");
 
             $stmt->execute(array(
-                ':tituloEvento' => "$this->titulo",
-                ':idUsuario' => "$this->idusuario",
-                ':dataInicioEvento' => "$this->data_inicio",
-                ':dataFimEvento' => "$this->data_fim",
-                ':horaInicioEvento' => "$this->hora_inicio",
-                ':horaFimEvento' => "$this->hora_fim",
-                ':localEvento' => "$this->local",
-                ':cidadeEvento' => "$this->cidade",
-                ':estadoEvento' => "$this->estado",
-                ':paisEvento' => "$this->pais",
-                ':areaAcademicaEvento' => "$this->area_academica",
-                ':sobreEvento' => "$this->sobre_evento"
+                ':tituloEvento' => "$titulo",
+                ':idUsuario' => "$idusuario",
+                ':dataInicioEvento' => "$data_inicio",
+                ':dataFimEvento' => "$data_fim",
+                ':horaInicioEvento' => "$hora_inicio",
+                ':horaFimEvento' => "$hora_fim",
+                ':localEvento' => "$local",
+                ':cidadeEvento' => "$cidade",
+                ':estadoEvento' => "$estado",
+                ':paisEvento' => "$pais",
+                ':areaAcademicaEvento' => "$area_academica",
+                ':sobreEvento' => "$sobre_evento"
             ));
 
             //var_dump($stmt->queryString);
-            $stmt->debugDumpParams();
-            exit();
+            //$stmt->debugDumpParams();
+            //exit();
 
             return $this->pdo->lastInsertId();
         } catch(PDOException $e) {
@@ -55,25 +41,6 @@ class Evento{
             return -1;
         }
 
-    }
-
-    public function alterar(){
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=id10120250_banco', 'id10120250_root', 'andre2001');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $stmt = $pdo->prepare('UPDATE Usuario SET nomeUsuario = :nomeUsuario, senhaUsuario = :senhaUsuario, emailUsuario = :emailUsuario WHERE idUsuario = :idUsuario');
-            $stmt->execute(array(
-                ':idUsuario'   => $this->id,
-                ':nomeUsuario' => $this->nome,
-                ':senhaUsuario' => $this->senha,
-                ':emailUsuario'   => $this->email
-            ));
-
-            echo $stmt->rowCount(); 
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
     }
 
     public function consultarPorUsuario($idanfitriao){
@@ -100,19 +67,12 @@ class Evento{
             // consulta de quantas inscriçoes
             $this->conectarBD();
 
-            //$consultaInsc
-                $quantInsc= $this->pdo->query("SELECT idUsuario FROM inscricao WHERE idEvento = $results")->rowCount();
-echo "SELECT idUsuario FROM inscricao WHERE idEvento = '$results'";
+            $quantInsc = $this->pdo->query("SELECT idUsuario FROM inscricao WHERE idEvento = $results")->rowCount();
 
-            //$quantInsc = count($consultaInsc);
-            /*while ($linhaInsc = $consultaInsc->fetch(PDO::FETCH_ASSOC)) {
-                $quantInsc = rowCount($linhaInsc['idUsuario']);
-            }*/
-
-            // consulta da missão para evento
             $this->conectarBD();
 
-            $consultaMissaoEvento = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$results'");
+            $consultaMissaoEvento = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = $results");
+            echo $results;
             $idMissao = 0;
             while ($linhaMissaoEvento = $consultaMissaoEvento->fetch(PDO::FETCH_ASSOC)) {
                 $idMissao = $linhaMissaoEvento['idMissao'];
@@ -339,7 +299,7 @@ echo "SELECT idUsuario FROM inscricao WHERE idEvento = '$results'";
         }
     }
 
-    public function consultarInscricao($usuario){       
+    public function consultarInscricao($usuario){
         $this->conectarBD();
 
         $consulta = $this->pdo->query("SELECT * FROM inscricao WHERE idUsuario = '$usuario'");

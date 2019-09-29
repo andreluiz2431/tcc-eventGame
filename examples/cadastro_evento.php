@@ -109,21 +109,19 @@ if(!empty($_POST["titulo"])){
 
     $evento = new Evento();
 
-    $evento->titulo = $_POST["titulo"];
-    $evento->idusuario = $idusuario; // colocar o id do usuario logado
-    $evento->data_inicio = $_POST["data_inicio"];
-    $evento->data_fim = $_POST["data_fim"];
-    $evento->hora_inicio = $_POST["hora_inicio"];
-    $evento->hora_fim = $_POST["hora_fim"];
-    $evento->local = $_POST["local"];
-    $evento->cidade = $_POST["cidade"];
-    $evento->estado = $_POST["estado"];
-    $evento->pais = $_POST["pais"];
-    $evento->area_academica = $_POST["area_academica"];
-    $evento->sobre_evento = $_POST["sobre_evento"];
+    $titulo = $_POST["titulo"];
+    $data_inicio = $_POST["data_inicio"];
+    $data_fim = $_POST["data_fim"];
+    $hora_inicio = $_POST["hora_inicio"];
+    $hora_fim = $_POST["hora_fim"];
+    $local = $_POST["local"];
+    $cidade = $_POST["cidade"];
+    $estado = $_POST["estado"];
+    $pais = $_POST["pais"];
+    $area_academica = $_POST["area_academica"];
+    $sobre_evento = $_POST["sobre_evento"];
 
-    $idEvento = $evento->inserir();
-
+    $idEvento = $evento->inserir($titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento);
 
     $missao->titulo = $_POST['tituloMissao'];
     $missao->sobre = $_POST['sobreMissao'];
