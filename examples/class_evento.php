@@ -72,7 +72,7 @@ class Evento{
             $this->conectarBD();
 
             $consultaMissaoEvento = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = $results");
-            echo $results;
+
             $idMissao = 0;
             while ($linhaMissaoEvento = $consultaMissaoEvento->fetch(PDO::FETCH_ASSOC)) {
                 $idMissao = $linhaMissaoEvento['idMissao'];

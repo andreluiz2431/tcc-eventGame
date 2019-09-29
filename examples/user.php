@@ -1,7 +1,11 @@
 <?php
 include 'class_usuario.php';
+
+$usuario = new Usuario();
+
 session_start();
 if(isset($_SESSION['nomeUsuario'])){
+    $id = $_SESSION['idUsuario'];
     $nome = $_SESSION['nomeUsuario'];
     $nivel = $_SESSION['nivelUsuario'];
     $pontos = $_SESSION['pontuacaolUsuario'];
@@ -78,13 +82,13 @@ if(!empty($_POST['busca'])){
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Nome</label>
-                                                        <input type="text" class="form-control" value="<?php echo utf8_encode($nome); ?>">
+                                                        <input type="text" name="nome" class="form-control" value="<?php echo utf8_encode($nome); ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">E-mail</label>
-                                                        <input type="email" class="form-control" value="<?php echo $email; ?>">
+                                                        <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -118,13 +122,54 @@ if(!empty($_POST['busca'])){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary pull-right">Alterar dados</button>
+                                            <input type="submit" class="btn btn-primary pull-right" value="Alterar dados">
                                             <div class="clearfix"></div>
                                         </form>
+                                        <?php
+                                        if(!empty($_POST['nome'])){
+                                            $usuario->alterarDadosUsuario($id, $_POST['nome'], $_POST['email']);
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
 
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="card card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Deseja alterar sua senha?</h4>
+                                        <form method="post" action="user.php">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Sua senha atual</label>
+                                                        <input type="password" name="senhaAtual" class="form-control" title="Digite sua senha atual">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Nova senha</label>
+                                                        <input type="password" name="senhaNova" class="form-control" title="Digite sua nova senha">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                               <div class="col-md-12">
+                                                <input type="submit" class="btn btn-primary pull-right" style="margin-left: 100%;" value="Redefinir" title="Redefinir senha">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php
+                                        if(!empty($_POST['senhaAtual'])&&!empty($_POST['senhaNova'])){
+                                            $usuario->alterarSenhaUsuario($id, $_POST['senhaAtual'], $_POST['senhaNova']);
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
