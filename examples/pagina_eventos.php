@@ -12,11 +12,8 @@ if(isset($_SESSION['nomeUsuario'])){
     header("location:../index.php");
 }
 
-if(!empty($_POST['busca'])){
-    include 'class_evento.php';
-    $busca = new Evento();
-    $busca->busca = $_POST['busca'];
-}
+include 'class_evento.php';
+$busca = new Evento();
 ?>
 <!DOCTYPE html>
 <html>
@@ -87,16 +84,19 @@ if(!empty($_POST['busca'])){
                                     </div>
                                 </div>
                                 <?php
-                                include 'class_evento.php';
-                                $busca = new Evento();
-                                $busca->consultar();
 
-                                if(!empty($_POST['idEventoInsc'])&&!empty($_POST['tipoInsc'])){
-                                    $idEventoInsc = $_POST['idEventoInsc'];
-                                    $tipoInsc = $_POST['tipoInsc'];
+                                if(!empty($_POST['busca'])){
+                                    $busca->consultarBusca($_POST['busca']);
+                                }else{
+                                    $busca->consultar();
 
-                                    if($busca->inscricao($idEventoInsc, $tipoInsc) == 'inscrito'){
-                                        echo"<script language='javascript' type='text/javascript'> alert('Parabéns, você está inscrito!');</script>";
+                                    if(!empty($_POST['idEventoInsc'])&&!empty($_POST['tipoInsc'])){
+                                        $idEventoInsc = $_POST['idEventoInsc'];
+                                        $tipoInsc = $_POST['tipoInsc'];
+
+                                        if($busca->inscricao($idEventoInsc, $tipoInsc) == 'inscrito'){
+                                            echo"<script language='javascript' type='text/javascript'> alert('Parabéns, você está inscrito!');</script>";
+                                        }
                                     }
                                 }
                                 ?>
