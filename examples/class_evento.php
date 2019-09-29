@@ -10,7 +10,9 @@ class Evento{
     public function consultarBusca($busca){
         $this->conectarBD();
 
-        $consultaBusca = $this->pdo->query("SELECT * FROM evento WHERE tituloEvento = '$busca'");
+        $consultaBusca = $this->pdo->query("SELECT * FROM evento WHERE tituloEvento LIKE '%$busca%'");
+
+    echo '<label style="margin-left: 5%">Resultado de busca</label><div class="row"  id="rowEvent">';
 
         while ($linhaBusca = $consultaBusca->fetch(PDO::FETCH_ASSOC)) {
             $results = $linhaBusca['idEvento'];
