@@ -155,11 +155,11 @@ class Evento{
                         </tr>
                         <tr>
                           <td>Missão</td>
-                          <td class="text-center"><b>'.$tituloMissao.'</b>'.$sobreMissao.'</td>
+                          <td class="text-center">'.$tituloMissao.' '.$sobreMissao.'</td>
                         </tr>
                         <tr>
                           <td>Recompensa</td>
-                          <td class="text-center"><b>'.$tipoRecompensa.'</b>'.$nomeRecompensa.'</td>
+                          <td class="text-center">'.$tipoRecompensa.' '.$nomeRecompensa.'</td>
                         </tr>
                         <tr>
                          <td><a class="nav-link" href="#'.++$results.'">Próximo</a></td>
