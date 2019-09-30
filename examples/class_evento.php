@@ -132,8 +132,8 @@ class Evento{
             $stmt = $this->pdo->prepare("INSERT INTO evento (tituloEvento, idUsuario, dataInicioEvento, dataFimEvento, horaInicioEvento, horaFimEvento, localEvento, cidadeEvento, estadoEvento, paisEvento, areaAcademicaEvento, sobreEvento) VALUES(:tituloEvento, :idUsuario, :dataInicioEvento, :dataFimEvento, :horaInicioEvento, :horaFimEvento, :localEvento, :cidadeEvento, :estadoEvento, :paisEvento, :areaAcademicaEvento, :sobreEvento)");
 
             $stmt->execute(array(
-                ':tituloEvento' => "$titulo",
-                ':idUsuario' => "$idusuario",
+                ':tituloEvento' => $titulo,
+                ':idUsuario' => $idusuario,
                 ':dataInicioEvento' => "$data_inicio",
                 ':dataFimEvento' => "$data_fim",
                 ':horaInicioEvento' => "$hora_inicio",
@@ -257,7 +257,7 @@ class Evento{
                 </tr>
                 <tr>
                 <td>Sobre</td>
-                <td class="text-center"><a id="modal-'.$results.'" href="#modal-container-'.$results.'" role="button" data-toggle="modal">Ver mais</a>
+                <td class="text-center"><a id="modal-'.$results.'" href="#modal-container-'.$results.'" role="button" data-toggle="modal">Vizualizar</a>
 
                 <div class="modal fade" id="modal-container-'.$results.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
