@@ -19,8 +19,9 @@ echo $res;
                 console.log(data);
                 data = $.parseJSON(data);
                 $("#resposta").text(data.email);
-                // começa o coisa do botão
-                var valorDaDiv = $("#resposta").text();  // COOLOCAR TODO FORMULARIO NESSA PAGINA E COLOCAR A VERIFICAÇÃO DE DESABILITAR O BOTAO AQUI NO AJAX OU FORA DO AJAX ({   } )
+
+                var valorDaDiv = $("#resposta").text();
+
                 console.log(valorDaDiv);
                 if(valorDaDiv == 'E-mail já existente'){
                     console.log('Entrou no if');
@@ -30,7 +31,7 @@ echo $res;
                     document.getElementById("cadastrar").disabled = false;
                 }
             }
-               });
+        });
     });
 </script>
 
