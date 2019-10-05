@@ -70,5 +70,38 @@ class Missao{
             echo "<option value='".$linha['idRecomensa']."'>".$linha['nomeReompensa']."</option>";
         }
     }
+
+    public function ver_progresso_missoes($usuario){
+        // consulta por progresso na missao
+        $this->conectarBD();
+
+        $consultaProgressoMissao = $this->pdo->query("SELECT * FROM progressomissao WHERE idUsuario = '$usuario'");
+        while ($linhaProgressoMissao = $consultaProgressoMissao->fetch(PDO::FETCH_ASSOC)) {
+            $idMissao = $linhaProgressoMissao['idMissao'];
+            $progressoMissao = $linhaProgressoMissao['progressoMissao'];
+        }
+
+        // consulta missao
+        $this->conectarBD();
+
+        $consultaMissao = $this->pdo->query("SELECT * FROM missao WHERE idMissao = '$idMissao'");
+        while ($linhaMissao = $consultaMissao->fetch(PDO::FETCH_ASSOC)) {
+            $tituloMissao = $linhaMissao['tituloMissao'];
+            $sobreMissao = $linhaMissao['sobreMissao'];
+            $idRecompensa = $linhaMissao['idRecomensa'];
+        }
+
+        // conmsulta recompensa
+        $this->conectarBD();
+
+        $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = '$idRecompensa'");
+        while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
+            $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
+            $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
+        }
+
+        echo "xsadaeda";
+
+    }
 }
 ?>
