@@ -45,7 +45,6 @@
                                                 include 'verificaEmail2.php';
                                                 ?>
 
-
                                             </div>
                                         </div>
                                     </form>
