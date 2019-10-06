@@ -523,32 +523,32 @@ class Evento{
                 ':pagoInscricao' => $pagoInscricao // falta fazer
             ));
 
-            return 'inscrito';
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-            return -1;
-        }
-
-        // pegar id da missao pelo id do evento
-        $this->conectarBD();
-
-        $consultaIdMissao = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$idEvento'");
-
-        while ($linhaIdMissao = $consultaIdMissao->fetch(PDO::FETCH_ASSOC)) {
-            $idMissao = $linhaIdMissao['idMissao'];
-        }
-
-        // inserir progresso missao inicial
-        try {
+            // pegar id da missao pelo id do evento
             $this->conectarBD();
 
-            $stmt = $this->pdo->prepare("INSERT INTO progressomissao (idUsuario, idMissao, progressoMissao) VALUES (:idUsuario, :idMissao, :progressoMissao)");
-            $stmt->execute(array(
-                ':idUsuario' => $_SESSION['idUsuario'],
-                ':idMissao' => $idMissao,
-                ':progressoMissao' => "0"
-            ));
+            $consultaIdMissao = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$idEvento'");
 
+            while ($linhaIdMissao = $consultaIdMissao->fetch(PDO::FETCH_ASSOC)) {
+                $idMissao = $linhaIdMissao['idMissao'];
+            }
+
+            // inserir progresso missao inicial
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare("INSERT INTO progressomissao (idUsuario, idMissao, progressoMissao) VALUES (:idUsuario, :idMissao, :progressoMissao)");
+                $stmt->execute(array(
+                    ':idUsuario' => $_SESSION['idUsuario'],
+                    ':idMissao' => $idMissao,
+                    ':progressoMissao' => "0"
+                ));
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+                return -1;
+            }
+
+            return 'inscrito';
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return -1;
