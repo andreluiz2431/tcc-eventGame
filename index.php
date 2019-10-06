@@ -52,9 +52,9 @@ session_start();
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                     <hr>
                   </form>
-                  <div class="text-center">
+                  <!-- <div class="text-center">
                     <a class="small" href="forgot-password.php">Esqueceu sua senha?</a>
-                  </div>
+                  </div> -->
                   <div class="text-center">
                     <a class="small" href="register.php">Crie uma conta!</a>
                   </div>
