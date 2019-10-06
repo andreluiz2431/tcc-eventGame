@@ -18,9 +18,15 @@
         <!-- Custom styles for this template-->
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+        <style>
+            #gradiente{
+                background: rgb(2,0,36);
+                background: linear-gradient(153deg, rgba(2,0,36,1) 0%, rgba(2,26,63,1) 1%, rgba(2,49,87,1) 8%, rgba(1,72,111,1) 18%, rgba(1,85,124,1) 37%, rgba(0,100,139,1) 51%, rgba(0,113,153,1) 64%, rgba(0,139,180,1) 79%, rgba(0,173,215,1) 100%, rgba(0,212,255,1) 100%);
+            }
+        </style>
     </head>
-
-    <body class="bg-gradient-primary">
+    <body id='gradiente'>
+        <!-- <body class="bg-gradient-primary"> -->
 
         <div class="container" style="margin-top: 10%;" align="center">
 
