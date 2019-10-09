@@ -511,14 +511,15 @@ class Evento{
         // verificar se ja possui inscricao
         $this->conectarBD();
 
-        $consultaInscricaoExistente = $this->pdo->query("SELECT * FROM inscricao WHERE (idEvento = '$idEvento') AND (idUsuario = "$_SESSION['idUsuario']")");
-
+        $consultaInscricaoExistente = $this->pdo->query("SELECT * FROM inscricao WHERE (idEvento = '$idEvento') AND (idUsuario = ".$_SESSION['idUsuario'].")");
+$idEventoI = 0;
+$idUsuarioI = 0;
         while ($linhaInscricaoExistente = $consultaInscricaoExistente->fetch(PDO::FETCH_ASSOC)) {
             $idEventoI = $linhaInscricaoExistente['idEvento'];
             $idUsuarioI = $linhaInscricaoExistente['idUsuario'];
         }
 
-        if(isset($idEventoI) && isset($idUsuarioI)){
+        if(($idEventoI == 0) && ($idUsuarioI == 0)){
             $valorInscricao = 0;
             $pagoInscricao = 0;
 
