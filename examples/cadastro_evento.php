@@ -114,7 +114,7 @@ $missao = new Missao();
                                                         <div class="col-md-2">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Estado</label>
-                                                                <input type="text" name="estado" title="Estado em que ocorrerá evento" class="form-control" required="true">
+                                                                <input type="text" name="estado" title="Estado em que ocorrerá evento" class="form-control" required="true" pattern="[A-Za-z]{2}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
