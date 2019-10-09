@@ -104,12 +104,14 @@ class Usuario{
                 $_SESSION['temaUsuario'] = $linha['temaUsuario'];
                 $_SESSION['skinUsuario'] = $linha['skinUsuario'];
 
+                $_SESSION['skinAplicada'] = 0;
+                $_SESSION['temaAplicada'] = 'Purple';
 
                 // pegar skin ou tema disponivel do usuario
                 $this->conectarBD();
 
                 $consultaRecompensaDisponivel = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$linha['idUsuario']."")or die('Erro na busca por recompensa disponivel');
-
+                $recompensaAplicada = 0;
                 while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
                     $recompensaAplicada = $linhaRecompensaDisponivel['idRecomensa'];
                 }
@@ -118,7 +120,7 @@ class Usuario{
                 $this->conectarBD();
 
                 $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$recompensaAplicada."")or die('Erro na busca por recompensa');
-
+                $tipoRecompensa = 0;
                 while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
                     $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
 
@@ -126,9 +128,6 @@ class Usuario{
                         $_SESSION['skinAplicada'] = $linhaRecompensa['nomeReompensa'];
                     } elseif ($tipoRecompensa == 'tema'){
                         $_SESSION['temaAplicada'] = $linhaRecompensa['nomeReompensa'];
-                    }else{
-                        $_SESSION['skinAplicada'] = 0;
-                        $_SESSION['temaAplicada'] = 'Purple';
                     }
                 }
 

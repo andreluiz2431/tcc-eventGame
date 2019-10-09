@@ -51,7 +51,10 @@ $busca = new Evento();
             }
 
             #corTitulo{
-                background-color: #9368E9;
+                <?php
+                include 'condicaoCores2.php';
+
+                ?>
                 height: 300px;
                 align-items: center;
                 padding: 14%;                
