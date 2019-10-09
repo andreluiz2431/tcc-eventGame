@@ -66,13 +66,13 @@ if(!empty($_POST['busca'])){
                                     <div class="card-body">
                                         <h6 class="card-category text-gray">Usuário</h6>
                                         <h4 class="card-title"><?php echo utf8_encode($nome); ?></h4>
-                                        <a href="sair.php" class="btn btn-primary btn-round">Sair</a>
+                                        <a href="sair.php" class="btn btn-primary btn-round" style="<?php include 'condicaoCores2.php'; echo $cor; ?>">Sair</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="card">
-                                    <div class="card-header card-header-primary">
+                                    <div class="card-header card-header-primary" style="<?php echo $cor ?>">
                                         <h4 class="card-title">Editar perfil</h4>
                                         <p class="card-category">Confira seus dados</p>
                                     </div>
@@ -122,7 +122,7 @@ if(!empty($_POST['busca'])){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="submit" class="btn btn-primary pull-right" value="Alterar dados">
+                                            <input type="submit" class="btn btn-primary pull-right" value="Alterar dados" style="<?php include 'condicaoCores2.php'; echo $cor; ?>">
                                             <div class="clearfix"></div>
                                         </form>
                                         <?php

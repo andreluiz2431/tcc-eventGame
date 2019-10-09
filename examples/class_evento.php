@@ -216,12 +216,12 @@ class Evento{
                 $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
                 $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
             }
-
+include 'condicaoCores2.php';
             echo '
 
                 <div class="tab-pane active" id="'.$results.'">
                 <div class="card">
-                <div class="card-header card-header-primary">
+                <div class="card-header card-header-primary" style="'.$cor.'">
                 <h4 class="card-title">'.$tituloEvento.'</h4>
                 <p class="card-category">'.$dataInicioEvento." ".$horaInicioEvento.'</p>
                 </div>
@@ -476,13 +476,13 @@ class Evento{
             }else{
                 $valorInscricao = 'R$ '.$valorInscricao;
             }
-
+include 'condicaoCores2.php';
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
               <div class='card card-stats'>
                <a href='#' title='".$situacao."'>
-                                                                    <div class='card-header card-header-success card-header-icon'>
+                                                                    <div class='card-header card-header-primary card-header-icon'>
                                                                     <div class='card-icon'>
                                                                     <i class='material-icons'>amp_stories</i>
                                                                     </div>
