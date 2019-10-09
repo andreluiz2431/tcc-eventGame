@@ -505,8 +505,6 @@ class Evento{
         echo "</div>";
     }
 
-
-    // bora fazer* dia 27/09/2019
     public function inscricao($idEvento, $tipoInscricao){
         // verificar se ja possui inscricao
         $this->conectarBD();
