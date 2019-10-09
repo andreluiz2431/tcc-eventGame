@@ -64,7 +64,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Título do evento</label>
-                                                                <input type="text" name="titulo" class="form-control" title="Título do Evento">
+                                                                <input type="text" name="titulo" class="form-control" title="Título do Evento" required="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -72,13 +72,13 @@ $missao = new Missao();
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Data de início</label>
-                                                                <input  type="date" name="data_inicio" title="Data do inicio do evento" class="form-control" >
+                                                                <input  type="date" name="data_inicio" title="Data do inicio do evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Data de encerramento</label>
-                                                                <input type="date" name="data_fim" title="Data do fim do evento" class="form-control">
+                                                                <input type="date" name="data_fim" title="Data do fim do evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -86,13 +86,13 @@ $missao = new Missao();
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Hora de início</label>
-                                                                <input type="time" name="hora_inicio" title="Hora de inicio do evento" class="form-control">
+                                                                <input type="time" name="hora_inicio" title="Hora de inicio do evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Hora de encerramento</label>
-                                                                <input type="time" name="hora_fim" title="Hora de fim do evento" class="form-control">
+                                                                <input type="time" name="hora_fim" title="Hora de fim do evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -100,7 +100,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Local do evento</label>
-                                                                <input type="text" name="local" title="Local do evento" class="form-control">
+                                                                <input type="text" name="local" title="Local do evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,19 +108,19 @@ $missao = new Missao();
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Cidade</label>
-                                                                <input type="text" name="cidade" title="Cidade em que ocorrerá evento" class="form-control">
+                                                                <input type="text" name="cidade" title="Cidade em que ocorrerá evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Estado</label>
-                                                                <input type="text" name="estado" title="Estado em que ocorrerá evento" class="form-control">
+                                                                <input type="text" name="estado" title="Estado em que ocorrerá evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">País</label>
-                                                                <input type="text" name="pais" title="País em que ocorrerá evento" class="form-control">
+                                                                <input type="text" name="pais" title="País em que ocorrerá evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -128,7 +128,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Área acadêmica</label>
-                                                                <input type="text" name="area_academica" title="Área academica do evento" class="form-control">
+                                                                <input type="text" name="area_academica" title="Área academica do evento" class="form-control" required="true">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -162,7 +162,7 @@ $missao = new Missao();
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Título da missão</label>
-                                                        <input type="text" name="tituloMissao" title="Título da Missão" class="form-control">
+                                                        <input type="text" name="tituloMissao" title="Título da Missão" class="form-control" required="true">
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@ $missao = new Missao();
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Fale sobre a Missão</label>
-                                                        <input type="text" name="sobreMissao" title="Fale sobre a Missão" class="form-control">
+                                                        <input type="text" name="sobreMissao" title="Fale sobre a Missão" class="form-control" required="true">
                                                     </div>
                                                 </div>
                                             </div>

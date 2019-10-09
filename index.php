@@ -52,10 +52,10 @@ background: linear-gradient(153deg, rgba(2,0,36,1) 0%, rgba(2,26,63,1) 1%, rgba(
                   </div>
                   <form class="user" method="post" action="index.php">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" name="email" placeholder="Digite seu E-mail">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" name="email" placeholder="Digite seu E-mail" required="true">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Digite sua senha" name="senha">
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Digite sua senha" name="senha" required="true">
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                     <hr>

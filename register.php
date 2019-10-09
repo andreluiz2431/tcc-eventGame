@@ -44,7 +44,7 @@
                                     </div>
                                     <form class="user" method="POST" action="register.php">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="exampleFirstName" title="Seu nome completo" placeholder="Seu nome completo" name="nome">
+                                            <input type="text" class="form-control form-control-user" id="exampleFirstName" title="Seu nome completo" placeholder="Seu nome completo" name="nome" required="true">
                                             <div class="form-group" style="margin-top: 3.5%;">
 
                                                 <?php

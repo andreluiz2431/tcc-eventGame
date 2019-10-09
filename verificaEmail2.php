@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<input type="email" class="form-control form-control-user" id="email" id="exampleInputEmail" title="Digite seu E-mail" placeholder="Digite seu E-mail" name="email">
+<input type="email" class="form-control form-control-user" id="email" id="exampleInputEmail" title="Digite seu E-mail" placeholder="Digite seu E-mail" name="email" required="true">
 
 <?php
 $res = "<div id='resposta'></div>";
@@ -37,10 +37,10 @@ echo $res;
 
 <div class="form-group row" style="margin-top: 15px">
     <div class="col-sm-6 mb-3 mb-sm-0">
-        <input type="password" class="form-control form-control-user" id="exampleInputPassword" title="Digite sua senha" placeholder="Digite sua senha" name="senha">
+        <input type="password" class="form-control form-control-user" id="exampleInputPassword" title="Digite sua senha" placeholder="Digite sua senha" name="senha" required="true">
     </div>
     <div class="col-sm-6">
-        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" title="Digite sua senha novamente" placeholder="Verifique a senha" name="senha2">
+        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" title="Digite sua senha novamente" placeholder="Verifique a senha" name="senha2" required="true">
     </div>
 </div>
 <input type="submit" class="btn btn-primary btn-user btn-block" id="cadastrar" value="Cadastrar" title="Fazer login" disabled>
