@@ -36,7 +36,7 @@
                         <a class="dropdown-item" href="#">...</a>
                         <a class="dropdown-item" href="#">Notificações aqui!</a>
                         <a class="dropdown-item" href="#">...</a>
-                        <a class="dropdown-item" href="#">...</a>
+                        <a class="dropdown-item" href="#"><?php echo $_SESSION['temaAplicada']; ?></a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
