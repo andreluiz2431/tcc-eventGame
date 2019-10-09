@@ -104,7 +104,7 @@ class Usuario{
                 $_SESSION['temaUsuario'] = $linha['temaUsuario'];
                 $_SESSION['skinUsuario'] = $linha['skinUsuario'];
 
-                
+
                 // pegar skin ou tema disponivel do usuario
                 $this->conectarBD();
 
@@ -113,7 +113,7 @@ class Usuario{
                 while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
                     $recompensaAplicada = $linhaRecompensaDisponivel['idRecomensa'];
                 }
-                
+
                 // definir o que é tema ou skin
                 $this->conectarBD();
 
