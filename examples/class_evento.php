@@ -510,8 +510,9 @@ class Evento{
         $this->conectarBD();
 
         $consultaInscricaoExistente = $this->pdo->query("SELECT * FROM inscricao WHERE (idEvento = '$idEvento') AND (idUsuario = ".$_SESSION['idUsuario'].")");
-$idEventoI = 0;
-$idUsuarioI = 0;
+
+        $idEventoI = 0;
+        $idUsuarioI = 0;
         while ($linhaInscricaoExistente = $consultaInscricaoExistente->fetch(PDO::FETCH_ASSOC)) {
             $idEventoI = $linhaInscricaoExistente['idEvento'];
             $idUsuarioI = $linhaInscricaoExistente['idUsuario'];
