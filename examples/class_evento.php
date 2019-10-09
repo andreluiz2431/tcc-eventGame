@@ -508,50 +508,64 @@ class Evento{
 
     // bora fazer* dia 27/09/2019
     public function inscricao($idEvento, $tipoInscricao){
-        $valorInscricao = 0;
-        $pagoInscricao = 0;
+        // verificar se ja possui inscricao
+        $this->conectarBD();
 
-        try {
-            $this->conectarBD();
+        $consultaInscricaoExistente = $this->pdo->query("SELECT * FROM inscricao WHERE (idEvento = '$idEvento') AND (idUsuario = "$_SESSION['idUsuario']")");
 
-            $stmt = $this->pdo->prepare("INSERT INTO inscricao(idUsuario, idEvento, tipoInscricao, valorInscricao, pagoInscricao) VALUES (:idUsuario, :idEvento, :tipoInscricao, :valorInscricao, :pagoInscricao)");
-            $stmt->execute(array(
-                ':idUsuario' => $_SESSION['idUsuario'],
-                ':idEvento' => $idEvento, // fverificar
-                ':tipoInscricao' => $tipoInscricao, // falta fazer
-                ':valorInscricao' => $valorInscricao, // falta fazer
-                ':pagoInscricao' => $pagoInscricao // falta fazer
-            ));
+        while ($linhaInscricaoExistente = $consultaInscricaoExistente->fetch(PDO::FETCH_ASSOC)) {
+            $idEventoI = $linhaInscricaoExistente['idEvento'];
+            $idUsuarioI = $linhaInscricaoExistente['idUsuario'];
+        }
 
-            // pegar id da missao pelo id do evento
-            $this->conectarBD();
+        if(isset($idEventoI) && isset($idUsuarioI)){
+            $valorInscricao = 0;
+            $pagoInscricao = 0;
 
-            $consultaIdMissao = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$idEvento'");
-
-            while ($linhaIdMissao = $consultaIdMissao->fetch(PDO::FETCH_ASSOC)) {
-                $idMissao = $linhaIdMissao['idMissao'];
-            }
-
-            // inserir progresso missao inicial
             try {
                 $this->conectarBD();
 
-                $stmt = $this->pdo->prepare("INSERT INTO progressomissao (idUsuario, idMissao, progressoMissao) VALUES (:idUsuario, :idMissao, :progressoMissao)");
+                $stmt = $this->pdo->prepare("INSERT INTO inscricao(idUsuario, idEvento, tipoInscricao, valorInscricao, pagoInscricao) VALUES (:idUsuario, :idEvento, :tipoInscricao, :valorInscricao, :pagoInscricao)");
                 $stmt->execute(array(
                     ':idUsuario' => $_SESSION['idUsuario'],
-                    ':idMissao' => $idMissao,
-                    ':progressoMissao' => "0"
+                    ':idEvento' => $idEvento, // fverificar
+                    ':tipoInscricao' => $tipoInscricao, // falta fazer
+                    ':valorInscricao' => $valorInscricao, // falta fazer
+                    ':pagoInscricao' => $pagoInscricao // falta fazer
                 ));
 
+                // pegar id da missao pelo id do evento
+                $this->conectarBD();
+
+                $consultaIdMissao = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = '$idEvento'");
+
+                while ($linhaIdMissao = $consultaIdMissao->fetch(PDO::FETCH_ASSOC)) {
+                    $idMissao = $linhaIdMissao['idMissao'];
+                }
+
+                // inserir progresso missao inicial
+                try {
+                    $this->conectarBD();
+
+                    $stmt = $this->pdo->prepare("INSERT INTO progressomissao (idUsuario, idMissao, progressoMissao) VALUES (:idUsuario, :idMissao, :progressoMissao)");
+                    $stmt->execute(array(
+                        ':idUsuario' => $_SESSION['idUsuario'],
+                        ':idMissao' => $idMissao,
+                        ':progressoMissao' => "0"
+                    ));
+
+                } catch(PDOException $e) {
+                    echo 'Error: ' . $e->getMessage();
+                    return -1;
+                }
+
+                return 'inscrito';
             } catch(PDOException $e) {
                 echo 'Error: ' . $e->getMessage();
                 return -1;
             }
-
-            return 'inscrito';
-        } catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-            return -1;
+        }else{
+            echo"<script language='javascript' type='text/javascript'> alert('Você já estava inscrito!');</script>";
         }
     }
 }
