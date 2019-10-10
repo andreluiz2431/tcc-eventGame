@@ -166,9 +166,9 @@
                 </a>
             </li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-default btn-block">
+                <!-- <a href="#" target="_blank" class="btn btn-default btn-block">
                     Meus temas
-                </a>
+                </a> -->
             </li>
         </ul>
     </div>
