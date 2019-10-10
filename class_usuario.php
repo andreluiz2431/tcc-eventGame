@@ -29,7 +29,7 @@ class Usuario{
 
             $stmt = $this->pdo->prepare("INSERT INTO usuario (nomeUsuario, senhaUsuario, emailUsuario, pontuacaoLUsuario, idRecomensa, nivelUsuario, temaUsuario, skinUsuario) VALUES(:nomeUsuario, :senhaUsuario, :emailUsuario, :pontuacaoLUsuario, :idRecomensa, :nivelUsuario, :temaUsuario, :skinUsuario)");
             $stmt->execute(array(
-                ':nomeUsuario' => "$this->nome", ':senhaUsuario' => "$this->senha", ':emailUsuario' => "$this->email", ':pontuacaoLUsuario' => "$this->pontuacao", ':idRecomensa' => $this->recompensa, ':nivelUsuario' => $this-nivel, ':temaUsuario' => $this->tema, ':skinUsuario' => $this->skin
+                ':nomeUsuario' => "$this->nome", ':senhaUsuario' => "$this->senha", ':emailUsuario' => "$this->email", ':pontuacaoLUsuario' => "$this->pontuacao", ':idRecomensa' => $this->recompensa, ':nivelUsuario' => $this-nivel, ':temaUsuario' => 7, ':skinUsuario' => 3
             ));
 
             echo $stmt->rowCount(); 
@@ -101,36 +101,24 @@ class Usuario{
                 $_SESSION['pontuacaolUsuario'] = $linha['pontuacaolUsuario'];
                 $_SESSION['idRecomensa'] = $linha['idRecomensa'];
                 $_SESSION['nivelUsuario'] = $linha['nivelUsuario'];
-                $_SESSION['temaUsuario'] = $linha['temaUsuario'];
-                $_SESSION['skinUsuario'] = $linha['skinUsuario'];
 
-                $_SESSION['skinAplicada'] = 0;
-                $_SESSION['temaAplicada'] = 'Purple';
-
-                // pegar skin ou tema disponivel do usuario
+                // definir qual o tema do usuario
                 $this->conectarBD();
 
-                $consultaRecompensaDisponivel = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$linha['idUsuario']."")or die('Erro na busca por recompensa disponivel');
-                $recompensaAplicada = 0;
-                while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
-                    $recompensaAplicada = $linhaRecompensaDisponivel['idRecomensa'];
-                }
+                $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$linha['temaUsuario']."");
 
-                // definir o que é tema ou skin
-                $this->conectarBD();
-
-                $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$recompensaAplicada."")or die('Erro na busca por recompensa');
-                $tipoRecompensa = 0;
                 while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
-                    $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
-
-                    if($tipoRecompensa == 'skin'){
-                        $_SESSION['skinAplicada'] = $linhaRecompensa['nomeReompensa'];
-                    } elseif ($tipoRecompensa == 'tema'){
-                        $_SESSION['temaAplicada'] = $linhaRecompensa['nomeReompensa'];
-                    }
+                    $_SESSION['temaAplicada'] = $linhaRecompensa['nomeReompensa'];
                 }
 
+                // definir qual a skin do usuario
+                $this->conectarBD();
+
+                $consultaRecompensa1 = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$linha['skinUsuario']."");
+
+                while ($linhaRecompensa1 = $consultaRecompensa1->fetch(PDO::FETCH_ASSOC)) {
+                    $_SESSION['skinAplicada'] = $linhaRecompensa1['nomeReompensa'];
+                }
 
                 $ver = true;
 

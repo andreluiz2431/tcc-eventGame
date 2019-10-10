@@ -5,27 +5,48 @@
         </a>
         <ul class="dropdown-menu">
             <li class="header-title"> Cores</li>
+            <label style="font-size: 66%; margin-left: 25%;">Atualize a página para aplicar</label><br>
             <li class="">
                 <a href="javascript:void(0)" class="switch-trigger active-color">
 
                     <form method="post" action="">
                         <div class="badge-colors ml-auto mr-auto">
-                            <input type="submit" name="purple" value="" class="badge filter badge-purple" data-color="purple"><!--  ta no BD e programado -->
-                            <input type="submit" name="azure" value="" class="badge filter badge-azure" data-color="azure"><!--  ta no BD -->
-                            <input type="submit" name="green" value="" class="badge filter badge-green" data-color="green"><!--  ta no BD -->
-                            <input type="submit" name="orange" value="" class="badge filter badge-warning" data-color="orange"><!--  ta no BD -->
-                            <input type="submit" name="danger" value="" class="badge filter badge-danger" data-color="danger"><!--  ta no BD e programado -->
-                            <input type="submit" name="rose" value="" class="badge filter badge-rose active" data-color="rose"><!--  ta no BD -->
+<input type="submit" name="purple" value="" class="badge filter badge-purple" data-color="purple">
+                            <?php
+                            // ver cores disponíveis
+                            $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            $consultaRecompensaDisponivel = $pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$_SESSION['idUsuario']."");
+
+                            while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
+                                $idRecompensa = $linhaRecompensaDisponivel['idRecomensa'];
+
+                                if($idRecompensa == 8){
+                                    echo '<input type="submit" name="danger" value="" class="badge filter badge-danger" data-color="danger">';
+                                }elseif($idRecompensa == 9){
+                                    echo '<input type="submit" name="azure" value="" class="badge filter badge-azure" data-color="azure">';
+                                }elseif($idRecompensa == 10){
+                                    echo '<input type="submit" name="green" value="" class="badge filter badge-green" data-color="green">';
+                                }elseif($idRecompensa == 11){
+                                    echo '<input type="submit" name="orange" value="" class="badge filter badge-warning" data-color="orange">';
+                                }elseif($idRecompensa == 12){
+                                    echo '<input type="submit" name="rose" value="" class="badge filter badge-rose active" data-color="rose">';
+                                }
+                            }
+                            ?>
+
                         </div>
                     </form>
 
                     <?php
+                    // fazer troca de cor do usuário
                     if(isset($_POST['purple'])){
                         try {
                             $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $stmt = $pdo->prepare('UPDATE recompensadispoivel SET idUsuario='.$_SESSION['idUsuario'].',idRecomensa=7 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=7 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 7
@@ -42,7 +63,7 @@
                             $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $stmt = $pdo->prepare('UPDATE recompensadispoivel SET idUsuario='.$_SESSION['idUsuario'].',idRecomensa=9 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=9 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 9
@@ -58,7 +79,7 @@
                             $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $stmt = $pdo->prepare('UPDATE recompensadispoivel SET idUsuario='.$_SESSION['idUsuario'].',idRecomensa=10 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=10 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 10
@@ -74,7 +95,7 @@
                             $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $stmt = $pdo->prepare('UPDATE recompensadispoivel SET idUsuario='.$_SESSION['idUsuario'].',idRecomensa=11 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=11 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 11
@@ -90,7 +111,7 @@
                             $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $stmt = $pdo->prepare('UPDATE recompensadispoivel SET idUsuario='.$_SESSION['idUsuario'].',idRecomensa=8 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=8 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 8
@@ -106,7 +127,7 @@
                             $pdo = new PDO('mysql:host=localhost;dbname=id10730896_banco', 'root', '');
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $stmt = $pdo->prepare('UPDATE recompensadispoivel SET idUsuario='.$_SESSION['idUsuario'].',idRecomensa=12 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=12 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 12
