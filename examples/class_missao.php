@@ -119,14 +119,14 @@ class Missao{
             while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
                 $tituloEvento = $linhaRecompensa['tituloEvento'];
             }
-
+include 'condicaoCores2.php';
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
               <div class='card card-stats'>
                <a href='#' title='".$sobreMissao."'>
-                                                                    <div class='card-header card-header-success card-header-icon'>
-                                                                    <div class='card-icon'>
+                                                                    <div class='card-header card-header-primary card-header-icon'>
+                                                                    <div class='card-icon' style='".$cor."'>
                                                                     <i class='material-icons'>amp_stories</i>
                                                                     </div>
                                                                     <p class='card-category'>".$tituloMissao."</p>

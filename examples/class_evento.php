@@ -483,7 +483,7 @@ include 'condicaoCores2.php';
               <div class='card card-stats'>
                <a href='#' title='".$situacao."'>
                                                                     <div class='card-header card-header-primary card-header-icon'>
-                                                                    <div class='card-icon'>
+                                                                    <div class='card-icon' style='".$cor."'>
                                                                     <i class='material-icons'>amp_stories</i>
                                                                     </div>
                                                                     <p class='card-category'>".$nomeEvento."</p>
