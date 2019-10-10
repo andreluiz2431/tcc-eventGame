@@ -48,7 +48,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                         <a class="dropdown-item" href="user.php">Perfil</a>
-                        <a class="dropdown-item" href="#">Configurações</a>
+                        <a class="dropdown-item" href="configuracoesUser.php">Configurações</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="sair.php">Sair</a>
                     </div>

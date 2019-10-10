@@ -70,71 +70,42 @@ if(!empty($_POST['busca'])){
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <div class="card">
-                                    <div class="card-header card-header-primary" style="<?php echo $cor ?>">
-                                        <h4 class="card-title">Editar perfil</h4>
-                                        <p class="card-category">Confira seus dados</p>
-                                    </div>
+
+                            <div class="col-md-5">
+                                <div class="card card">
                                     <div class="card-body">
-                                        <form method="post" action="user.php">
+                                        <h4 class="card-title">Deseja alterar sua senha?</h4>
+                                        <form method="post" action="configuracoesUser.php">
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">Nome</label>
-                                                        <input type="text" name="nome" class="form-control" value="<?php echo utf8_encode($nome); ?>">
+                                                        <label class="bmd-label-floating">Sua senha atual</label>
+                                                        <input type="password" name="senhaAtual" class="form-control" title="Digite sua senha atual">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="bmd-label-floating">E-mail</label>
-                                                        <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating">Nível</label>
-                                                        <input type="text" class="form-control" value="<?php echo $nivel; ?>" disabled>
+                                                        <label class="bmd-label-floating">Nova senha</label>
+                                                        <input type="password" name="senhaNova" class="form-control" title="Digite sua nova senha">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label class="bmd-label-floating">Pontos</label>
-                                                        <input type="text" class="form-control" value="<?php echo $pontos; ?>" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <a href="#">
-                                                            <label class="bmd-label-floating">Skin aplicada</label>
-                                                            <input type="text" class="form-control" value="<?php echo $skin; ?>" disabled>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <a href="#">
-                                                            <label class="bmd-label-floating">Tema aplicado</label>
-                                                            <input type="text" class="form-control" value="<?php echo $tema; ?>" disabled>
-                                                        </a>
-                                                    </div>
+                                               <div class="col-md-12">
+                                                <input type="submit" class="btn btn-primary pull-right" style="margin-left: 100%;" value="Redefinir" title="Redefinir senha">
                                                 </div>
                                             </div>
-                                            <input type="submit" class="btn btn-primary pull-right" value="Alterar dados" style="<?php include 'condicaoCores2.php'; echo $cor; ?>">
-                                            <div class="clearfix"></div>
                                         </form>
                                         <?php
-                                        if(!empty($_POST['nome'])){
-                                            $usuario->alterarDadosUsuario($id, $_POST['nome'], $_POST['email']);
+                                        if(!empty($_POST['senhaAtual'])&&!empty($_POST['senhaNova'])){
+                                            $usuario->alterarSenhaUsuario($id, $_POST['senhaAtual'], $_POST['senhaNova']);
                                         }
                                         ?>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
                 <?php
