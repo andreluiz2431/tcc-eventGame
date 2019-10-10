@@ -7,8 +7,6 @@ if(isset($_SESSION['nomeUsuario'])){
     $nivel = $_SESSION['nivelUsuario'];
     $pontos = $_SESSION['pontuacaolUsuario'];
     $email = $_SESSION['emailUsuario'];
-    $tema = $_SESSION['temaUsuario'];
-    $skin = $_SESSION['skinUsuario'];
 }else{
     header("location:../index.php");
 }
