@@ -14,7 +14,7 @@
 <input type="submit" name="purple" value="" class="badge filter badge-purple" data-color="purple">
                             <?php
                             // ver cores disponíveis
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $consultaRecompensaDisponivel = $pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$_SESSION['idUsuario']."");
 
@@ -42,7 +42,7 @@
                     // fazer troca de cor do usuário
                     if(isset($_POST['purple'])){
                         try {
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=7 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
@@ -58,7 +58,7 @@
                         echo 'purple';
                     }elseif(isset($_POST['azure'])){
                         try {
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=9 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
@@ -73,7 +73,7 @@
                         echo 'azure';
                     }elseif(isset($_POST['green'])){
                         try {
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=10 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
@@ -88,7 +88,7 @@
                         echo 'green';
                     }elseif(isset($_POST['orange'])){
                         try {
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=11 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
@@ -103,7 +103,7 @@
                         echo 'orange';
                     }elseif(isset($_POST['danger'])){
                         try {
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=8 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(
@@ -118,7 +118,7 @@
                         echo 'danger';
                     }elseif(isset($_POST['rose'])){
                         try {
-                            include 'conexaoBDpdoPN.php';
+                            include '../conexaoBDpdoPN.php';
 
                             $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=12 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
                             $stmt->execute(array(

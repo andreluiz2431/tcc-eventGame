@@ -3,7 +3,7 @@ class Evento{
     public $pdo;
 
     public function conectarBD(){
-        include 'conexaoBDpdoPOO.php';
+        include '../conexaoBDpdoPOO.php';
     }
 
     public function consultarBusca($busca){
