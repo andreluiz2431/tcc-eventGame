@@ -64,7 +64,7 @@ echo $cor;
         </style>
     </head>
 
-    <body class="">
+    <body class="" style="">
         <div class="wrapper ">
             <?php
             include 'manuLateral.php';
