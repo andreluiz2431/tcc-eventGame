@@ -18,7 +18,7 @@ class Usuario{
     }
 
     public function conectarBD(){
-        include '../conexaoBDpdoPOO.php';
+        include 'conexaoBDpdoPOO.php';
     }
 
     public function inserir(){
