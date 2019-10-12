@@ -303,8 +303,44 @@ include 'condicaoCores2.php';
                 <tr>
                 <td><a class="nav-link" href="#'.++$results.'">Próximo</a></td>
                 <td class="text-center">
-                <a href="#" style="float:right" class="btn btn-round btn-fill btn-info">Gerenciar</a>
-                <a href="#" class="btn btn-round btn-fill btn-default" style="float:right; margin-right: 3%;">Excluir</a>
+                <a  id="modal-XX'.$results.'" href="#modal-container-XX'.$results.'" role="button" data-toggle="modal" style="float:right;'.$cor.'" class="btn btn-round btn-fill btn-info">Gerenciar</a>
+
+
+
+                <div class="modal fade" id="modal-container-XX'.$results.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                Gerenciador de evento '.$tituloEvento.'
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body" style="height: 200px; overflow: auto;">
+                <label style="padding-left: 25px;"></label>
+
+                <br>
+                <a href="#" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'">Excluir evento</a> <!-- não funciona -->
+                <br>
+                <a href="#" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'">Editar dados</a> <!-- não funciona -->
+                <br>
+                <a href="#" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'">Gerenciar inscritos</a> <!-- não funciona -->
+                <br>
+
+                <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Fechar
+                </button>
+                </div>
+                </div>
+                </div>
+
+
+
                 </td>
                 </tr>
 
@@ -368,7 +404,7 @@ include 'condicaoCores2.php';
                 $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
                 $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
             }
-
+include 'condicaoCores2.php';
             echo '<div class="col-md-3" id="titulo2">
                 <div class="card" style="width: 18rem;height: 400px; overflow: auto;">
                 <div id="corTitulo">
@@ -421,7 +457,7 @@ include 'condicaoCores2.php';
                                                                     <option value="Palestrante">Palestrante</option>
                                                                     <option value="Técnico">Técnico</option>
                                                                     </select>
-                                                                    <input type="submit" name="btnInsc" class="btn btn-primary" style="display: block" value="Inscreva-se">
+                                                                    <input type="submit" name="btnInsc" class="btn btn-primary" style="display: block;'.$cor.'" value="Inscreva-se">
                                                                     </form>
                                                                     </div>
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">

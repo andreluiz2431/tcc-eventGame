@@ -92,7 +92,7 @@ if(!empty($_POST['busca'])){
                                             </div>
                                             <div class="row">
                                                <div class="col-md-12">
-                                                <input type="submit" class="btn btn-primary pull-right" style="margin-left: 100%;" value="Redefinir" title="Redefinir senha">
+                                                <input type="submit" class="btn btn-primary pull-right" style="margin-left: 100%;<?php echo $cor; ?>" value="Redefinir" title="Redefinir senha">
                                                 </div>
                                             </div>
                                         </form>
