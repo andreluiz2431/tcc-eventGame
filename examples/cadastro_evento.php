@@ -7,6 +7,7 @@ if(isset($_SESSION['nomeUsuario'])){
     header("location:index.php");
 }
 
+include 'condicaoCores2.php';
 
 include "class_missao.php";
 
@@ -28,7 +29,7 @@ $missao = new Missao();
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="../assets/demo/demo.css" rel="stylesheet" />
     </head>
-    <body>
+    <body style="<?php echo $cor; ?>">
 
 
         <form role="form" class="box" method="POST" action="cadastro_evento.php">
@@ -145,7 +146,7 @@ $missao = new Missao();
                                                             <a href="pagina_eventos.php" style="float: left;margin-top:5%;">Cancelar?</a>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input type="button" href="#tab2" data-toggle="tab" class="btn btn-primary pull-right" style="margin-left: 100%;" value="Próximo" title="Próximo">
+                                                            <input type="button" href="#tab2" data-toggle="tab" class="btn btn-primary pull-right" style="margin-left: 100%;<?php echo $cor; ?>" value="Próximo" title="Próximo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,7 +180,7 @@ $missao = new Missao();
                                                     <a href="pagina_eventos.php" style="float: left;margin-top:5%;">Cancelar?</a>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="button" href="#tab3" data-toggle="tab" class="btn btn-primary pull-right" style="margin-left: 100%;" value="Próximo" title="Próximo">
+                                                    <input type="button" href="#tab3" data-toggle="tab" class="btn btn-primary pull-right" style="margin-left: 100%;<?php echo $cor; ?>" value="Próximo" title="Próximo">
                                                 </div>
                                             </div>
                                         </div>
@@ -205,7 +206,7 @@ $missao = new Missao();
                                                     <a href="pagina_eventos.php" style="float: left;margin-top:5%;">Cancelar?</a>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="submit" class="btn btn-primary pull-right" style="margin-left: 100%;" value="Concluir" title="Finalizar">
+                                                    <input type="submit" class="btn btn-primary pull-right" style="margin-left: 100%;<?php echo $cor; ?>" value="Concluir" title="Finalizar">
                                                 </div>
                                             </div>
                                         </div>
