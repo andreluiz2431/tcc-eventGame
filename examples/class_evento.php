@@ -379,6 +379,10 @@ include 'condicaoCores2.php';
         $consulta = $this->pdo->query("DELETE FROM evento WHERE idEvento = ".$idEventoExcluir."");
     }
 
+    public function editarDadosEvento(){
+
+    }
+
     public function consultar(){
 
 
