@@ -118,6 +118,13 @@ class Missao{
             while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
                 $tituloEvento = $linhaRecompensa['tituloEvento'];
             }
+
+            if(isset($tituloEvento)){
+                $titulo = $tituloEvento;
+            }else{
+                $titulo = 'Encerrado';
+            }
+
 include 'condicaoCores2.php';
             echo "
 
@@ -133,7 +140,7 @@ include 'condicaoCores2.php';
                                                                     </div>
                                                                     <div class='card-footer'>
                                                                     <div class='stats'>
-                                                                    <i class='material-icons'>amp_stories</i>Evento ".$tituloEvento."
+                                                                    <i class='material-icons'>amp_stories</i>Evento ".$titulo."
                                                                         </div>
                                                                         <label style='margin-left: 10%'>".$tipoRecompensa." ".$nomeRecompensa."</label>
                                                                         </div>

@@ -60,6 +60,34 @@ if(!empty($_POST['busca'])){
 
                                         <?php
                                         $busca->consultarPorUsuario($idUsuario);
+
+                                        if(!empty($_POST['excluir-evento'])){
+                                            if($_POST['excluir-evento'] == 'Excluir evento'){
+                                                $idEventoExcluir = $_POST['idEventoExcluir'];
+
+                                                $busca->excluirEvento($idEventoExcluir);
+
+                                                echo "<script language='javascript' type='text/javascript'> alert('Excluído com sucesso!');</script>";
+                                            }
+                                        }
+
+                                        if(!empty($_POST['editar-dados'])){
+                                            if($_POST['editar-dados'] == 'Editar dados'){
+                                                $idEventoEditar = $_POST['idEventoEditar'];
+
+                                                echo "<script language='javascript' type='text/javascript'> alert('ir para pagina de ediçao de dados');</script>";
+                                            }
+                                        }
+
+                                        if(!empty($_POST['gerenciar-inscritos'])){
+                                            if($_POST['gerenciar-inscritos'] == 'Gerenciar inscritos'){
+                                                $idEventoGerenciar = $_POST['idEventoGerenciar'];
+
+                                                echo "<script language='javascript' type='text/javascript'> alert('ir para pagina de gerenciamento de inscritos');</script>";
+                                            }
+                                        }
+
+
                                         ?>
 
                                     </div>

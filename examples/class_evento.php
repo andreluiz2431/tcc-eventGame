@@ -321,13 +321,23 @@ include 'condicaoCores2.php';
                 <div class="modal-body" style="height: 200px; overflow: auto;">
                 <label style="padding-left: 25px;"></label>
 
-                <br>
-                <a href="#" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'">Excluir evento</a> <!-- não funciona -->
-                <br>
-                <a href="#" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'">Editar dados</a> <!-- não funciona -->
-                <br>
-                <a href="#" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'">Gerenciar inscritos</a> <!-- não funciona -->
-                <br>
+
+<form method="POST" action"meus_eventos.php">
+                <input name="idEventoExcluir" type="hidden" value="'.$results.'">
+                <input name="excluir-evento" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Excluir evento"> <!-- não funciona -->
+</form>
+
+<form method="POST" action"meus_eventos.php">
+                <input name="idEventoEditar" type="hidden" value="'.$results.'">
+                <input name="editar-dados" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Editar dados"> <!-- não funciona -->
+</form>
+
+<form method="POST" action"meus_eventos.php">
+                <input name="idEventoGerenciar" type="hidden" value="'.$results.'">
+                <input name="gerenciar-inscritos" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Gerenciar inscritos"> <!-- não funciona -->
+</form>
+
+
 
                 <div class="clearfix"></div>
                 </div>
@@ -354,6 +364,19 @@ include 'condicaoCores2.php';
 
                 ';
         }
+    }
+
+    public function excluirEvento($idEventoExcluir){ // tem de excluir as inscriçoes desse evento antes do evento
+        // deletar inscrição
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("DELETE FROM inscricao WHERE idEvento = ".--$idEventoExcluir."");
+
+
+        // deletar evento
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("DELETE FROM evento WHERE idEvento = ".$idEventoExcluir."");
     }
 
     public function consultar(){
