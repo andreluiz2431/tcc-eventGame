@@ -20,45 +20,45 @@ if(!empty($_POST['editar-dados'])){
     if($_POST['editar-dados'] == 'Editar dados'){
         $idEventoEditar = $_POST['idEventoEditar'];
         --$idEventoEditar;
+
+
+        include '../conexaoBDpdoPN.php';
+        // pegando dados do evento
+        $consultaDados = $pdo->query("SELECT * FROM evento WHERE idEvento = ".$idEventoEditar."");
+
+        while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
+            $tituloE = $linhaDados["tituloEvento"];
+            $data_inicioE = $linhaDados["dataInicioEvento"];
+            $data_fimE = $linhaDados["dataFimEvento"];
+            $hora_inicioE = $linhaDados["horaInicioEvento"];
+            $hora_fimE = $linhaDados["horaFimEvento"];
+            $localE = $linhaDados["localEvento"];
+            $cidadeE = $linhaDados["cidadeEvento"];
+            $estadoE = $linhaDados["estadoEvento"];
+            $paisE = $linhaDados["paisEvento"];
+            $area_academicaE = $linhaDados["areaAcademicaEvento"];
+            $sobre_eventoE = $linhaDados["sobreEvento"];
+        }
+
+        include '../conexaoBDpdoPN.php';
+        // pegando id da missao pelo evento
+        $consultaDados = $pdo->query("SELECT * FROM missaoevento WHERE idEvento = ".$idEventoEditar."");
+
+        while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
+            $idMissaoE = $linhaDados["idMissao"];
+        }
+
+        include '../conexaoBDpdoPN.php';
+        // pegando dados da missao
+        $consultaDados = $pdo->query("SELECT * FROM missao WHERE idMissao = ".$idMissaoE."");
+
+        while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
+            $tituloMissaoE = $linhaDados["tituloMissao"];
+            $sobreMissaoE = $linhaDados["sobreMissao"];
+            $idRecompensaE = $linhaDados["idRecomensa"];
+        }
     }
 }
-
-include '../conexaoBDpdoPN.php';
-// pegando dados do evento
-$consultaDados = $pdo->query("SELECT * FROM evento WHERE idEvento = ".$idEventoEditar."");
-
-while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
-    $tituloE = $linhaDados["tituloEvento"];
-    $data_inicioE = $linhaDados["dataInicioEvento"];
-    $data_fimE = $linhaDados["dataFimEvento"];
-    $hora_inicioE = $linhaDados["horaInicioEvento"];
-    $hora_fimE = $linhaDados["horaFimEvento"];
-    $localE = $linhaDados["localEvento"];
-    $cidadeE = $linhaDados["cidadeEvento"];
-    $estadoE = $linhaDados["estadoEvento"];
-    $paisE = $linhaDados["paisEvento"];
-    $area_academicaE = $linhaDados["areaAcademicaEvento"];
-    $sobre_eventoE = $linhaDados["sobreEvento"];
-}
-
-include '../conexaoBDpdoPN.php';
-// pegando id da missao pelo evento
-$consultaDados = $pdo->query("SELECT * FROM missaoevento WHERE idEvento = ".$idEventoEditar."");
-
-while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
-    $idMissaoE = $linhaDados["idMissao"];
-}
-
-include '../conexaoBDpdoPN.php';
-// pegando dados da missao
-$consultaDados = $pdo->query("SELECT * FROM missao WHERE idMissao = ".$idMissaoE."");
-
-while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
-    $tituloMissaoE = $linhaDados["tituloMissao"];
-    $sobreMissaoE = $linhaDados["sobreMissao"];
-    $idRecompensaE = $linhaDados["idRecomensa"];
-}
-
 ?>
 <html>
     <head>
@@ -112,6 +112,8 @@ while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Título do evento</label>
+                                                                <input type="hidden" name="idEventoE" value="<?php echo $idEventoEditar; ?>">
+                                                                <input type="hidden" name="idMissaoE" value="<?php echo $idMissaoE; ?>">
                                                                 <input type="text" name="titulo" class="form-control" title="Título do Evento" required="true" value="<?php echo $tituloE; ?>">
                                                             </div>
                                                         </div>
@@ -514,6 +516,12 @@ while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
         $missaoSobre = $_POST['sobreMissao'];
         $missaoRecompensa = $_POST['recompensa'];
 
-        $evento->editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa);
+        $idEventoEditar = $_POST['idEventoE'];
+        $idMissaoE = $_POST['idMissaoE'];
+
+        $resultadoAlt = $evento->editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa);
+
+        echo "<script language='javascript' type='text/javascript'> alert('".$resultadoAlt." com sucesso!');</script>";
+        echo "<script>window.location.href = \"meus_eventos.php\";</script>";
     }
     ?>

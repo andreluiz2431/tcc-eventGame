@@ -215,7 +215,7 @@ class Evento{
                 $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
                 $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
             }
-include 'condicaoCores2.php';
+            include 'condicaoCores2.php';
             echo '
 
                 <div class="tab-pane active" id="'.$results.'">
@@ -381,6 +381,38 @@ include 'condicaoCores2.php';
 
     public function editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa){
         // *********************
+
+        // fazendo update do evento
+        try {
+            $this->conectarBD();
+
+            $stmt = $this->pdo->prepare('UPDATE evento SET tituloEvento="'.$titulo.'", idUsuario="'.$idusuario.'", dataInicioEvento="'.$data_inicio.'", dataFimEvento="'.$data_fim.'", horaInicioEvento="'.$hora_inicio.'", horaFimEvento="'.$hora_fim.'", localEvento="'.$local.'", cidadeEvento="'.$cidade.'", estadoEvento="'.$estado.'", paisEvento="'.$pais.'", areaAcademicaEvento="'.$area_academica.'", sobreEvento="'.$sobre_evento.'" WHERE idEvento = '.$idEventoEditar.'');
+            $stmt->execute(array(
+                ':tituloEvento'   => $titulo
+            ));
+
+
+
+            // fazendo update da missao
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE missao SET tituloMissao="'.$missaoTitulo.'", sobreMissao="'.$missaoSobre.'", idRecomensa="'.$missaoRecompensa.'" WHERE idMissao = '.$idMissaoE.'');
+                $stmt->execute(array(
+                    ':tituloMissao'   => $missaoTitulo
+                ));
+
+                return 'Dados atualizados';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+
+
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
     }
 
     public function consultar(){
@@ -431,7 +463,7 @@ include 'condicaoCores2.php';
                 $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
                 $tipoRecompensa = $linhaRecompensa['tipoRecompensa'];
             }
-include 'condicaoCores2.php';
+            include 'condicaoCores2.php';
             echo '<div class="col-md-3" id="titulo2">
                 <div class="card" style="width: 18rem;height: 400px; overflow: auto;">
                 <div id="corTitulo">
@@ -538,7 +570,7 @@ include 'condicaoCores2.php';
             }else{
                 $valorInscricao = 'R$ '.$valorInscricao;
             }
-include 'condicaoCores2.php';
+            include 'condicaoCores2.php';
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
