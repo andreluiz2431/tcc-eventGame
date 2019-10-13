@@ -71,14 +71,6 @@ if(!empty($_POST['busca'])){
                                             }
                                         }
 
-                                        if(!empty($_POST['editar-dados'])){
-                                            if($_POST['editar-dados'] == 'Editar dados'){
-                                                $idEventoEditar = $_POST['idEventoEditar'];
-
-                                                echo "<script language='javascript' type='text/javascript'> alert('ir para pagina de ediçao de dados');</script>";
-                                            }
-                                        }
-
                                         if(!empty($_POST['gerenciar-inscritos'])){
                                             if($_POST['gerenciar-inscritos'] == 'Gerenciar inscritos'){
                                                 $idEventoGerenciar = $_POST['idEventoGerenciar'];

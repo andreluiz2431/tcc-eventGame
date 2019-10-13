@@ -322,17 +322,17 @@ include 'condicaoCores2.php';
                 <label style="padding-left: 25px;"></label>
 
 
-<form method="POST" action"meus_eventos.php">
+<form method="POST" action="meus_eventos.php">
                 <input name="idEventoExcluir" type="hidden" value="'.$results.'">
                 <input name="excluir-evento" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Excluir evento"> <!-- não funciona -->
 </form>
 
-<form method="POST" action"meus_eventos.php">
+<form method="POST" action="editarDadosEvento.php">
                 <input name="idEventoEditar" type="hidden" value="'.$results.'">
                 <input name="editar-dados" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Editar dados"> <!-- não funciona -->
 </form>
 
-<form method="POST" action"meus_eventos.php">
+<form method="POST" action="meus_eventos.php">
                 <input name="idEventoGerenciar" type="hidden" value="'.$results.'">
                 <input name="gerenciar-inscritos" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Gerenciar inscritos"> <!-- não funciona -->
 </form>
@@ -379,8 +379,8 @@ include 'condicaoCores2.php';
         $consulta = $this->pdo->query("DELETE FROM evento WHERE idEvento = ".$idEventoExcluir."");
     }
 
-    public function editarDadosEvento(){
-
+    public function editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa){
+        // *********************
     }
 
     public function consultar(){

@@ -12,6 +12,53 @@ include 'condicaoCores2.php';
 include "class_missao.php";
 
 $missao = new Missao();
+
+
+
+
+if(!empty($_POST['editar-dados'])){
+    if($_POST['editar-dados'] == 'Editar dados'){
+        $idEventoEditar = $_POST['idEventoEditar'];
+        --$idEventoEditar;
+    }
+}
+
+include '../conexaoBDpdoPN.php';
+// pegando dados do evento
+$consultaDados = $pdo->query("SELECT * FROM evento WHERE idEvento = ".$idEventoEditar."");
+
+while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
+    $tituloE = $linhaDados["tituloEvento"];
+    $data_inicioE = $linhaDados["dataInicioEvento"];
+    $data_fimE = $linhaDados["dataFimEvento"];
+    $hora_inicioE = $linhaDados["horaInicioEvento"];
+    $hora_fimE = $linhaDados["horaFimEvento"];
+    $localE = $linhaDados["localEvento"];
+    $cidadeE = $linhaDados["cidadeEvento"];
+    $estadoE = $linhaDados["estadoEvento"];
+    $paisE = $linhaDados["paisEvento"];
+    $area_academicaE = $linhaDados["areaAcademicaEvento"];
+    $sobre_eventoE = $linhaDados["sobreEvento"];
+}
+
+include '../conexaoBDpdoPN.php';
+// pegando id da missao pelo evento
+$consultaDados = $pdo->query("SELECT * FROM missaoevento WHERE idEvento = ".$idEventoEditar."");
+
+while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
+    $idMissaoE = $linhaDados["idMissao"];
+}
+
+include '../conexaoBDpdoPN.php';
+// pegando dados da missao
+$consultaDados = $pdo->query("SELECT * FROM missao WHERE idMissao = ".$idMissaoE."");
+
+while ($linhaDados = $consultaDados->fetch(PDO::FETCH_ASSOC)) {
+    $tituloMissaoE = $linhaDados["tituloMissao"];
+    $sobreMissaoE = $linhaDados["sobreMissao"];
+    $idRecompensaE = $linhaDados["idRecomensa"];
+}
+
 ?>
 <html>
     <head>
@@ -32,14 +79,14 @@ $missao = new Missao();
     <body style="<?php echo $cor; ?>">
 
 
-        <form role="form" class="box" method="POST" action="cadastro_evento.php">
+        <form role="form" class="box" method="POST" action="editarDadosEvento.php">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6" style="margin-top: 5%;input{margin: 2%; width: 100%;}">
                         <h3>
-                            Cadastro de evento
+                            Editar dados do evento
                         </h3>
                         <div class="tabbable" id="tabs-297093">
                             <ul class="nav nav-tabs">
@@ -65,7 +112,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Título do evento</label>
-                                                                <input type="text" name="titulo" class="form-control" title="Título do Evento" required="true">
+                                                                <input type="text" name="titulo" class="form-control" title="Título do Evento" required="true" value="<?php echo $tituloE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -73,13 +120,13 @@ $missao = new Missao();
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Data de início</label>
-                                                                <input  type="date" name="data_inicio" title="Data do inicio do evento" class="form-control" required="true">
+                                                                <input  type="date" name="data_inicio" title="Data do inicio do evento" class="form-control" required="true" value="<?php echo $data_inicioE; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Data de encerramento</label>
-                                                                <input type="date" name="data_fim" title="Data do fim do evento" class="form-control" required="true">
+                                                                <input type="date" name="data_fim" title="Data do fim do evento" class="form-control" required="true" value="<?php echo $data_fimE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,13 +134,13 @@ $missao = new Missao();
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Hora de início</label>
-                                                                <input type="time" name="hora_inicio" title="Hora de inicio do evento" class="form-control" required="true">
+                                                                <input type="time" name="hora_inicio" title="Hora de inicio do evento" class="form-control" required="true" value="<?php echo $hora_inicioE; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Hora de encerramento</label>
-                                                                <input type="time" name="hora_fim" title="Hora de fim do evento" class="form-control" required="true">
+                                                                <input type="time" name="hora_fim" title="Hora de fim do evento" class="form-control" required="true" value="<?php echo $hora_fimE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,7 +148,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Local do evento</label>
-                                                                <input type="text" name="local" title="Local do evento" class="form-control" required="true">
+                                                                <input type="text" name="local" title="Local do evento" class="form-control" required="true" value="<?php echo $localE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -109,19 +156,19 @@ $missao = new Missao();
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Cidade</label>
-                                                                <input type="text" name="cidade" title="Cidade em que ocorrerá evento" class="form-control" required="true">
+                                                                <input type="text" name="cidade" title="Cidade em que ocorrerá evento" class="form-control" required="true" value="<?php echo $cidadeE; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Estado</label>
-                                                                <input type="text" name="estado" title="Estado em que ocorrerá evento" class="form-control" required="true" pattern="[A-Za-z]{2}">
+                                                                <input type="text" name="estado" title="Estado em que ocorrerá evento" class="form-control" required="true" pattern="[A-Za-z]{2}" value="<?php echo $estadoE; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">País</label>
-                                                                <input type="text" name="pais" title="País em que ocorrerá evento" class="form-control" required="true">
+                                                                <input type="text" name="pais" title="País em que ocorrerá evento" class="form-control" required="true" value="<?php echo $paisE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -129,7 +176,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Área acadêmica</label>
-                                                                <input type="text" name="area_academica" title="Área academica do evento" class="form-control" required="true">
+                                                                <input type="text" name="area_academica" title="Área academica do evento" class="form-control" required="true" value="<?php echo $area_academicaE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,7 +184,7 @@ $missao = new Missao();
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">Fale sobre o evento</label>
-                                                                <input type="text" name="sobre_evento" title="Fale sobre o evento" class="form-control">
+                                                                <input type="text" name="sobre_evento" title="Fale sobre o evento" class="form-control" value="<?php echo $sobre_eventoE; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -163,7 +210,7 @@ $missao = new Missao();
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Título da missão</label>
-                                                        <input type="text" name="tituloMissao" title="Título da Missão" class="form-control" required="true">
+                                                        <input type="text" name="tituloMissao" title="Título da Missão" class="form-control" required="true" value="<?php echo $tituloMissaoE; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,7 +218,7 @@ $missao = new Missao();
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Fale sobre a Missão</label>
-                                                        <input type="text" name="sobreMissao" title="Fale sobre a Missão" class="form-control" required="true">
+                                                        <input type="text" name="sobreMissao" title="Fale sobre a Missão" class="form-control" required="true" value="<?php echo $sobreMissaoE; ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -463,16 +510,10 @@ $missao = new Missao();
         $area_academica = $_POST["area_academica"];
         $sobre_evento = $_POST["sobre_evento"];
 
-        $idEvento = $evento->inserir($titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento);
+        $missaoTitulo = $_POST['tituloMissao'];
+        $missaoSobre = $_POST['sobreMissao'];
+        $missaoRecompensa = $_POST['recompensa'];
 
-        $missao->titulo = $_POST['tituloMissao'];
-        $missao->sobre = $_POST['sobreMissao'];
-        $missao->recompensa = $_POST['recompensa'];
-        $missao->idevento = $evento->id;
-
-        $idMissao = $missao->inserir();
-
-        $missao->inserir_intermediaria($idMissao, $idEvento);
-
+        $evento->editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa);
     }
     ?>
