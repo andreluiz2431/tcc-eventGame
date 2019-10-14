@@ -56,125 +56,103 @@ include 'condicaoCores2.php';
 
 
                 <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary" style="<?php echo $cor; ?>">
-                  <h4 class="card-title ">Título Evento</h4>
-                  <p class="card-category">Título Missão</p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-primary" style="<?php echo $cor; ?>">
+                                        <h4 class="card-title ">Título Evento</h4>
+                                        <p class="card-category">Título Missão</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class=" text-primary">
+                                                    <th>
+                                                        ID
+                                                    </th>
+                                                    <th>
+                                                        Nome
+                                                    </th>
+                                                    <th>
+                                                        Nível
+                                                    </th>
+                                                    <th>
+                                                        Opções
+                                                    </th>
+                                                </thead>
+                                                <tbody>
+
+                                                    <!-- repetir -->
+                                                    <tr>
+                                                        <td>
+                                                            1
+                                                        </td>
+                                                        <td>
+                                                            Dakota Rice
+                                                        </td>
+                                                        <td>
+                                                            1
+                                                        </td>
+                                                        <td>
+                                                            <a id="modal-'.$results.'" href="#modal-container-inscrito'.$idInscrito.'" role="button" data-toggle="modal">Gerenciar</a>
+
+                                                            <div class="modal fade" id="modal-container-inscrito'.$idInscrito.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="myModalLabel">
+                                                                                Inscrito TALL
+                                                                            </h5>
+                                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                                <span aria-hidden="true">×</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body" style="height: auto; overflow: auto;">
+
+
+                                                                            <form method="POST" action="gerenciar_inscritos.php">
+                                                                                <input name="" type="hidden" value="">
+                                                                                <input name="pagoInscrito" type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Pago / Presente"> <!-- não funciona -->
+                                                                            </form>
+
+                                                                            <br>
+
+
+                                                                            <form method="POST" action="gerenciar_inscritos.php">
+                                                                                <input name="" type="hidden" value="">
+
+                                                                                <div class="progress" style="height: 35px;margin-left: 30%;width: 40%;'.$cor.'">
+                                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;height: 35px" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                                                                </div>
+
+                                                                                <input name="progressoInscrito" type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso"> <!-- não funciona -->
+
+                                                                            </form>
+
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                                Fechar
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead class=" text-primary">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Nome
-                        </th>
-                        <th>
-                          Nível
-                        </th>
-                        <th>
-                          Opções
-                        </th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Dakota Rice
-                          </td>
-                          <td>
-                            Niger
-                          </td>
-                          <td>
-                            Oud-Turnhout
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Minerva Hooper
-                          </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
 

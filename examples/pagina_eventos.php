@@ -51,7 +51,7 @@ $busca = new Evento();
             #corTitulo{
                 <?php
                 include 'condicaoCores2.php';
-echo $cor;
+                echo $cor;
                 ?>
                 height: 300px;
                 align-items: center;
