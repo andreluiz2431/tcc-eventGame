@@ -80,6 +80,9 @@ include 'condicaoCores2.php';
                                                     <th>
                                                         Opções
                                                     </th>
+                                                    <th>
+
+                                                    </th>
                                                 </thead>
                                                 <tbody>
 
@@ -141,9 +144,12 @@ include 'condicaoCores2.php';
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                                            </div>
+                                                        </td>
                                                     </tr>
-
-
                                                 </tbody>
                                             </table>
                                         </div>
