@@ -380,7 +380,6 @@ class Evento{
     }
 
     public function editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa){
-        // *********************
 
         // fazendo update do evento
         try {
@@ -412,6 +411,16 @@ class Evento{
 
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function consultarInscritosEvento($idEvento){ // *******************
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("SELECT * FROM inscricao WHERE idEvento = ".$idEvento."");
+
+        while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+
         }
     }
 
