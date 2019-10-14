@@ -41,6 +41,83 @@ include 'condicaoCores2.php';
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+
+        <style>
+
+            input[type="range"] {
+                margin: auto;
+                -webkit-appearance: none;
+                position: relative;
+                overflow: hidden;
+                height: 35px;
+                width: 200px;
+                cursor: pointer;
+                border-radius: 0; /* iOS */
+            }
+
+            ::-webkit-slider-runnable-track {
+                background: #ddd;
+            }
+
+            /*
+            * 1. Set to 0 width and remove border for a slider without a thumb
+            */
+            ::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 20px; /* 1 */
+                height: 35px;
+                <?php echo $cor; ?>
+                box-shadow: -100vw 0 0 100vw <?php echo $idCor; ?>;
+                border: none; /* 1 */
+            }
+
+            ::-moz-range-track {
+                height: 40px;
+                background: #ddd;
+            }
+
+            ::-moz-range-thumb {
+                background: #fff;
+                height: 40px;
+                width: 20px;
+                border: none;
+                border-radius: 0 !important;
+                box-shadow: -100vw 0 0 100vw dodgerblue;
+                box-sizing: border-box;
+            }
+
+            ::-ms-fill-lower {
+                background: dodgerblue;
+            }
+
+            ::-ms-thumb {
+                background: #fff;
+                border: 2px solid #999;
+                height: 40px;
+                width: 20px;
+                box-sizing: border-box;
+            }
+
+            ::-ms-ticks-after {
+                display: none;
+            }
+
+            ::-ms-ticks-before {
+                display: none;
+            }
+
+            ::-ms-track {
+                background: #ddd;
+                color: transparent;
+                height: 40px;
+                border: none;
+            }
+
+            ::-ms-tooltip {
+                display: none;
+            }
+
+        </style>
     </head>
 
     <body class="">
@@ -124,14 +201,15 @@ include 'condicaoCores2.php';
 
                                                                             <form method="POST" action="gerenciar_inscritos.php">
                                                                                 <input name="" type="hidden" value="">
+                                                                                <div>
+                                                                                    <input type="range" name="sla" value="75" style="margin-left: 29%;">
+                                                                                    <!--  colocar value do progresso cadastrado -->
 
-                                                                                <div class="progress" style="height: 35px;margin-left: 30%;width: 40%;'.$cor.'">
-                                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;height: 35px" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                                                                    <input type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso"> <!-- não funciona -->
+
                                                                                 </div>
-
-                                                                                <input name="progressoInscrito" type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso"> <!-- não funciona -->
-
                                                                             </form>
+
 
                                                                             <div class="clearfix"></div>
                                                                         </div>

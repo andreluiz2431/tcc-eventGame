@@ -332,7 +332,7 @@ class Evento{
                 <input name="editar-dados" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Editar dados"> <!-- não funciona -->
 </form>
 
-<form method="POST" action="meus_eventos.php">
+<form method="POST" action="gerenciar_inscritos.php">
                 <input name="idEventoGerenciar" type="hidden" value="'.$results.'">
                 <input name="gerenciar-inscritos" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Gerenciar inscritos"> <!-- não funciona -->
 </form>

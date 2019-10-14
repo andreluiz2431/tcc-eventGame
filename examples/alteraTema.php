@@ -49,6 +49,7 @@
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 7
                             ));
+                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
                             session_start();
                             $_SESSION['temaAplicada'] = 'Purple';
                         } catch(PDOException $e) {
@@ -65,6 +66,7 @@
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 9
                             ));
+                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
                         } catch(PDOException $e) {
                             echo 'Error: ' . $e->getMessage();
                         }
@@ -79,7 +81,9 @@
                             $stmt->execute(array(
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 10
+
                             ));
+                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
                         } catch(PDOException $e) {
                             echo 'Error: ' . $e->getMessage();
                         }
@@ -95,6 +99,7 @@
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 11
                             ));
+                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
                         } catch(PDOException $e) {
                             echo 'Error: ' . $e->getMessage();
                         }
@@ -110,6 +115,7 @@
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 8
                             ));
+                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
                         } catch(PDOException $e) {
                             echo 'Error: ' . $e->getMessage();
                         }
@@ -125,6 +131,7 @@
                                 ':idUsuario'   => $_SESSION['idUsuario'],
                                 ':idRecomensa' => 12
                             ));
+                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
                         } catch(PDOException $e) {
                             echo 'Error: ' . $e->getMessage();
                         }
