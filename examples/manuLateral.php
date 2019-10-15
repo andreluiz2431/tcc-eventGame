@@ -1,7 +1,10 @@
     <div class="sidebar" data-color="<?php
                                      include 'condicaoCores.php';
 
-                                     ?>" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
+                                     ?>" data-background-color="black" data-image="../assets/img/sidebar-1.jpg" style="<?php
+                                     include 'condicaoCores.php';
+
+                                     ?>">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
