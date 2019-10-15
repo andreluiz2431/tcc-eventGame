@@ -471,9 +471,9 @@ class Evento{
                                                             '.$tipoInsc.'
                                                         </td>
                                                         <td>
-                                                            <a id="modal-'.$idEvento.'" href="#modal-container-inscrito'.$idEvento.'" role="button" data-toggle="modal">Gerenciar</a>
+                                                            <a id="modal-'.$idUsuarioInsc.'" href="#modal-container-inscrito'.$idUsuarioInsc.'" role="button" data-toggle="modal">Gerenciar</a>
 
-                                                            <div class="modal fade" id="modal-container-inscrito'.$idEvento.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="modal-container-inscrito'.$idUsuarioInsc.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
