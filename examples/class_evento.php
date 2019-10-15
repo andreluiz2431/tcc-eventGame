@@ -534,6 +534,13 @@ class Evento{
         }
     }
 
+    public function cancelarInscricao($idusuario, $idEvento){
+        // deletar inscrição
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("DELETE FROM inscricao WHERE (idEvento = ".$idEvento.") AND (idUsuario = ".$idusuario.")");
+    }
+
     public function alterarSituacaoInsc($idusuario, $idEvento){
         try {
             $this->conectarBD();
@@ -722,11 +729,14 @@ class Evento{
                 $valorInscricao = 'R$ '.$valorInscricao;
             }
             include 'condicaoCores2.php';
+
+            // cancelarInsc *********************
+
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
               <div class='card card-stats'>
-               <a href='#' title='".$situacao."'>
+               <a id='modal-".$results."' href='#modal-container-".$results."' role='button' data-toggle='modal' title='".$situacao."'>
                                                                     <div class='card-header card-header-primary card-header-icon'>
                                                                     <div class='card-icon' style='".$cor."'>
                                                                     <i class='material-icons'>amp_stories</i>
@@ -741,6 +751,42 @@ class Evento{
                                                                         <label style='margin-left: 10%'>".$tipoInscricao."</label>
                                                                         </div>
                                                                         </a>
+
+
+                                                                        ";
+            echo '<div class="modal fade" id="modal-container-'.$results.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                Inscrito no evento '.$nomeEvento.'
+                </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body" style="height: auto; overflow: auto;">
+                <p style="font-size: 130%;padding-left: 25px;">Cancelar inscrição?</p>
+                <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Não
+                </button>
+
+                <form method="POST" action="inscricoes.php">
+                <input name="idEvento" type="hidden" value="'.$results.'">
+                <input name="cancelarInsc" type="submit" value="Sim" class="btn btn-secondary" style="'.$cor.'">
+                </form>
+
+                </div>
+                </div>
+                </div>
+                </div>';
+
+        echo "
+
+
                                                                         </div>
                                                                         </div>
 

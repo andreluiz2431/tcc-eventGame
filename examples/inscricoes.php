@@ -62,6 +62,16 @@ if(!empty($_POST['busca'])){
 
                                         <?php
                                         $busca->consultarInscricao($_SESSION['idUsuario']);
+
+                                        if(!empty($_POST['cancelarInsc'])){ // verificar para cancelar inscricao
+                                            $idEvento = $_POST['idEvento'];
+
+                                            $busca->cancelarInscricao($idUsuario, $idEvento);
+
+                                            echo "<script language='javascript' type='text/javascript'> alert('Inscrição cancelada com sucesso!');</script>";
+
+                                            echo "<script>window.location.href = \"inscricoes.php\";</script>";
+                                        }
                                         ?>
 
 
