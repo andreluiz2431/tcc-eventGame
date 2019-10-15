@@ -730,8 +730,6 @@ class Evento{
             }
             include 'condicaoCores2.php';
 
-            // cancelarInsc *********************
-
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
