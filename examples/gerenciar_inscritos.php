@@ -130,7 +130,15 @@ include 'condicaoCores2.php';
                 include 'navbar.php';
                 ?>
 
-
+                <?php
+                if(!empty($_POST['gerenciar-inscritos'])){
+                    if($_POST['gerenciar-inscritos'] == 'Gerenciar inscritos'){
+                        $idEventoGerenciar = --$_POST['idEventoGerenciar'];
+                        $tituloEventoGerenciar = $_POST['tituloEventoGerenciar'];
+                        $tituloMissaoGerenciar = $_POST['tituloMissaoGerenciar'];
+                    }
+                }
+                ?>
 
                 <div class="content">
                     <div class="container-fluid">
@@ -138,8 +146,8 @@ include 'condicaoCores2.php';
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header card-header-primary" style="<?php echo $cor; ?>">
-                                        <h4 class="card-title ">Título Evento</h4>
-                                        <p class="card-category">Título Missão</p>
+                                        <h4 class="card-title ">Evento <?php echo $tituloEventoGerenciar; ?></h4>
+                                        <p class="card-category">Missão <?php echo $tituloMissaoGerenciar; ?></p>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -155,6 +163,9 @@ include 'condicaoCores2.php';
                                                         Nível
                                                     </th>
                                                     <th>
+                                                        Tipo
+                                                    </th>
+                                                    <th>
                                                         Opções
                                                     </th>
                                                     <th>
@@ -162,72 +173,15 @@ include 'condicaoCores2.php';
                                                     </th>
                                                 </thead>
                                                 <tbody>
-
+                                                    <?php
+                                                    if(!empty($_POST['gerenciar-inscritos'])){
+                                                        if($_POST['gerenciar-inscritos'] == 'Gerenciar inscritos'){
+                                                            $busca->consultarInscritosEvento($idEventoGerenciar);
+                                                        }
+                                                    }
+                                                    ?>
                                                     <!-- repetir -->
-                                                    <tr>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            Dakota Rice
-                                                        </td>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <a id="modal-'.$results.'" href="#modal-container-inscrito'.$idInscrito.'" role="button" data-toggle="modal">Gerenciar</a>
 
-                                                            <div class="modal fade" id="modal-container-inscrito'.$idInscrito.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="myModalLabel">
-                                                                                Inscrito TALL
-                                                                            </h5>
-                                                                            <button type="button" class="close" data-dismiss="modal">
-                                                                                <span aria-hidden="true">×</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body" style="height: auto; overflow: auto;">
-
-
-                                                                            <form method="POST" action="gerenciar_inscritos.php">
-                                                                                <input name="" type="hidden" value="">
-                                                                                <input name="pagoInscrito" type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Pago / Presente"> <!-- não funciona -->
-                                                                            </form>
-
-                                                                            <br>
-
-
-                                                                            <form method="POST" action="gerenciar_inscritos.php">
-                                                                                <input name="" type="hidden" value="">
-                                                                                <div>
-                                                                                    <input type="range" name="sla" value="75" style="margin-left: 29%;">
-                                                                                    <!--  colocar value do progresso cadastrado -->
-
-                                                                                    <input type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso"> <!-- não funciona -->
-
-                                                                                </div>
-                                                                            </form>
-
-
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                                                Fechar
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>

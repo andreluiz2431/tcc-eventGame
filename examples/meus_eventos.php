@@ -71,14 +71,20 @@ if(!empty($_POST['busca'])){
                                             }
                                         }
 
-                                        if(!empty($_POST['gerenciar-inscritos'])){
-                                            if($_POST['gerenciar-inscritos'] == 'Gerenciar inscritos'){
-                                                $idEventoGerenciar = $_POST['idEventoGerenciar'];
+                                        if(!empty($_POST['pagoInscrito'])){
+                                            $idUsuarioPresenca = $_POST['idUsuarioPresenca'];
+                                            $idEventoPresenca = $_POST['idEventoPresenca'];
 
-                                                echo "<script language='javascript' type='text/javascript'> alert('ir para pagina de gerenciamento de inscritos');</script>";
-                                            }
+                                            $busca->alterarSituacaoInsc($idUsuarioPresenca, $idEventoPresenca); // programar variaveis
                                         }
 
+                                        if(!empty($_POST['progressoInsc'])){
+                                            $progressoInsc = $_POST['progressoInsc'];
+                                            $idUsuarioProgresso = $_POST['idUsuarioProgresso'];
+                                            $idMissaoProgresso = $_POST['idMissaoProgresso'];
+
+                                            $busca->alterarProgressoInsc($idUsuarioProgresso, $idMissaoProgresso, $progressoInsc); // programar variaveis
+                                        }
 
                                         ?>
 

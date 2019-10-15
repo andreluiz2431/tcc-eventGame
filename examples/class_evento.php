@@ -334,6 +334,8 @@ class Evento{
 
 <form method="POST" action="gerenciar_inscritos.php">
                 <input name="idEventoGerenciar" type="hidden" value="'.$results.'">
+                <input name="tituloEventoGerenciar" type="hidden" value="'.$tituloEvento.'">
+                <input name="tituloMissaoGerenciar" type="hidden" value="'.$tituloMissao.'">
                 <input name="gerenciar-inscritos" type="submit" class="btn btn-round btn-fill btn-default" style="width: 50%;'.$cor.'" value="Gerenciar inscritos"> <!-- não funciona -->
 </form>
 
@@ -414,13 +416,153 @@ class Evento{
         }
     }
 
-    public function consultarInscritosEvento($idEvento){ // *******************
+    public function consultarInscritosEvento($idEvento){
+        include 'condicaoCores2.php';
+
         $this->conectarBD();
 
         $consulta = $this->pdo->query("SELECT * FROM inscricao WHERE idEvento = ".$idEvento."");
 
         while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $idUsuarioInsc = $linha['idUsuario'];
+            $tipoInsc = $linha['tipoInscricao'];
+            $pagoInsc = $linha['pagoInscricao']; // se 0 entao pendente, se não Pago / Presente
+            if($pagoInsc == 0){
+                $presencaInsc = '';
+            }else{
+                $presencaInsc = 'disabled';
+            }
+            $this->conectarBD();
 
+            $consultaUsuario = $this->pdo->query("SELECT * FROM usuario WHERE idUsuario = ".$idUsuarioInsc."");
+
+            while ($linhaUsuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC)) {
+                $nomeInsc = $linhaUsuario['nomeUsuario'];
+                $nivelInsc = $linhaUsuario['nivelUsuario'];
+            }
+
+            $this->conectarBD();
+
+            $consultaIdMissao = $this->pdo->query("SELECT * FROM missaoevento WHERE idEvento = ".$idEvento."");
+
+            while ($linhaIdMissao = $consultaIdMissao->fetch(PDO::FETCH_ASSOC)) {
+                $idMissaoInsc = $linhaIdMissao['idMissao'];
+            }
+
+            $this->conectarBD(); // nao funfando
+
+            $consultaProgresso = $this->pdo->query("SELECT * FROM progressomissao WHERE (idUsuario = ".$idUsuarioInsc.") AND (idMissao = ".$idMissaoInsc.")");
+
+            while ($linhaProgresso = $consultaProgresso->fetch(PDO::FETCH_ASSOC)) {
+                $progressoInsc = $linhaProgresso['progressoMissao'];
+            }
+
+            echo '<tr>
+                                                        <td>
+                                                            '.$idUsuarioInsc.'
+                                                        </td>
+                                                        <td>
+                                                            '.$nomeInsc.'
+                                                        </td>
+                                                        <td>
+                                                            '.$nivelInsc.'
+                                                        </td>
+                                                        <td>
+                                                            '.$tipoInsc.'
+                                                        </td>
+                                                        <td>
+                                                            <a id="modal-'.$idEvento.'" href="#modal-container-inscrito'.$idEvento.'" role="button" data-toggle="modal">Gerenciar</a>
+
+                                                            <div class="modal fade" id="modal-container-inscrito'.$idEvento.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="myModalLabel">
+                                                                                Inscrito '.$nomeInsc.'
+                                                                            </h5>
+                                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                                <span aria-hidden="true">×</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body" style="height: auto; overflow: auto;">
+
+
+                                                                            <form method="POST" action="meus_eventos.php">
+                                                                                <input name="idUsuarioPresenca" type="hidden" value="'.$idUsuarioInsc.'">
+
+                                                                                <input name="idEventoPresenca" type="hidden" value="'.$idEvento.'">
+
+                                                                                <input name="pagoInscrito" type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Pago / Presente" '.$presencaInsc.'> <!-- não funciona -->
+                                                                            </form>
+
+                                                                            <br>
+
+
+                                                                            <form method="POST" action="meus_eventos.php">
+                                                                                <input name="idUsuarioProgresso" type="hidden" value="'.$idUsuarioInsc.'">
+
+                                                                                <input name="idMissaoProgresso" type="hidden" value="'.$idMissaoInsc.'">
+
+                                                                                <div>
+                                                                                    <input type="range" name="progressoInsc" value="'.$progressoInsc.'" style="margin-left: 29%;">
+                                                                                    <!--  colocar value do progresso cadastrado -->
+
+                                                                                    <input type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso"> <!-- não funciona -->
+
+                                                                                </div>
+                                                                            </form>
+
+
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                                Fechar
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: '.$progressoInsc.'%;" aria-valuenow="'.$progressoInsc.'" aria-valuemin="0" aria-valuemax="100">'.$progressoInsc.'%</div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>';
+
+        }
+    }
+
+    public function alterarSituacaoInsc($idusuario, $idEvento){
+        try {
+            $this->conectarBD();
+
+            $stmt = $this->pdo->prepare('UPDATE inscricao SET pagoInscricao="1" WHERE (idUsuario = '.$idusuario.') AND (idEvento = '.$idEvento.')');
+            $stmt->execute(array(
+                ':pagoInscricao'   => 1
+            ));
+
+            echo "<script language='javascript' type='text/javascript'> alert('Inscrito alterado para Presente / Pago');</script>";
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function alterarProgressoInsc($idusuario, $idMissao, $progressoInsc){
+        try {
+            $this->conectarBD();
+
+            $stmt = $this->pdo->prepare('UPDATE progressomissao SET progressoMissao="'.$progressoInsc.'" WHERE (idUsuario = '.$idusuario.') AND (idMissao = '.$idMissao.')');
+            $stmt->execute(array(
+                ':progressoMissao' => $progressoInsc
+            ));
+
+            echo "<script language='javascript' type='text/javascript'> alert('Progresso do inscrito alterado para ".$progressoInsc."%');</script>";
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
         }
     }
 
