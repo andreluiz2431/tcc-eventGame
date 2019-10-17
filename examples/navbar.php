@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#"><?php echo utf8_encode($nome); ?></a>
+            <a class="navbar-brand" href="#"><?php echo $nome; ?></a>
             <a class="navbar-brand" href="#">Nível <?php echo $nivel; ?></a>
             <a class="navbar-brand" href="#">Pontos <?php echo $pontos; ?></a>
         </div>

@@ -26,7 +26,6 @@ if(!empty($_POST['busca'])){
 <html lang="en">
 
     <head>
-        <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
         <link rel="icon" type="image/png" href="../assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -65,7 +64,7 @@ if(!empty($_POST['busca'])){
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-category text-gray">Usuário</h6>
-                                        <h4 class="card-title"><?php echo utf8_encode($nome); ?></h4>
+                                        <h4 class="card-title"><?php echo $nome; ?></h4>
                                         <a href="sair.php" class="btn btn-primary btn-round" style="<?php include 'condicaoCores2.php'; echo $cor; ?>">Sair</a>
                                     </div>
                                 </div>
@@ -82,7 +81,7 @@ if(!empty($_POST['busca'])){
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Nome</label>
-                                                        <input type="text" name="nome" class="form-control" value="<?php echo utf8_encode($nome); ?>">
+                                                        <input type="text" name="nome" class="form-control" value="<?php echo $nome; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">

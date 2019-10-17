@@ -637,6 +637,7 @@ class Evento{
                                 </ul>
                                 <div class="card-body">
                                 <a id="modal-'.$results.'" href="#modal-container-'.$results.'" role="button" class="btn" data-toggle="modal">Detalhes</a>
+
                                 <div class="modal fade" id="modal-container-'.$results.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
