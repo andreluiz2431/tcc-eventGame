@@ -71,6 +71,9 @@ class Missao{
     }
 
     public function ver_progresso_missoes($usuario){
+        // verificar level up
+        $this->levelUp($usuario);
+
         // consulta por progresso na missao
         $this->conectarBD();
 
@@ -151,6 +154,206 @@ include 'condicaoCores2.php';
                                                                         ";
         }
         echo "</div>";
+    }
+
+    public function levelUp($idUsuario){
+        // consulta de progressos em 100%
+        $this->conectarBD();
+
+        $contador = $this->pdo->query("SELECT * FROM progressomissao WHERE (idUsuario = ".$idUsuario.") AND (progressoMissao = 100)")->rowCount();
+
+        // consulta de nivel
+        $this->conectarBD();
+
+        $consultaNivel = $this->pdo->query("SELECT nivelUsuario FROM usuario WHERE idUsuario = ".$idUsuario."");
+
+        while ($linhaNivel = $consultaNivel->fetch(PDO::FETCH_ASSOC)) {
+            $nivel = $linhaNivel['nivelUsuario'];
+        }
+
+        // consulta de pontos
+        $this->conectarBD();
+
+        $consultaPontos = $this->pdo->query("SELECT pontuacaolUsuario FROM usuario WHERE idUsuario = ".$idUsuario."");
+
+        while ($linhaPontos = $consultaPontos->fetch(PDO::FETCH_ASSOC)) {
+            $pontos = $linhaPontos['pontuacaolUsuario'];
+        }
+
+        echo"<script language='javascript' type='text/javascript'> alert('Nível ".$nivel.", Contador ".$contador.", Pontos ".$pontos."');</script>";
+
+        // se determinada quantidade de progressos em 100% dar level UP para tall nível
+        if($contador == 1 && $contador < 2 && $nivel == 1){
+            $pontosTotal2 = $pontos+20;
+            // upar para level 2, e ganhar 20 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario='.$pontosTotal2.', nivelUsuario=2 WHERE idUsuario =" '.$idUsuario.'"');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 2
+                ));
+
+                $_SESSION['nivelUsuario'] = 2;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal2;
+                echo"<script language='javascript' type='text/javascript'> alert('Nível aumentado para 2!');</script>"; // pensar a respeito
+                return 'Level UP 2';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 3 && $contador <= 5 && $nivel == 2){
+            $pontosTotal3 = $pontos+30;
+            // upar para level 3, e ganhar 30 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal3.'", nivelUsuario="3" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 3
+                ));
+
+                $_SESSION['nivelUsuario'] = 3;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal3;
+                return 'Level UP 3';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 6 && $contador <= 8 && $nivel == 3){
+            $pontosTotal4 = $pontos+40;
+            // upar para level 4, e ganhar 40 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal4.'", nivelUsuario="4" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 4
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 4;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal4;
+                return 'Level UP 4';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 9 && $contador <= 11 && $nivel == 4){
+            $pontosTotal5 = $pontos+50;
+            // upar para level 5, e ganhar 50 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal5.'", nivelUsuario="5" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 5
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 5;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal5;
+                return 'Level UP 5';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 12 && $contador <= 14 && $nivel == 5){
+            $pontosTotal6 = $pontos+60;
+            // upar para level 6, e ganhar 60 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal6.'", nivelUsuario="6" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 6
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 6;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal6;
+                return 'Level UP 6';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 15 && $contador <= 17 && $nivel == 6){
+            $pontosTotal7 = $pontos+70;
+            // upar para level 7, e ganhar 70 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal7.'", nivelUsuario="7" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 7
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 7;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal7;
+                return 'Level UP 7';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 18 && $contador <= 20 && $nivel == 7){
+            $pontosTotal8 = $pontos+80;
+            // upar para level 8, e ganhar 80 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal8.'", nivelUsuario="8" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 8
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 8;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal8;
+                return 'Level UP 8';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 21 && $contador <= 23 && $nivel == 8){
+            $pontosTotal9 = $pontos+90;
+            // upar para level 9, e ganhar 90 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal9.'", nivelUsuario="9" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 9
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 9;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal9;
+                return 'Level UP 9';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }elseif($contador >= 24 && $contador <= 26 && $nivel == 9){
+            $pontosTotal10 = $pontos+100;
+            // upar para level 10, e ganhar 100 pontos
+            try {
+                $this->conectarBD();
+
+                $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario="'.$pontosTotal10.'", nivelUsuario="10" WHERE idUsuario = '.$idUsuario.'');
+                $stmt->execute(array(
+                    ':nivelUsuario'   => 10
+                ));
+
+
+                $_SESSION['nivelUsuario'] = 10;
+                $_SESSION['pontuacaolUsuario'] = $pontosTotal10;
+                return 'Level UP 10';
+
+            } catch(PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }
     }
 }
 ?>
