@@ -2,9 +2,9 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#"><?php echo $nome; ?></a>
-            <a class="navbar-brand" href="#">Nível <?php echo $nivel; ?></a>
-            <a class="navbar-brand" href="#">Pontos <?php echo $pontos; ?></a>
+            <label class="navbar-brand" href="#"><?php echo $nome; ?></label>
+            <label class="navbar-brand" href="#">Nível <?php echo $nivel; ?></label>
+            <label class="navbar-brand" href="#">Pontos <?php echo $pontos; ?></label>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

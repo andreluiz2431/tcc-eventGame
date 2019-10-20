@@ -60,6 +60,9 @@ class Usuario{
                 ':emailUsuario'   => $email
             ));
 
+            $_SESSION['nomeUsuario'] = $nome;
+            $_SESSION['emailUsuario'] = $email;
+
             echo "<label style='color:red'>Dados alterados com sucesso!</label>";
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
