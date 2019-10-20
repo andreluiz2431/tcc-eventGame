@@ -57,12 +57,36 @@ class ADM{
         }
     }
 
-    public function inserirTemas(){ // falta planejar
+    public function inserirTemas($nome){ // falta planejar
+        try {
+            $this->conectarBD();
 
+            $stmt = $this->pdo->prepare("INSERT INTO recompensa (tipoRecompensa, nomeReompensa) VALUES('tema', '"$nome"')");
+
+            $stmt->execute(array(
+                ':tipoRecompensa' => 'tema'
+            ));
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return -1;
+        }
     }
 
-    public function inserirSkins(){ // falta planejar
+    public function inserirSkins($nome){ // falta planejar
+        try {
+            $this->conectarBD();
 
+            $stmt = $this->pdo->prepare("INSERT INTO recompensa (tipoRecompensa, nomeReompensa) VALUES('skin', '"$nome"')");
+
+            $stmt->execute(array(
+                ':tipoRecompensa' => 'skin'
+            ));
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return -1;
+        }
     }
 }
 ?>
