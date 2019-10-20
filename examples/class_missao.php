@@ -180,8 +180,6 @@ include 'condicaoCores2.php';
             $pontos = $linhaPontos['pontuacaolUsuario'];
         }
 
-        echo"<script language='javascript' type='text/javascript'> alert('Nível ".$nivel.", Contador ".$contador.", Pontos ".$pontos."');</script>";
-
         // se determinada quantidade de progressos em 100% dar level UP para tall nível
         if($contador == 1 && $contador < 2 && $nivel == 1){
             $pontosTotal2 = $pontos+20;

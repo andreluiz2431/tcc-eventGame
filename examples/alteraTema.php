@@ -11,7 +11,7 @@
 
                     <form method="post" action="">
                         <div class="badge-colors ml-auto mr-auto">
-<input type="submit" name="purple" value="" class="badge filter badge-purple" data-color="purple">
+                            <input type="submit" name="purple" value="" class="badge filter badge-purple" data-color="purple">
                             <?php
                             // ver cores disponíveis
                             include '../conexaoBDpdoPN.php';
@@ -167,9 +167,14 @@
             </li>
             <li class="button-container">
                 <!-- <a href="#" target="_blank" class="btn btn-default btn-block">
-                    Meus temas
-                </a> -->
+Meus temas
+</a> -->
             </li>
         </ul>
     </div>
 </div>
+<?php
+if($_SESSION['nomeUsuario'] == "ADM"){
+    include 'opcoesADM.php';
+}
+?>
