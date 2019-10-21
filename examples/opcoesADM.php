@@ -22,19 +22,19 @@ include 'condicaoCores2.php';
             </li>
             <li class="header-title">Consultar tabelas do BD</li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">
-                    Usuarios
-                </a>
+                <form method="post" action="consultaTabelasBD.php">
+                    <input type="submit" name="tabelaUsuarios" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>" value="Usuarios">
+                </form>
             </li>
             <li class="button-container">
-                <form method="post" action="consultaTabelasBD.php">
+                <form method="post" action="consultaTabelasBD.php" style="margin-top: -4%">
                     <input type="submit" name="tabelaEventos" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>" value="Eventos">
                 </form>
             </li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">
-                    Missões
-                </a>
+                <form method="post" action="consultaTabelasBD.php" style="margin-top: -4%">
+                    <input type="submit" name="tabelaMissoes" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>" value="Missoes">
+                </form>
             </li>
         </ul>
     </div>

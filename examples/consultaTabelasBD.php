@@ -136,19 +136,19 @@ include 'condicaoCores2.php';
                 <div class="content">
                     <div class="container-fluid">
 
-                                                    <?php
-                                                    include 'class_adm.php';
+                        <?php
+                        include 'class_adm.php';
 
-                                                    $adm = new ADM();
+                        $adm = new ADM();
 
-                                                    if(!empty($_POST['tabelaUsuarios'])){
-                                                        $adm->consultarUsuarios();
-                                                    }elseif(!empty($_POST['tabelaEventos'])){
-                                                        $adm->consultarEventos();
-                                                    }elseif(!empty($_POST['tabelaMissoes'])){
-                                                        $adm->consultarMissoes();
-                                                    }
-                                                    ?>
+                        if(!empty($_POST['tabelaUsuarios'])){
+                            $adm->consultarUsuarios();
+                        }elseif(!empty($_POST['tabelaEventos'])){
+                            $adm->consultarEventos();
+                        }elseif(!empty($_POST['tabelaMissoes'])){
+                            $adm->consultarMissoes();
+                        }
+                        ?>
 
                     </div>
                 </div>

@@ -7,9 +7,46 @@ class ADM{
     }
 
     public function consultarUsuarios(){
+        include 'condicaoCores2.php';
+
         $this->conectarBD();
 
         $consulta = $this->pdo->query("SELECT * FROM usuario");
+
+        echo '<div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-primary" style="'.$cor.'">
+                                        <h4 class="card-title ">Usuários</h4>
+                                        <p class="card-category">Dados registrados na tabela do Banco de Dados</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table" style="overflow-x: scroll;width: 100%;">
+                                                <thead class=" text-primary">
+                                                    <th>
+                                                        ID
+                                                    </th>
+                                                    <th>
+                                                        Nome
+                                                    </th>
+                                                    <th>
+                                                        E-mail
+                                                    </th>
+                                                    <th>
+                                                        Pontos
+                                                    </th>
+                                                    <th>
+                                                        Nível
+                                                    </th>
+                                                    <th>
+                                                        Tema aplicada
+                                                    </th>
+                                                    <th>
+                                                        Skin
+                                                    </th>
+                                                </thead>
+                                                <tbody>';
 
         while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
             $idUsuario = $linha['idUsuario'];
@@ -19,7 +56,38 @@ class ADM{
             $nivelUsuario = $linha['nivelUsuario'];
             $temaUsuario = $linha['temaUsuario'];
             $skinUsuario = $linha['skinUsuario'];
+
+            echo '<tr>
+                                                        <td>
+                                                            '.$idUsuario.'
+                                                        </td>
+                                                        <td>
+                                                            '.$nomeUsuario.'
+                                                        </td>
+                                                        <td>
+                                                            '.$emailUsuario.'
+                                                        </td>
+                                                        <td>
+                                                            '.$pontuacaolUsuario.'
+                                                        </td>
+                                                        <td>
+                                                            '.$nivelUsuario.'
+                                                        </td>
+                                                        <td>
+                                                            '.$temaUsuario.'
+                                                        </td>
+                                                        <td>
+                                                            '.$skinUsuario.'
+                                                        </td>
+                                                    </tr>';
         }
+        echo '</tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
     }
 
     public function consultarEventos(){
@@ -151,16 +219,61 @@ class ADM{
     }
 
     public function consultarMissoes(){
+        include 'condicaoCores2.php';
+
         $this->conectarBD();
 
         $consulta = $this->pdo->query("SELECT * FROM missao");
+
+        echo '<div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-primary" style="'.$cor.'">
+                                        <h4 class="card-title ">Missões</h4>
+                                        <p class="card-category">Dados registrados na tabela do Banco de Dados</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table" style="overflow-x: scroll;width: 100%;">
+                                                <thead class=" text-primary">
+                                                    <th>
+                                                        ID
+                                                    </th>
+                                                    <th>
+                                                        Título
+                                                    </th>
+                                                    <th>
+                                                        Sobre
+                                                    </th>
+                                                    <th>
+                                                        ID Recompensa
+                                                    </th>
+                                                </thead>
+                                                <tbody>';
 
         while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
             $idMissao = $linha['idMissao'];
             $tituloMissao = $linha['tituloMissao'];
             $sobreMissao = $linha['sobreMissao'];
             $idRecomensa = $linha['idRecomensa'];
+
+            echo '<tr>
+                                                        <td>
+                                                            '.$idMissao.'
+                                                        </td>
+                                                        <td>
+                                                            '.$tituloMissao.'
+                                                        </td>
+                                                        <td>
+                                                            '.$sobreMissao.'
+                                                        </td>
+                                                        <td>
+                                                            '.$idRecomensa.'
+                                                        </td>
+                                                        </tr>';
         }
+
+        echo '</tbody></table></div></div></div></div></div>';
     }
 
     public function inserirTemas($nome){ // falta planejar

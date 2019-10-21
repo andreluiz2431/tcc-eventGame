@@ -74,10 +74,10 @@
             </a>
           </li>
            <?php if($_SESSION['nomeUsuario'] == "ADM"){echo '<li class="nav-item active-pro ">
-            <a class="nav-link" href="">
+            <div class="nav-link" href="">
               <i class="material-icons">book</i>
               <p>ADM on!</p>
-            </a>
+            </div>
           </li>';}else{echo '';} ?>
 
         </ul>
