@@ -11,14 +11,13 @@ include 'condicaoCores2.php';
             <label style="font-size: 66%; margin-left: 15%;">Aqui possui opções excluisivas de ADM</label><br>
             <li class="header-title">Adicionar recompensas</li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">
-                    Temas
-                </a>
+                <a target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>" id="modal-tema" href="#modal-container-tema" role="button" data-toggle="modal">Temas</a>
             </li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">
-                    Skins
-                </a>
+
+                <a target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>" id="modal-skin" href="#modal-container-skin" role="button" data-toggle="modal">Skins</a>
+
+
             </li>
             <li class="header-title">Consultar tabelas do BD</li>
             <li class="button-container">

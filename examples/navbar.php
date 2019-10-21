@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <label class="navbar-brand" href="#"><?php echo $nome; ?></label>
+            <label class="navbar-brand" href="#"><?php $nomeInteiro = explode(' ', $nome); $nomeExibir = $nomeInteiro[0]; echo $nomeExibir; ?></label>
             <label class="navbar-brand" href="#">Nível <?php echo $nivel; ?></label>
             <label class="navbar-brand" href="#">Pontos <?php echo $pontos; ?></label>
         </div>
