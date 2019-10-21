@@ -1,7 +1,7 @@
 <?php
 include 'condicaoCores2.php';
 ?>
-   <div class="fixed-plugin" style="margin-top: 5%">
+<div class="fixed-plugin" style="margin-top: 5%">
     <div class="dropdown show-dropdown">
         <a href="#" data-toggle="dropdown">
             <i style="font-size: 120%;color: white;">ADM</i>
@@ -27,9 +27,9 @@ include 'condicaoCores2.php';
                 </a>
             </li>
             <li class="button-container">
-                <a href="#" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">
-                    Eventos
-                </a>
+                <form method="post" action="consultaTabelasBD.php">
+                    <input type="submit" name="tabelaEventos" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>" value="Eventos">
+                </form>
             </li>
             <li class="button-container">
                 <a href="#" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">
