@@ -71,7 +71,7 @@
 <div class="modal fade" id="modal-container-tema" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 200%;">
+            <div class="modal-content" style="width: 150%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Cadastrar tema</b>
@@ -87,10 +87,16 @@
                             <div class="card-body">
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nome do tema</label>
                                             <input type="text" name="nomeTema" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Valor do tema</label>
+                                            <input type="text" name="custoTema" class="form-control">
                                         </div>
                                     </div>
                                 </div>
