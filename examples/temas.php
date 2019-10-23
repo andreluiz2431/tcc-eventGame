@@ -1,9 +1,15 @@
 <?php
-if(!empty($_POST['nomeTema'])){
-    $nomeTema = $_POST['nomeTema'];
-    $tema = $_POST['corTema'];
-    $custo = $_POST['custoTema'];
+include 'class_adm.php';
 
-    echo 'Nome: '.$nomeTema.' Tema: '.$tema.' Custo: '.$custo;
+if(!empty($_POST['nomeTema'])){
+    $temaInserir = new ADM();
+
+    $nomeTema = $_POST['nomeTema'];
+    $propriedadeTema = $_POST['corTema'];
+    $custoTema = $_POST['custoTema'];
+
+    $temaInserir->inserirTemas($nomeTema, $propriedadeTema, $custoTema);
 }
+
+// fazer exibições de todos os temas
 ?>

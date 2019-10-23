@@ -276,11 +276,11 @@ class ADM{
         echo '</tbody></table></div></div></div></div></div>';
     }
 
-    public function inserirTemas($nome){ // falta planejar
+    public function inserirTemas($nome, $propriedade, $custo){ // falta planejar
         try {
             $this->conectarBD();
 
-            $stmt = $this->pdo->prepare("INSERT INTO recompensa (tipoRecompensa, nomeReompensa) VALUES('tema', '".$nome."')");
+            $stmt = $this->pdo->prepare("INSERT INTO recompensa (tipoRecompensa, nomeReompensa, propriedadeRecompensa, custoRecompensa) VALUES('tema', '".$nome."', '".$propriedade."', '".$custo."')");
 
             $stmt->execute(array(
                 ':tipoRecompensa' => 'tema'
