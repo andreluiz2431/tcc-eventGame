@@ -276,7 +276,7 @@ class ADM{
         echo '</tbody></table></div></div></div></div></div>';
     }
 
-    public function inserirTemas($nome, $propriedade, $custo){ // falta planejar
+    public function inserirTemas($nome, $propriedade, $custo){
         try {
             $this->conectarBD();
 
@@ -292,7 +292,7 @@ class ADM{
         }
     }
 
-    public function inserirSkins($nome, $propriedade, $custo){ // falta planejar
+    public function inserirSkins($nome, $propriedade, $custo){
         try {
             $this->conectarBD();
 
