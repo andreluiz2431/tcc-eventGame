@@ -2,7 +2,7 @@
                                      include 'condicaoCores.php';
 
                                      ?>" data-background-color="<?php if($_SESSION['nomeUsuario'] == "ADM"){echo '';}else{echo 'black';} ?>" data-image="../assets/img/sidebar-1.jpg" style="<?php
-                                     include 'condicaoCores.php';
+                                     //include 'condicaoCores.php';
 
                                      ?>">
       <!--
