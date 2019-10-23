@@ -21,16 +21,14 @@
                             while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
                                 $idRecompensa = $linhaRecompensaDisponivel['idRecomensa'];
 
-                                if($idRecompensa == 8){
-                                    echo '<input type="submit" name="danger" value="" class="badge filter badge-danger" data-color="danger">';
-                                }elseif($idRecompensa == 9){
-                                    echo '<input type="submit" name="azure" value="" class="badge filter badge-azure" data-color="azure">';
-                                }elseif($idRecompensa == 10){
-                                    echo '<input type="submit" name="green" value="" class="badge filter badge-green" data-color="green">';
-                                }elseif($idRecompensa == 11){
-                                    echo '<input type="submit" name="orange" value="" class="badge filter badge-warning" data-color="orange">';
-                                }elseif($idRecompensa == 12){
-                                    echo '<input type="submit" name="rose" value="" class="badge filter badge-rose active" data-color="rose">';
+                                include '../conexaoBDpdoPN.php';
+
+                                $consutaRecompensa = $pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$idRecompensa."");
+
+                                while ($linhaRecompensa = $consutaRecompensa->fetch(PDO::FETCH_ASSOC)){
+                                    if ($linhaRecompensa['tipoRecompensa'] == 'tema'){
+                                        echo '<input type="submit" name="tema" value="'.$idRecompensa.'" class="badge filter" data-color="'.$linhaRecompensa['propriedadeRecompensa'].'" style="background-color: '.$linhaRecompensa['propriedadeRecompensa'].';">';
+                                    }
                                 }
                             }
                             ?>
@@ -40,104 +38,31 @@
 
                     <?php
                     // fazer troca de cor do usuário
-                    if(isset($_POST['purple'])){
-                        try {
-                            include '../conexaoBDpdoPN.php';
+                    if(isset($_POST['tema'])){
+                        include '../conexaoBDpdoPN.php';
 
-                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=7 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
-                            $stmt->execute(array(
-                                ':idUsuario'   => $_SESSION['idUsuario'],
-                                ':idRecomensa' => 7
-                            ));
-                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
-                            session_start();
-                            $_SESSION['temaAplicada'] = 'Purple';
-                        } catch(PDOException $e) {
-                            echo 'Error: ' . $e->getMessage();
+                        $consultaRecompensa = $pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$_POST['tema']."");
+
+                        while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
+                            $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
+
+                            try {
+                                include '../conexaoBDpdoPN.php';
+
+                                $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario='.$_POST['tema'].' WHERE idUsuario = '.$_SESSION['idUsuario'].'');
+                                $stmt->execute(array(
+                                    ':idUsuario'   => $_SESSION['idUsuario'],
+                                    ':idRecomensa' => $_POST['tema']
+                                ));
+                                echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
+                                session_start();
+                                $_SESSION['temaAplicada'] = $nomeRecompensa;
+                            } catch(PDOException $e) {
+                                echo 'Error: ' . $e->getMessage();
+                            }
+
+                            echo $nomeRecompensa;
                         }
-
-                        echo 'purple';
-                    }elseif(isset($_POST['azure'])){
-                        try {
-                            include '../conexaoBDpdoPN.php';
-
-                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=9 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
-                            $stmt->execute(array(
-                                ':idUsuario'   => $_SESSION['idUsuario'],
-                                ':idRecomensa' => 9
-                            ));
-                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
-                        } catch(PDOException $e) {
-                            echo 'Error: ' . $e->getMessage();
-                        }
-                        session_start();
-                        $_SESSION['temaAplicada'] = 'Blue';
-                        echo 'azure';
-                    }elseif(isset($_POST['green'])){
-                        try {
-                            include '../conexaoBDpdoPN.php';
-
-                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=10 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
-                            $stmt->execute(array(
-                                ':idUsuario'   => $_SESSION['idUsuario'],
-                                ':idRecomensa' => 10
-
-                            ));
-                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
-                        } catch(PDOException $e) {
-                            echo 'Error: ' . $e->getMessage();
-                        }
-                        session_start();
-                        $_SESSION['temaAplicada'] = 'Green';
-                        echo 'green';
-                    }elseif(isset($_POST['orange'])){
-                        try {
-                            include '../conexaoBDpdoPN.php';
-
-                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=11 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
-                            $stmt->execute(array(
-                                ':idUsuario'   => $_SESSION['idUsuario'],
-                                ':idRecomensa' => 11
-                            ));
-                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
-                        } catch(PDOException $e) {
-                            echo 'Error: ' . $e->getMessage();
-                        }
-                        session_start();
-                        $_SESSION['temaAplicada'] = 'Orange';
-                        echo 'orange';
-                    }elseif(isset($_POST['danger'])){
-                        try {
-                            include '../conexaoBDpdoPN.php';
-
-                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=8 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
-                            $stmt->execute(array(
-                                ':idUsuario'   => $_SESSION['idUsuario'],
-                                ':idRecomensa' => 8
-                            ));
-                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
-                        } catch(PDOException $e) {
-                            echo 'Error: ' . $e->getMessage();
-                        }
-                        session_start();
-                        $_SESSION['temaAplicada'] = 'Red';
-                        echo 'danger';
-                    }elseif(isset($_POST['rose'])){
-                        try {
-                            include '../conexaoBDpdoPN.php';
-
-                            $stmt = $pdo->prepare('UPDATE usuario SET temaUsuario=12 WHERE idUsuario = '.$_SESSION['idUsuario'].'');
-                            $stmt->execute(array(
-                                ':idUsuario'   => $_SESSION['idUsuario'],
-                                ':idRecomensa' => 12
-                            ));
-                            echo "<script>window.location.href = \"pagina_eventos.php\";</script>";
-                        } catch(PDOException $e) {
-                            echo 'Error: ' . $e->getMessage();
-                        }
-                        session_start();
-                        $_SESSION['temaAplicada'] = 'Pink';
-                        echo 'rose';
                     }
                     ?>
 
