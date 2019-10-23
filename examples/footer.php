@@ -12,7 +12,7 @@
 
 <div class="modal fade" id="modal-container-skin" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post" action="skins.php">
+        <form method="post" action="proc_upload.php" enctype="multipart/form-data">
             <div class="modal-content" style="width: 150%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div>
-                                            <input type="file" name="imagemSkin" class="form-control">
+                                            <input type="file" name="arquivo" class="form-control">
                                         </div>
                                     </div>
                                 </div>
