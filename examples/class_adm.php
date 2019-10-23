@@ -292,11 +292,11 @@ class ADM{
         }
     }
 
-    public function inserirSkins($nome){ // falta planejar
+    public function inserirSkins($nome, $propriedade, $custo){ // falta planejar
         try {
             $this->conectarBD();
 
-            $stmt = $this->pdo->prepare("INSERT INTO recompensa (tipoRecompensa, nomeReompensa) VALUES('skin', '".$nome."')");
+            $stmt = $this->pdo->prepare("INSERT INTO recompensa (tipoRecompensa, nomeReompensa, propriedadeRecompensa, custoRecompensa) VALUES('skin', '".$nome."', '".$propriedade."', '".$custo."')");
 
             $stmt->execute(array(
                 ':tipoRecompensa' => 'skin'

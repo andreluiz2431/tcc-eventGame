@@ -63,6 +63,14 @@
 				}
 				//Verificar se é possivel mover o arquivo para a pasta escolhida
 				if(move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta']. $nome_final)){
+                    include 'class_adm.php';
+
+                    $skinInserir = new ADM();
+
+                    $nomeSkin = $_POST['nomeSkin'];
+                    $custoSkin = $_POST['custoSkin'];
+
+                    $skinInserir->inserirSkins($nomeSkin, $nome_final, $custoSkin);
 
 					echo "
 						<script type=\"text/javascript\">

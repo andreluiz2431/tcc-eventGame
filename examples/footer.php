@@ -27,12 +27,17 @@
                     <div class="col-md-16">
                         <div class="">
                             <div class="card-body">
-
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nome da skin</label>
                                             <input type="text" name="nomeSkin" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Valor da skin</label>
+                                            <input type="text" name="custoSkin" class="form-control">
                                         </div>
                                     </div>
                                 </div>
