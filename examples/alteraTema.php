@@ -11,7 +11,7 @@
 
                     <form method="post" action="">
                         <div class="badge-colors ml-auto mr-auto">
-                            <input type="submit" name="purple" value="" class="badge filter badge-purple" data-color="purple">
+
                             <?php
                             // ver cores disponíveis
                             include '../conexaoBDpdoPN.php';

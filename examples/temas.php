@@ -12,4 +12,5 @@ if(!empty($_POST['nomeTema'])){
 }
 
 // fazer exibições de todos os temas
+
 ?>
