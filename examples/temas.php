@@ -1,5 +1,6 @@
 <?php
 include 'class_adm.php';
+include 'class_recompensas.php';
 
 if(!empty($_POST['nomeTema'])){
     $temaInserir = new ADM();
@@ -12,5 +13,7 @@ if(!empty($_POST['nomeTema'])){
 }
 
 // fazer exibições de todos os temas
+$recompensa = new Recompensa();
 
+$recompensa->vizualizarTemas();
 ?>

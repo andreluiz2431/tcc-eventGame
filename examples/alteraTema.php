@@ -65,6 +65,9 @@
                         }
                     }
                     ?>
+                    <li class="button-container">
+                        <a href="temas.php" target="_blank" class="btn btn-default btn-block" style="<?php echo $cor; ?>">Ver temas</a>
+                    </li>
 
                     <div class="clearfix"></div>
                 </a>
