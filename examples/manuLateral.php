@@ -62,7 +62,7 @@ Tip 2: you can also add an image using data-image tag
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="skins.php">
                     <i class="material-icons">person</i>
                     <p>Minhas skins</p>
                 </a>
