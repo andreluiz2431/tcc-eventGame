@@ -21,6 +21,12 @@ class Recompensa{
             $consutaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$idRecompensa."");
 
             while ($linhaRecompensa = $consutaRecompensa->fetch(PDO::FETCH_ASSOC)){
+                if($linhaRecompensa['custoRecompensa'] <= 0){
+                    $custo = 'Gratis';
+                }else{
+                    $custo = $linhaRecompensa['custoRecompensa'].' Pontos';
+                }
+
                 if ($linhaRecompensa['tipoRecompensa'] == 'tema'){
                     echo '
 
@@ -31,7 +37,7 @@ class Recompensa{
                                         </div>
                                         <div class="card-body" style="margin-left: 40%;">
                                             <h6 class="card-category text-gray">Tema '.$linhaRecompensa['nomeReompensa'].'</h6>
-                                            <label>Custo: '.$linhaRecompensa['custoRecompensa'].' Pontos</label>
+                                            <label>Custo: '.$custo.'</label>
                                             <br>
                                             <label>Você já possui</label>
                                         </div>
@@ -50,6 +56,12 @@ class Recompensa{
         $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa");
 
         while ($linhaRecompensaT = $consutaRecompensaT->fetch(PDO::FETCH_ASSOC)){
+            if($linhaRecompensaT['custoRecompensa'] <= 0){
+                $custoT = 'Gratis';
+            }else{
+                $custoT = $linhaRecompensaT['custoRecompensa'].' Pontos';
+            }
+
             if ($linhaRecompensaT['idRecomensa'] != $idRecompensa && $linhaRecompensaT['tipoRecompensa'] == 'tema'){
                 echo '
 
@@ -60,7 +72,7 @@ class Recompensa{
                                         </div>
                                         <div class="card-body" style="margin-left: 40%;">
                                             <h6 class="card-category text-gray">Tema '.$linhaRecompensaT['nomeReompensa'].'</h6>
-                                            <label>Custo: '.$linhaRecompensaT['custoRecompensa'].' Pontos</label>
+                                            <label>Custo: '.$custoT.'</label>
                                             <br>
                                             <label>Você não possui ainda</label>
                                         </div>
