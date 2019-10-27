@@ -66,24 +66,8 @@ class Recompensa{
                             <div class="card-body">
 
                                 <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Nome do tema</label>
-                                            <input type="text" name="nomeTema" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Valor do tema</label>
-                                            <input type="text" name="custoTema" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-12">
-                                        <div>
-                                            <input type="color" name="corTema" class="form-control">
-                                        </div>
+                                        <label>Tema já em sua biblioteca, deseja aplica-la?</label>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -97,7 +81,7 @@ class Recompensa{
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Fechar
                     </button>
-                    <input type="submit" class="btn btn-primary pull-right" value="Concluir" style="'.$cor.'">
+                    <input type="submit" class="btn btn-primary pull-right" value="Aplicar" style="'.$cor.'">
                 </div>
 
             </div>
@@ -131,7 +115,7 @@ class Recompensa{
                 echo '
 
                     <div class="col-md-4">
-                                <a id="modal-tema-'.$idRecompensa.'" href="#modal-container-tema" role="button" data-toggle="modal">
+                                <a id="modal-'.$linhaRecompensaT['idRecomensa'].'" href="#modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="button" data-toggle="modal">
                                     <div class="card">
                                         <div style="position: absolute; width: 120px; height:120px; background-color: '.$linhaRecompensaT['propriedadeRecompensa'].'; border-radius: 5px 0 0 5px;">
                                         </div>
@@ -144,6 +128,66 @@ class Recompensa{
                                     </div>
                                 </a>
                             </div>
+
+
+<div class="modal fade" id="modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form method="post" action="temas.php">
+            <div class="modal-content" style="width: 150%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">
+                        <b>Tema '.$linhaRecompensaT['nomeReompensa'].'</b>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="height: auto; overflow: auto;">
+
+                    <div class="col-md-16">
+                        <div class="">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">';
+                if($custoT == 'Gratis'){
+                    echo '<label>Tema '.$custoT.', deseja adicionar a biblioteca?</label>';
+                }else{
+                    echo '<label>Você ainda não possui este tema, deseja trocar por '.$custoT.'?</label>';
+                }
+
+
+                                   echo ' </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Fechar
+                    </button>
+
+                    ';
+                if($custoT == 'Gratis'){
+                    echo '<input type="submit" class="btn btn-primary pull-right" value="Adicionar" style="'.$cor.'">';
+                }else{
+                    echo '<input type="submit" class="btn btn-primary pull-right" value="Trocar" style="'.$cor.'">';
+                }
+
+
+                                   echo '
+
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
 
                     '; // vizualização dos dados
             }
