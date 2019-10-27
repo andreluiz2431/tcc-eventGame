@@ -50,7 +50,7 @@ class Recompensa{
 <div class="modal fade" id="modal-container-'.$idRecompensa.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 150%;">
+            <div class="modal-content" style="width: 500px;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Tema '.$linhaRecompensa['nomeReompensa'].'</b>
@@ -133,7 +133,7 @@ class Recompensa{
 <div class="modal fade" id="modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 150%;">
+            <div class="modal-content" style="width: 500px;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Tema '.$linhaRecompensaT['nomeReompensa'].'</b>
@@ -149,7 +149,9 @@ class Recompensa{
                             <div class="card-body">
 
                                 <div class="row">
-                                    <div class="col-md-12">';
+                                    <div class="col-md-12">
+
+                                    ';
                 if($custoT == 'Gratis'){
                     echo '<label>Tema '.$custoT.', deseja adicionar a biblioteca?</label>';
                 }else{
@@ -157,7 +159,9 @@ class Recompensa{
                 }
 
 
-                                   echo ' </div>
+                echo '
+
+                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -179,7 +183,7 @@ class Recompensa{
                 }
 
 
-                                   echo '
+                echo '
 
 
                 </div>
