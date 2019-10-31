@@ -40,7 +40,7 @@ class Recompensa{
                                             <h6 class="card-category text-gray">Tema '.$linhaRecompensa['nomeReompensa'].'</h6>
                                             <label>Custo: '.$custo.'</label>
                                             <br>
-                                            <label>Você já possui</label>
+                                            <label><i>Você já possui</i></label>
                                         </div>
                                     </div>
                                 </a>
@@ -123,7 +123,7 @@ class Recompensa{
                                             <h6 class="card-category text-gray">Tema '.$linhaRecompensaT['nomeReompensa'].'</h6>
                                             <label>Custo: '.$custoT.'</label>
                                             <br>
-                                            <label>Você não possui ainda</label>
+                                            <label><b>Você não possui ainda</b></label>
                                         </div>
                                     </div>
                                 </a>
