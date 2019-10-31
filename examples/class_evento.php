@@ -432,6 +432,7 @@ class Evento{
             }else{
                 $presencaInsc = 'disabled';
             }
+
             $this->conectarBD();
 
             $consultaUsuario = $this->pdo->query("SELECT * FROM usuario WHERE idUsuario = ".$idUsuarioInsc."");
@@ -455,6 +456,13 @@ class Evento{
 
             while ($linhaProgresso = $consultaProgresso->fetch(PDO::FETCH_ASSOC)) {
                 $progressoInsc = $linhaProgresso['progressoMissao'];
+            }
+
+            // se presente habilitar opção de progresso para o gerenciamento
+            if($pagoInsc != 0){
+                $habProg = '';
+            }else{
+                $habProg = 'disabled';
             }
 
             echo '<tr>
@@ -504,10 +512,10 @@ class Evento{
                                                                                 <input name="idMissaoProgresso" type="hidden" value="'.$idMissaoInsc.'">
 
                                                                                 <div>
-                                                                                    <input type="range" name="progressoInsc" value="'.$progressoInsc.'" style="margin-left: 29%;">
+                                                                                    <input type="range" name="progressoInsc" value="'.$progressoInsc.'" style="margin-left: 29%;" '.$habProg.'>
                                                                                     <!--  colocar value do progresso cadastrado -->
 
-                                                                                    <input type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso"> <!-- não funciona -->
+                                                                                    <input type="submit" class="btn btn-round btn-fill btn-default" style="margin-left: 25%;width: 50%;'.$cor.'" value="Definir progresso" '.$habProg.'> <!-- não funciona -->
 
                                                                                 </div>
                                                                             </form>

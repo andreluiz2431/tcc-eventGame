@@ -55,7 +55,7 @@ $busca = new Evento();
                 ?>
                 height: 300px;
                 align-items: center;
-                padding: 14%;                
+                padding: 14%;
             }
 
             label{
