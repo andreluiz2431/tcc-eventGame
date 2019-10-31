@@ -199,6 +199,7 @@ class Recompensa{
     }
 
     public function vizualizarSkins(){ // mostrar primeiro as disponiveis depois as indisponiveis
+
         // consulta de disponiveis
         $this->conectarBD();
 
