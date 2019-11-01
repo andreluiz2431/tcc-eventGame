@@ -10,6 +10,20 @@ class Recompensa{
 
     }
 
+    public function aplicarTema($idUsuario, $tema){
+        try {
+            $this->conectarBD();
+
+            $stmt = $this->pdo->prepare('UPDATE usuario SET temaUsuario='.$tema.' WHERE idUsuario = '.$idUsuario.'');
+            $stmt->execute(array(
+                ':idUsuario'   => $idUsuario
+            ));
+            echo "<script>alert('Tema aplicado com sucesso!'); window.location.href = \"pagina_evento.php\";</script>";
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
     public function aplicarSkin($idUsuario, $skin){
         try {
             $this->conectarBD();
