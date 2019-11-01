@@ -6,7 +6,7 @@ class Recompensa{
         include '../conexaoBDpdoPOO.php';
     }
 
-    public function comprarRecompensa($idUsuario, $recompensa){
+    public function comprarRecompensa($idUsuario, $recompensa, $custo){
 
     }
 
