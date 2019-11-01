@@ -6,6 +6,26 @@ class Recompensa{
         include '../conexaoBDpdoPOO.php';
     }
 
+    public function fotoAplicada($idUsuario){
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("SELECT skinUsuario FROM usuario WHERE idUsuario = ".$idUsuario."");
+
+        while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $idSkinUsuario = $linha['skinUsuario'];
+
+            $this->conectarBD();
+
+            $consultaR = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$idSkinUsuario."");
+
+            while ($linhaR = $consultaR->fetch(PDO::FETCH_ASSOC)) {
+                $skinUsuario = $linhaR['propriedadeRecompensa'];
+
+                return $skinUsuario;
+            }
+        }
+    }
+
     public function vizualizarTemas(){ // mostrar primeiro as disponiveis depois as indisponiveis
         include 'condicaoCores2.php';
         // consulta de disponiveis

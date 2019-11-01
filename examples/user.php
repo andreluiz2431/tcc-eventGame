@@ -21,6 +21,10 @@ if(!empty($_POST['busca'])){
     $busca = new Evento();
     $busca->busca = $_POST['busca'];
 }
+
+include 'class_recompensas.php';
+
+$fotoPerfil = new Recompensa();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +63,7 @@ if(!empty($_POST['busca'])){
                                     <div class="card-avatar">
                                         <a href="#">
                                             <!--colocar foto do perfil do usuario-->
-                                            <img class="img" src="../assets/img/faces/marc.jpg" />
+                                            <img class="img" src="../examples/foto/<?php echo $fotoPerfil->fotoAplicada($id); ?>" />
                                         </a>
                                     </div>
                                     <div class="card-body">
