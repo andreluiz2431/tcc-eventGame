@@ -61,10 +61,100 @@ $fotoPerfil = new Recompensa();
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <div class="card-avatar">
-                                        <a href="#">
+                                        <a id="modal-user'" href="#modal-container-user" role="button" data-toggle="modal">
                                             <!--colocar foto do perfil do usuario-->
                                             <img class="img" src="../examples/foto/<?php echo $fotoPerfil->fotoAplicada($id); ?>" />
                                         </a>
+
+
+
+                                        <div class="modal fade" id="modal-container-user" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <form method="post" action="temas.php">
+                                                    <div class="modal-content" style="width: 500px;">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel">
+                                                                <b>Alterar skin</b>
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" style="height: 400px; overflow: auto;">
+
+                                                            <div class="content">
+                                                                <div class="container-fluid">
+                                                                    <div class="row">
+
+                                                                        <!-- repetição -->
+                                                                        <div class="col-md-4">
+                                                                            <a href="#">
+                                                                                <div class="card">
+                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <a href="#">
+                                                                                <div class="card">
+                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div><div class="col-md-4">
+                                                                            <a href="#">
+                                                                                <div class="card">
+                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="row" style="margin-top: 90px;">
+
+                                                                        <!-- repetição -->
+                                                                        <div class="col-md-4">
+                                                                            <a href="#">
+                                                                                <div class="card">
+                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <a href="#">
+                                                                                <div class="card">
+                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div><div class="col-md-4">
+                                                                            <a href="#">
+                                                                                <div class="card">
+                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                Fechar
+                                                            </button>
+                                                            <input type="submit" class="btn btn-primary pull-right" value="Aplicar" style="<?php echo $cor; ?>">
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-category text-gray">Usuário</h6>
