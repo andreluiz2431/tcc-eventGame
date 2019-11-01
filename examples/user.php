@@ -71,7 +71,7 @@ $fotoPerfil = new Recompensa();
                                         <div class="modal fade" id="modal-container-user" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <form method="post" action="temas.php">
-                                                    <div class="modal-content" style="width: 500px;">
+                                                    <div class="modal-content" style="width: 173%;">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="myModalLabel">
                                                                 <b>Alterar skin</b>

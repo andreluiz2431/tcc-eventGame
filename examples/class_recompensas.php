@@ -6,12 +6,27 @@ class Recompensa{
         include '../conexaoBDpdoPOO.php';
     }
 
+    public function aplicarSkin($idUsuario, $skin){
+        try {
+            $this->conectarBD();
+
+            $stmt = $this->pdo->prepare('UPDATE usuario SET skinUsuario='.$skin.' WHERE idUsuario = '.$idUsuario.'');
+            $stmt->execute(array(
+                ':idUsuario'   => $idUsuario
+            ));
+            echo "<script>alert('Skin aplicada com sucesso!'); window.location.href = \"user.php\";</script>";
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
     public function skinsDisponiveis($idUsuario){
         // consulta de disponiveis
         $this->conectarBD();
 
         $consultaRecompensaDisponivel = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$idUsuario."");
-echo '<div class="row">';
+
+        echo '<div class="row">';
         while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
             $idRecompensa = $linhaRecompensaDisponivel['idRecomensa'];
 
@@ -25,18 +40,19 @@ echo '<div class="row">';
                     echo '
 
                     <div class="col-md-4" style="margin-bottom: 90px;">
-                        <a href="#">
-                            <div class="card">
-                                <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/'.$linhaRecompensa['propriedadeRecompensa'].'">
-                            </div>
-                        </a>
+                        <form method="POST" action="aplicandoSkin.php">
+                            <button type="submit" name="skinAplicar" value="'.$idRecompensa.'" style="background: none;border: none; margin-left: -110px;">
+                                <div class="card">
+                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/'.$linhaRecompensa['propriedadeRecompensa'].'">
+                                </div>
+                            </button>
+                        </form>
                     </div>
 
 
                     '; // vizualização dos dados
                 }
             }
-
         }
         echo '</div>';
     }
@@ -105,7 +121,7 @@ echo '<div class="row">';
 <div class="modal fade" id="modal-container-'.$idRecompensa.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 500px;">
+            <div class="modal-content" style="width: 129%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Tema '.$linhaRecompensa['nomeReompensa'].'</b>
@@ -188,7 +204,7 @@ echo '<div class="row">';
 <div class="modal fade" id="modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 500px;">
+            <div class="modal-content" style="width: 129%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Tema '.$linhaRecompensaT['nomeReompensa'].'</b>
@@ -299,7 +315,7 @@ echo '<div class="row">';
 <div class="modal fade" id="modal-container-'.$idRecompensa.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 500px;">
+            <div class="modal-content" style="width: 129%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Skin '.$linhaRecompensa['nomeReompensa'].'</b>
@@ -383,7 +399,7 @@ echo '<div class="row">';
 <div class="modal fade" id="modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 500px;">
+            <div class="modal-content" style="width: 99%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Skin '.$linhaRecompensaT['nomeReompensa'].'</b>
