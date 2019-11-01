@@ -22,6 +22,16 @@ if(!empty($_POST['nomeTema'])){
 
     $temaInserir->inserirTemas($nomeTema, $propriedadeTema, $custoTema);
 }
+
+
+$recompensa = new Recompensa();
+
+if(!empty($_POST['addBibTema'])){
+    $idTema = $_POST['addBibTema'];
+    $custoTema = $_POST['custoTemaD'];
+
+    $recompensa->comprarRecompensa($_SESSION['idUsuario'], $idTema, $custoTema);
+}
 ?>
 
 <html>
@@ -59,7 +69,6 @@ if(!empty($_POST['nomeTema'])){
 
                             <?php
                             // fazer exibições de todos os temas
-                            $recompensa = new Recompensa();
 
                             $recompensa->vizualizarTemas();
                             ?>

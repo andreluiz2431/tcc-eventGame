@@ -22,6 +22,15 @@ if(!empty($_POST['nomeTema'])){
 
     $temaInserir->inserirTemas($nomeTema, $propriedadeTema, $custoTema);
 }
+
+$recompensa = new Recompensa();
+
+if(!empty($_POST['addBibSkin'])){
+    $idSkin = $_POST['addBibSkin'];
+    $custoSkin = $_POST['custoSkinD'];
+
+    $recompensa->comprarRecompensa($_SESSION['idUsuario'], $idSkin, $custoSkin);
+}
 ?>
 
 <html>
@@ -59,7 +68,6 @@ if(!empty($_POST['nomeTema'])){
 
                             <?php
                             // fazer exibições de todos os temas
-                            $recompensa = new Recompensa();
 
                             $recompensa->vizualizarSkins();
                             ?>

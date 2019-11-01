@@ -7,7 +7,54 @@ class Recompensa{
     }
 
     public function comprarRecompensa($idUsuario, $recompensa, $custo){
+        // verificar se tem pontos o suficientes
+        $this->conectarBD();
 
+        $consulta = $this->pdo->query("SELECT * FROM usuario WHERE idUsuario = ".$idUsuario."");
+
+        while ($linhaRecompensa = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $pontos = $linhaRecompensa['pontuacaolUsuario'];
+
+            if($pontos >= $custo){
+                // descontar dos pontos
+                if($pontos == 0){
+                    $pontosNovo = $pontos;
+                }else{
+                    $pontosNovo = $pontos - $custo;
+                }
+
+                try {
+                    $this->conectarBD();
+
+                    $stmt = $this->pdo->prepare('UPDATE usuario SET pontuacaolUsuario='.$pontosNovo.' WHERE idUsuario = '.$idUsuario.'');
+                    $stmt->execute(array(
+                        ':idUsuario'   => $idUsuario
+                    ));
+
+                    $_SESSION['pontuacaolUsuario'] = $pontosNovo;
+
+                    // adicionar recompensa aos disponiveis
+                    try {
+                        $this->conectarBD();
+
+                        $stmt = $this->pdo->prepare("INSERT INTO recompensadispoivel (idUsuario, idRecomensa) VALUES('".$idUsuario."', '".$recompensa."')");
+
+                        $stmt->execute(array(
+                            ':idUsuario' => $idUsuario
+                        ));
+
+                        echo '<script>alert("Item adicionado a biblioteca! (Pontuação atual: '.$pontosNovo.')")</script>';
+
+                    } catch(PDOException $e) {
+                        echo 'Error: ' . $e->getMessage();
+                        return -1;
+                    }
+
+                } catch(PDOException $e) {
+                    echo 'Error: ' . $e->getMessage();
+                }
+            }
+        }
     }
 
     public function aplicarTema($idUsuario, $tema){
@@ -264,6 +311,9 @@ class Recompensa{
                         Fechar
                     </button>
 
+<input name="addBibTema" type="hidden" value="'.$linhaRecompensaT['idRecomensa'].'">
+<input name="custoTemaD" type="hidden" value="'.$linhaRecompensaT['custoRecompensa'].'">
+
                     ';
                 if($custoT == 'Gratis'){
                     echo '<input type="submit" class="btn btn-primary pull-right" value="Adicionar" style="'.$cor.'">';
@@ -416,7 +466,7 @@ class Recompensa{
 
 <div class="modal fade" id="modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post" action="temas.php">
+        <form method="post" action="skins.php">
             <div class="modal-content" style="width: 99%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
@@ -459,6 +509,8 @@ class Recompensa{
                         Fechar
                     </button>
 
+<input name="addBibSkin" type="hidden" value="'.$linhaRecompensaT['idRecomensa'].'">
+<input name="custoSkinD" type="hidden" value="'.$linhaRecompensaT['custoRecompensa'].'">
                     ';
                 if($custoT == 'Gratis'){
                     echo '<input type="submit" class="btn btn-primary pull-right" value="Adicionar" style="'.$cor.'">';
