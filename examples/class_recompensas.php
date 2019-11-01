@@ -6,6 +6,10 @@ class Recompensa{
         include '../conexaoBDpdoPOO.php';
     }
 
+    public function comprarRecompensa($idUsuario, $recompensa){
+
+    }
+
     public function aplicarSkin($idUsuario, $skin){
         try {
             $this->conectarBD();
