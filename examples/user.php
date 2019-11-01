@@ -84,58 +84,13 @@ $fotoPerfil = new Recompensa();
 
                                                             <div class="content">
                                                                 <div class="container-fluid">
-                                                                    <div class="row">
-
-                                                                        <!-- repetição -->
-                                                                        <div class="col-md-4">
-                                                                            <a href="#">
-                                                                                <div class="card">
-                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <a href="#">
-                                                                                <div class="card">
-                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
-                                                                                </div>
-                                                                            </a>
-                                                                        </div><div class="col-md-4">
-                                                                            <a href="#">
-                                                                                <div class="card">
-                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
 
 
-                                                                    </div>
-                                                                    <div class="row" style="margin-top: 90px;">
-
-                                                                        <!-- repetição -->
-                                                                        <div class="col-md-4">
-                                                                            <a href="#">
-                                                                                <div class="card">
-                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <a href="#">
-                                                                                <div class="card">
-                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
-                                                                                </div>
-                                                                            </a>
-                                                                        </div><div class="col-md-4">
-                                                                            <a href="#">
-                                                                                <div class="card">
-                                                                                    <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/Characters_A_01.jpg">
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
+                                                                    <?php
+                                                                    $fotoPerfil->skinsDisponiveis($id);
+                                                                    ?>
 
 
-                                                                    </div>
                                                                 </div>
                                                             </div>
 

@@ -6,6 +6,41 @@ class Recompensa{
         include '../conexaoBDpdoPOO.php';
     }
 
+    public function skinsDisponiveis($idUsuario){
+        // consulta de disponiveis
+        $this->conectarBD();
+
+        $consultaRecompensaDisponivel = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$idUsuario."");
+echo '<div class="row">';
+        while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
+            $idRecompensa = $linhaRecompensaDisponivel['idRecomensa'];
+
+            // ver todas as recompensas disponiveis
+            $this->conectarBD();
+
+            $consutaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$idRecompensa."");
+
+            while ($linhaRecompensa = $consutaRecompensa->fetch(PDO::FETCH_ASSOC)){
+                if ($linhaRecompensa['tipoRecompensa'] == 'skin'){
+                    echo '
+
+                    <div class="col-md-4" style="margin-bottom: 90px;">
+                        <a href="#">
+                            <div class="card">
+                                <img  style="position: absolute; width: 120px; height:120px; border-radius: 5px;" src="../examples/foto/'.$linhaRecompensa['propriedadeRecompensa'].'">
+                            </div>
+                        </a>
+                    </div>
+
+
+                    '; // vizualização dos dados
+                }
+            }
+
+        }
+        echo '</div>';
+    }
+
     public function fotoAplicada($idUsuario){ // mostrar skin aplicada no perfil
         $this->conectarBD();
 
