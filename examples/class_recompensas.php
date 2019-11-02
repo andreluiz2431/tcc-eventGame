@@ -324,7 +324,6 @@ class Recompensa{
 
                 echo '
 
-
                 </div>
 
             </div>
