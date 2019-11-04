@@ -26,17 +26,20 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">notifications</i>
-                        <span class="notification">5</span>
+                        <span class="notification">10</span>
                         <p class="d-lg-none d-md-block">
                             Some Actions
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Inscrito no evento tall</a>
-                        <a class="dropdown-item" href="#">...</a>
-                        <a class="dropdown-item" href="#">Notificações aqui!</a>
-                        <a class="dropdown-item" href="#">...</a>
-                        <a class="dropdown-item" href="#"><?php echo $_SESSION['temaAplicada']; ?></a>
+                        <!--  repeticao -->
+                        <?php
+                        include 'class_notificacao.php';
+
+                        $notificacao = new Notificacao();
+
+                        $notificacao->verNotificacao($_SESSION['idUsuario']);
+                        ?>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
