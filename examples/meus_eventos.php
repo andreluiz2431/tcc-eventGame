@@ -82,8 +82,9 @@ if(!empty($_POST['busca'])){
                                             $progressoInsc = $_POST['progressoInsc'];
                                             $idUsuarioProgresso = $_POST['idUsuarioProgresso'];
                                             $idMissaoProgresso = $_POST['idMissaoProgresso'];
+                                            $recompensa = $_POST['recompensaReceber'];
 
-                                            $busca->alterarProgressoInsc($idUsuarioProgresso, $idMissaoProgresso, $progressoInsc); // programar variaveis
+                                            $busca->alterarProgressoInsc($idUsuarioProgresso, $idMissaoProgresso, $progressoInsc, $recompensa); // programar variaveis
                                         }
 
                                         ?>

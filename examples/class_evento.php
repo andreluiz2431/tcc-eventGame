@@ -465,6 +465,15 @@ class Evento{
                 $habProg = 'disabled';
             }
 
+            // pegar recompensa da missao
+            $this->conectarBD();
+
+            $consultaidRecompensaReceber = $this->pdo->query("SELECT * FROM missao WHERE idMissao = ".$idMissaoInsc."");
+
+            while ($linhaidRecompensaReceber = $consultaidRecompensaReceber->fetch(PDO::FETCH_ASSOC)) {
+                $idRecompensaReceber = $linhaidRecompensaReceber['idRecomensa'];
+            }
+
             echo '<tr>
                                                         <td>
                                                             '.$idUsuarioInsc.'
@@ -507,6 +516,9 @@ class Evento{
 
 
                                                                             <form method="POST" action="meus_eventos.php">
+
+                                                                                <input name="recompensaReceber" type="hidden" value="'.$idRecompensaReceber.'">
+
                                                                                 <input name="idUsuarioProgresso" type="hidden" value="'.$idUsuarioInsc.'">
 
                                                                                 <input name="idMissaoProgresso" type="hidden" value="'.$idMissaoInsc.'">
@@ -565,7 +577,8 @@ class Evento{
         }
     }
 
-    public function alterarProgressoInsc($idusuario, $idMissao, $progressoInsc){
+    public function alterarProgressoInsc($idusuario, $idMissao, $progressoInsc, $recompensa){
+
         try {
             $this->conectarBD();
 
@@ -574,10 +587,28 @@ class Evento{
                 ':progressoMissao' => $progressoInsc
             ));
 
+            // ganhar recompensa caso atinja 100%
+            $this->receberRecompensa($idusuario, $recompensa);
+
             echo "<script language='javascript' type='text/javascript'> alert('Progresso do inscrito alterado para ".$progressoInsc."%');</script>";
 
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function receberRecompensa($inscrito, $recompensa){
+        try {
+            $this->conectarBD();
+
+            $stmt = $this->pdo->prepare("INSERT INTO recompensadispoivel (idUsuario, idRecomensa) VALUES ('.$inscrito.', '.$recompensa.')");
+            $stmt->execute(array(
+                ':idUsuario' => $inscrito
+            ));
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return -1;
         }
     }
 
