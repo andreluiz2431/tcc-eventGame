@@ -1,4 +1,9 @@
 <!-- Navbar -->
+<?php
+include 'class_notificacao.php';
+
+$notificacao = new Notificacao();
+?>
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
     <div class="container-fluid">
         <div class="navbar-wrapper">
@@ -26,18 +31,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">notifications</i>
-                        <span class="notification">10</span>
+                        <span class="notification"><?php echo $notificacao->contarNotificacoes($_SESSION['idUsuario']); ?></span>
                         <p class="d-lg-none d-md-block">
-                            Some Actions
+                            Notificações
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <!--  repeticao -->
                         <?php
-                        include 'class_notificacao.php';
-
-                        $notificacao = new Notificacao();
-
                         $notificacao->verNotificacao($_SESSION['idUsuario']);
                         ?>
                     </div>

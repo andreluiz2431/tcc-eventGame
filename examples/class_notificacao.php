@@ -6,15 +6,23 @@ class Notificacao{
         include '../conexaoBDpdoPOO.php';
     }
 
+    public function contarNotificacoes($autor){
+        $this->conectarBD();
+
+        $numero = $this->pdo->query("SELECT * FROM notificacao WHERE (autor = ".$autor.") or (autor = 0)")->rowCount();
+
+        return $numero;
+    }
+
     public function verNotificacao($autor){ // ver apenas as 10 ultimas
         // ver todos no qual autor eh equivalente ao usuario logado ou igual a 0;
         $this->conectarBD();
 
-        $consulta = $this->pdo->query("SELECT * FROM notificacao WHERE (autor = ".$autor.") or (autor = 0)");
+        $consulta = $this->pdo->query("SELECT * FROM notificacao WHERE (autor = ".$autor.") or (autor = 0) order by autor desc");
 
         $contador = 0;
         while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            if(!empty($linha['notificacao'])){
+            if(isset($linha['notificacao'])){
                 $notificacao = $linha['notificacao'];
 
                 $contador++;
@@ -24,9 +32,10 @@ class Notificacao{
                 if($contador == 10){
                     break;
                 }
-            }else{
-                echo '<label class="dropdown-item"><b><i>SEM NOTIFICAÇÕES</i></b></label>';
             }
+        }
+        if($contador == 0){
+            echo '<label class="dropdown-item"><i>Sem notificações</i></label>';
         }
     }
 
@@ -46,7 +55,7 @@ class Notificacao{
         }
     }
 
-    public function inserirNotificacaoPublica($texto, $autor){ // inserir todas ações privadas (exemplo: troca de tema, se inscreveu...)
+    public function inserirNotificacaoPrivada($texto, $autor){ // inserir todas ações privadas (exemplo: troca de tema, se inscreveu...)
         // autor igual a seu identificador
         try {
             $this->conectarBD();
