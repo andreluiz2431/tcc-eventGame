@@ -32,7 +32,7 @@ class Usuario{
             ));
 
             echo $stmt->rowCount(); 
-            echo"<script>window.location.href = 'index.php';</script>";
+            echo"<script>alert('Parabéns, você está cadastrado. Agora efetue o login.');window.location.href = 'index.php';</script>";
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -75,6 +75,12 @@ class Usuario{
                 }
 
                 $ver = true;
+
+                include 'examples/class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Bem vindo!', $_SESSION['idUsuario']);
 
                 echo "<script language='javascript' type='text/javascript'> alert('Login efetuado com sucesso!');</script>";
                 echo "<script>window.location.href = \"examples/pagina_eventos.php\";</script>";

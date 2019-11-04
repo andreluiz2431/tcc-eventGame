@@ -286,6 +286,12 @@ class ADM{
                 ':tipoRecompensa' => 'tema'
             ));
 
+            include 'class_notificacao.php';
+
+            $notificacao = new Notificacao();
+
+            $notificacao->inserirNotificacaoPublica('Olha só, tema '.$nome.' adicionado no sistema!');
+
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return -1;
@@ -301,6 +307,12 @@ class ADM{
             $stmt->execute(array(
                 ':tipoRecompensa' => 'skin'
             ));
+
+            include 'class_notificacao.php';
+
+            $notificacao = new Notificacao();
+
+            $notificacao->inserirNotificacaoPublica('Nossa, skin '.$nome.' adicionada no sistema!');
 
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();

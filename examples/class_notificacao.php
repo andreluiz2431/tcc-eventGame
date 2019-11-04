@@ -29,7 +29,7 @@ class Notificacao{
 
                 echo '<label class="dropdown-item">'.$notificacao.'</label>';
 
-                if($contador == 10){
+                if($contador >= 10){
                     break;
                 }
             }

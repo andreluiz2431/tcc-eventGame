@@ -63,6 +63,12 @@ class Usuario{
             $_SESSION['nomeUsuario'] = $nome;
             $_SESSION['emailUsuario'] = $email;
 
+            include 'class_notificacao.php';
+
+            $notificacao = new Notificacao();
+
+            $notificacao->inserirNotificacaoPrivada('Seus dados foram alterados', $_SESSION['idUsuario']);
+
             echo "<label style='color:red'>Dados alterados com sucesso!</label>";
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -92,6 +98,12 @@ class Usuario{
                     ':senhaUsuario' => md5($senhaNova),
                     ':emailUsuario'   => $email
                 ));
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Senha alterada com sucesso!', $_SESSION['idUsuario']);
 
                 echo "<label style='color:red'>Senha alterada com sucesso!</label>";
             } catch(PDOException $e) {

@@ -128,7 +128,7 @@ class Missao{
                 $titulo = 'Encerrado';
             }
 
-include 'condicaoCores2.php';
+            include 'condicaoCores2.php';
             echo "
 
             <div class='col-lg-4 col-md-6 col-sm-6'>
@@ -194,6 +194,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 2;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal2;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal2.'', $idUsuario);
+
                 echo"<script language='javascript' type='text/javascript'> alert('Nível aumentado para 2!');</script>"; // pensar a respeito
                 return 'Level UP 2';
 
@@ -213,6 +222,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 3;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal3;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal3.'', $idUsuario);
+
                 return 'Level UP 3';
 
             } catch(PDOException $e) {
@@ -232,6 +250,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 4;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal4;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal4.'', $idUsuario);
+
                 return 'Level UP 4';
 
             } catch(PDOException $e) {
@@ -251,6 +278,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 5;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal5;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal5.'', $idUsuario);
+
                 return 'Level UP 5';
 
             } catch(PDOException $e) {
@@ -270,6 +306,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 6;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal6;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal6.'', $idUsuario);
+
                 return 'Level UP 6';
 
             } catch(PDOException $e) {
@@ -289,6 +334,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 7;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal7;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal7.'', $idUsuario);
+
                 return 'Level UP 7';
 
             } catch(PDOException $e) {
@@ -308,6 +362,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 8;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal8;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal8.'', $idUsuario);
+
                 return 'Level UP 8';
 
             } catch(PDOException $e) {
@@ -327,6 +390,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 9;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal9;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal9.'', $idUsuario);
+
                 return 'Level UP 9';
 
             } catch(PDOException $e) {
@@ -346,6 +418,15 @@ include 'condicaoCores2.php';
 
                 $_SESSION['nivelUsuario'] = 10;
                 $_SESSION['pontuacaolUsuario'] = $pontosTotal10;
+
+                include 'class_notificacao.php';
+
+                $notificacao = new Notificacao();
+
+                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+
+                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal10.'', $idUsuario);
+
                 return 'Level UP 10';
 
             } catch(PDOException $e) {
