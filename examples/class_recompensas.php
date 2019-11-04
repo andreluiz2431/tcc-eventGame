@@ -65,7 +65,19 @@ class Recompensa{
             $stmt->execute(array(
                 ':idUsuario'   => $idUsuario
             ));
-            echo "<script>alert('Tema aplicado com sucesso!'); window.location.href = \"pagina_evento.php\";</script>";
+
+            $this->conectarBD();
+
+            $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$tema."");
+
+            while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
+                $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
+
+                $_SESSION['temaAplicada'] = $nomeRecompensa;
+            }
+
+
+            echo "<script>alert('Tema aplicado com sucesso!'); window.location.href = \"pagina_eventos.php\";</script>";
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -79,6 +91,17 @@ class Recompensa{
             $stmt->execute(array(
                 ':idUsuario'   => $idUsuario
             ));
+
+            $this->conectarBD();
+
+            $consultaRecompensa = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa = ".$skin."");
+
+            while ($linhaRecompensa = $consultaRecompensa->fetch(PDO::FETCH_ASSOC)) {
+                $nomeRecompensa = $linhaRecompensa['nomeReompensa'];
+
+                $_SESSION['skinAplicada'] = $nomeRecompensa;
+            }
+
             echo "<script>alert('Skin aplicada com sucesso!'); window.location.href = \"user.php\";</script>";
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -217,6 +240,9 @@ class Recompensa{
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Fechar
                     </button>
+
+                    <input type="hidden" name="addBibTemaG" value="'.$idRecompensa.'">
+
                     <input type="submit" class="btn btn-primary pull-right" value="Aplicar" style="'.$cor.'">
                 </div>
 
@@ -381,7 +407,7 @@ class Recompensa{
 
 <div class="modal fade" id="modal-container-'.$idRecompensa.'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post" action="temas.php">
+        <form method="post" action="skins.php">
             <div class="modal-content" style="width: 129%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
@@ -413,6 +439,9 @@ class Recompensa{
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Fechar
                     </button>
+
+                    <input type="hidden" name="addBibSkinG" value="'.$idRecompensa.'">
+
                     <input type="submit" class="btn btn-primary pull-right" value="Aplicar" style="'.$cor.'">
                 </div>
 

@@ -32,6 +32,12 @@ if(!empty($_POST['addBibTema'])){
 
     $recompensa->comprarRecompensa($_SESSION['idUsuario'], $idTema, $custoTema);
 }
+
+if(!empty($_POST['addBibTemaG'])){
+    $idTema = $_POST['addBibTemaG'];
+
+    $recompensa->aplicarTema($_SESSION['idUsuario'], $idTema);
+}
 ?>
 
 <html>

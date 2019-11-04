@@ -31,6 +31,12 @@ if(!empty($_POST['addBibSkin'])){
 
     $recompensa->comprarRecompensa($_SESSION['idUsuario'], $idSkin, $custoSkin);
 }
+
+if(!empty($_POST['addBibSkinG'])){
+    $idSkin = $_POST['addBibSkinG'];
+
+    $recompensa->aplicarSkin($_SESSION['idUsuario'], $idSkin);
+}
 ?>
 
 <html>
