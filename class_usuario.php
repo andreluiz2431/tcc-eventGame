@@ -76,11 +76,13 @@ class Usuario{
 
                 $ver = true;
 
-                include 'examples/class_notificacao.php';
+                // include 'examples/class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Bem vindo!', $_SESSION['idUsuario']);
+                // $texto = 'Bem vindo!';
+
+                // $notificacao->inserirNotificacaoPrivada($texto, $_SESSION['idUsuario']);
 
                 echo "<script language='javascript' type='text/javascript'> alert('Login efetuado com sucesso!');</script>";
                 echo "<script>window.location.href = \"examples/pagina_eventos.php\";</script>";

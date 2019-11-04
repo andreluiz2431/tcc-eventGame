@@ -43,11 +43,11 @@ class Recompensa{
                             ':idUsuario' => $idUsuario
                         ));
 
-                        include 'class_notificacao.php';
+                        // include 'class_notificacao.php';
 
-                        $notificacao = new Notificacao();
+                        // $notificacao = new Notificacao();
 
-                        $notificacao->inserirNotificacaoPrivada('Compra realizada com sucesso', $_SESSION['idUsuario']);
+                        // $notificacao->inserirNotificacaoPrivada('Compra realizada com sucesso', $_SESSION['idUsuario']);
 
                         echo '<script>alert("Item adicionado a biblioteca! (Pontuação atual: '.$pontosNovo.')")</script>';
 
@@ -82,11 +82,11 @@ class Recompensa{
                 $_SESSION['temaAplicada'] = $nomeRecompensa;
             }
 
-            include 'class_notificacao.php';
+            // include 'class_notificacao.php';
 
-            $notificacao = new Notificacao();
+            // $notificacao = new Notificacao();
 
-            $notificacao->inserirNotificacaoPrivada('Tema '.$nomeRecompensa.' aplicada', $_SESSION['idUsuario']);
+            // $notificacao->inserirNotificacaoPrivada('Tema '.$nomeRecompensa.' aplicada', $_SESSION['idUsuario']);
 
             echo "<script>alert('Tema aplicado com sucesso!'); window.location.href = \"pagina_eventos.php\";</script>";
         } catch(PDOException $e) {
@@ -113,7 +113,7 @@ class Recompensa{
                 $_SESSION['skinAplicada'] = $nomeRecompensa;
             }
 
-            nclude 'class_notificacao.php';
+            include 'class_notificacao.php';
 
             $notificacao = new Notificacao();
 

@@ -308,11 +308,11 @@ class ADM{
                 ':tipoRecompensa' => 'skin'
             ));
 
-            include 'class_notificacao.php';
+            // include 'class_notificacao.php';
 
-            $notificacao = new Notificacao();
+            // $notificacao = new Notificacao();
 
-            $notificacao->inserirNotificacaoPublica('Nossa, skin '.$nome.' adicionada no sistema!');
+            // $notificacao->inserirNotificacaoPublica('Nossa, skin '.$nome.' adicionada no sistema!');
 
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();

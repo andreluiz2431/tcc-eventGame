@@ -1,4 +1,7 @@
 <?php
+
+// muitos problemas
+
 class Notificacao{
     public $pdo;
 

@@ -386,11 +386,11 @@ class Evento{
 
         $consulta = $this->pdo->query("DELETE FROM evento WHERE idEvento = ".$idEventoExcluir."");
 
-        include 'class_notificacao.php';
+        // include 'class_notificacao.php';
 
-        $notificacao = new Notificacao();
+        // $notificacao = new Notificacao();
 
-        $notificacao->inserirNotificacaoPublica('Evento '.$titulo.' foi encerrado!');
+        // $notificacao->inserirNotificacaoPublica('Evento '.$titulo.' foi encerrado!');
     }
 
     public function editarDadosEvento($idEventoEditar, $titulo, $idusuario, $data_inicio, $data_fim, $hora_inicio, $hora_fim, $local, $cidade, $estado, $pais, $area_academica, $sobre_evento, $idMissaoE, $missaoTitulo, $missaoSobre, $missaoRecompensa){
@@ -578,11 +578,11 @@ class Evento{
 
         $consulta = $this->pdo->query("DELETE FROM inscricao WHERE (idEvento = ".$idEvento.") AND (idUsuario = ".$idusuario.")");
 
-        include 'class_notificacao.php';
+        // include 'class_notificacao.php';
 
-        $notificacao = new Notificacao();
+        // $notificacao = new Notificacao();
 
-        $notificacao->inserirNotificacaoPrivada('Você cancelou sua inscrição!', $idusuario);
+        // $notificacao->inserirNotificacaoPrivada('Você cancelou sua inscrição!', $idusuario);
     }
 
     public function alterarSituacaoInsc($idusuario, $idEvento){
@@ -611,14 +611,16 @@ class Evento{
                 ':progressoMissao' => $progressoInsc
             ));
 
-            include 'class_notificacao.php';
+            // include 'class_notificacao.php';
 
-            $notificacao = new Notificacao();
+            // $notificacao = new Notificacao();
 
-            $notificacao->inserirNotificacaoPrivada('Progresso de inscrito alterado', $_SESSION['idUsuario']);
+            // $notificacao->inserirNotificacaoPrivada('Progresso de inscrito alterado', $_SESSION['idUsuario']);
 
             // ganhar recompensa caso atinja 100%
-            $this->receberRecompensa($idusuario, $recompensa);
+            if($progressoInsc == 100){
+                $this->receberRecompensa($idusuario, $recompensa);
+            }
 
             echo "<script language='javascript' type='text/javascript'> alert('Progresso do inscrito alterado para ".$progressoInsc."%');</script>";
 
@@ -628,7 +630,16 @@ class Evento{
     }
 
     public function receberRecompensa($inscrito, $recompensa){
-        try {
+        // verificar se inscrito ja tem recompensa
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$inscrito."");
+
+        while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            $rec = $linha['idRecomensa'];
+
+            if(!empty($rec)){
+                try {
             $this->conectarBD();
 
             $stmt = $this->pdo->prepare("INSERT INTO recompensadispoivel (idUsuario, idRecomensa) VALUES ('.$inscrito.', '.$recompensa.')");
@@ -636,25 +647,11 @@ class Evento{
                 ':idUsuario' => $inscrito
             ));
 
-
-            // autor igual a seu identificador
-            try {
-                $this->conectarBD();
-
-                $stmt = $this->pdo->prepare("INSERT INTO notificacao (notificacao, autor) VALUES ('Confira! Uma recompensa em sua biblioteca.', ".$inscrito.")");
-                $stmt->execute(array(
-                    ':notificacao' => "$texto"
-                ));
-
-            } catch(PDOException $e) {
-                echo 'Error: ' . $e->getMessage();
-                return -1;
-            }
-
-
         } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return -1;
+        }
+            }
         }
     }
 
@@ -934,11 +931,11 @@ class Evento{
                     return -1;
                 }
 
-                include 'class_notificacao.php';
+                // include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Inscrição realizada com sucesso!', $_SESSION['idUsuario']);
+                // $notificacao->inserirNotificacaoPrivada('Inscrição realizada com sucesso!', $_SESSION['idUsuario']);
 
                 return 'inscrito';
             } catch(PDOException $e) {

@@ -63,11 +63,11 @@ class Usuario{
             $_SESSION['nomeUsuario'] = $nome;
             $_SESSION['emailUsuario'] = $email;
 
-            include 'class_notificacao.php';
+            // include 'class_notificacao.php';
 
-            $notificacao = new Notificacao();
+            // $notificacao = new Notificacao();
 
-            $notificacao->inserirNotificacaoPrivada('Seus dados foram alterados', $_SESSION['idUsuario']);
+            // $notificacao->inserirNotificacaoPrivada('Seus dados foram alterados', $id);
 
             echo "<label style='color:red'>Dados alterados com sucesso!</label>";
         } catch(PDOException $e) {

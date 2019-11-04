@@ -197,11 +197,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal2.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal2.'', $idUsuario);
 
                 echo"<script language='javascript' type='text/javascript'> alert('Nível aumentado para 2!');</script>"; // pensar a respeito
                 return 'Level UP 2';
@@ -225,11 +225,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal3.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal3.'', $idUsuario);
 
                 return 'Level UP 3';
 
@@ -253,11 +253,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal4.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal4.'', $idUsuario);
 
                 return 'Level UP 4';
 
@@ -281,11 +281,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal5.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal5.'', $idUsuario);
 
                 return 'Level UP 5';
 
@@ -309,11 +309,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal6.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal6.'', $idUsuario);
 
                 return 'Level UP 6';
 
@@ -337,11 +337,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal7.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal7.'', $idUsuario);
 
                 return 'Level UP 7';
 
@@ -365,11 +365,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal8.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal8.'', $idUsuario);
 
                 return 'Level UP 8';
 
@@ -393,11 +393,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal9.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal9.'', $idUsuario);
 
                 return 'Level UP 9';
 
@@ -421,11 +421,11 @@ class Missao{
 
                 include 'class_notificacao.php';
 
-                $notificacao = new Notificacao();
+                // $notificacao = new Notificacao();
 
-                $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Parabéns! Nível '.$_SESSION['nivelUsuario'].' alcançado.', $idUsuario);
 
-                $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal10.'', $idUsuario);
+                // $notificacao->inserirNotificacaoPrivada('Pontuação atual em '.$pontosTotal10.'', $idUsuario);
 
                 return 'Level UP 10';
 

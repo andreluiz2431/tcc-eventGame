@@ -72,13 +72,13 @@
                     <div class="clearfix"></div>
                 </a>
             </li>
-            <li class="header-title">Imagens</li>
+            <!-- <li class="header-title">Imagens</li>
             <li class="active">
                 <a class="img-holder switch-trigger" href="javascript:void(0)">
                     <img src="../assets/img/sidebar-1.jpg" alt="">
                 </a>
             </li>
-            <li>
+            <li class="">
                 <a class="img-holder switch-trigger" href="javascript:void(0)">
                     <img src="../assets/img/sidebar-2.jpg" alt="">
                 </a>
@@ -92,7 +92,7 @@
                 <a class="img-holder switch-trigger" href="javascript:void(0)">
                     <img src="../assets/img/sidebar-4.jpg" alt="">
                 </a>
-            </li>
+            </li> -->
             <li class="button-container">
                 <!-- <a href="#" target="_blank" class="btn btn-default btn-block">
 Meus temas
