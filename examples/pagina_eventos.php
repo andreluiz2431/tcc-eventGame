@@ -62,10 +62,12 @@ $busca = new Evento();
                 font-size: 130%;
             }
         </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     </head>
 
     <body class="" style="">
-        <div class="wrapper ">
+        <div class="wrapper">
             <?php
             include 'manuLateral.php';
             ?>

@@ -9,7 +9,7 @@ class Evento{
     public function consultarBusca($busca){
         $this->conectarBD();
 
-        $consultaBusca = $this->pdo->query("SELECT * FROM evento WHERE tituloEvento LIKE '%$busca%'");
+        $consultaBusca = $this->pdo->query("SELECT * FROM evento WHERE (tituloEvento LIKE '%$busca%') OR (sobreEvento LIKE '%$busca%') OR (localEvento LIKE '%$busca%') OR (cidadeEvento LIKE '%$busca%') OR (areaAcademicaEvento LIKE '%$busca%') OR (estadoEvento LIKE '%$busca%') OR (dataInicioEvento LIKE '%$busca%')");
 
         echo '<label style="margin-left: 5%">Resultado de busca</label><div class="row"  id="rowEvent">';
 

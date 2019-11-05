@@ -186,12 +186,12 @@ class Recompensa{
         include 'condicaoCores2.php';
         // consulta de disponiveis
         $this->conectarBD();
-
+$listaIDs = array();
         $consultaRecompensaDisponivel = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$_SESSION['idUsuario']."");
 
         while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
             $idRecompensa = $linhaRecompensaDisponivel['idRecomensa'];
-
+$listaIDs[] = $idRecompensa;
             // ver todas as recompensas disponiveis
             $this->conectarBD();
 
@@ -277,7 +277,12 @@ class Recompensa{
         // ver todos temas menos os ja disponiveis
         $this->conectarBD();
 
-        $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa");
+        if(empty($listaIDs)){
+            $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa");
+        }
+        else{
+            $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa NOT IN (".implode(", ", $listaIDs).")");
+        }
 
         while ($linhaRecompensaT = $consutaRecompensaT->fetch(PDO::FETCH_ASSOC)){
             if($linhaRecompensaT['custoRecompensa'] <= 0){
@@ -312,7 +317,7 @@ class Recompensa{
 <div class="modal fade" id="modal-container-'.$linhaRecompensaT['idRecomensa'].'" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" action="temas.php">
-            <div class="modal-content" style="width: 129%;">
+            <div class="modal-content" style="width: 450px;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">
                         <b>Tema '.$linhaRecompensaT['nomeReompensa'].'</b>
@@ -386,10 +391,10 @@ class Recompensa{
         $this->conectarBD();
 
         $consultaRecompensaDisponivel = $this->pdo->query("SELECT * FROM recompensadispoivel WHERE idUsuario = ".$_SESSION['idUsuario']."");
-
+        $listaIDs = array();
         while ($linhaRecompensaDisponivel = $consultaRecompensaDisponivel->fetch(PDO::FETCH_ASSOC)) {
             $idRecompensa = $linhaRecompensaDisponivel['idRecomensa'];
-
+            $listaIDs[] = $idRecompensa;
             // ver todas as recompensas disponiveis
             $this->conectarBD();
 
@@ -476,7 +481,14 @@ class Recompensa{
         // ver todos temas menos os ja disponiveis
         $this->conectarBD();
 
-        $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa");
+        if(empty($listaIDs)){
+            $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa");
+        }
+        else{
+            $consutaRecompensaT = $this->pdo->query("SELECT * FROM recompensa WHERE idRecomensa NOT IN (".implode(", ", $listaIDs).")");
+        }
+
+
 
         while ($linhaRecompensaT = $consutaRecompensaT->fetch(PDO::FETCH_ASSOC)){
             if($linhaRecompensaT['custoRecompensa'] <= 0){

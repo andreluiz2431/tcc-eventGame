@@ -56,6 +56,8 @@ if(!empty($_POST['addBibSkinG'])){
         <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     </head>
     <body class="" style="">
         <div class="wrapper ">

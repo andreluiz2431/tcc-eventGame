@@ -44,6 +44,8 @@ $fotoPerfil = new Recompensa();
         <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     </head>
 
     <body class="">
@@ -70,7 +72,6 @@ $fotoPerfil = new Recompensa();
 
                                         <div class="modal fade" id="modal-container-user" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <form method="post" action="temas.php">
                                                     <div class="modal-content" style="width: 173%;">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="myModalLabel">
@@ -104,7 +105,6 @@ $fotoPerfil = new Recompensa();
                                                         </div>
 
                                                     </div>
-                                                </form>
                                             </div>
                                         </div>
 
