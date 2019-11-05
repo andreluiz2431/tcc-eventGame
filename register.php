@@ -24,6 +24,8 @@
                 background: linear-gradient(153deg, rgba(2,0,36,1) 0%, rgba(2,26,63,1) 1%, rgba(2,49,87,1) 8%, rgba(1,72,111,1) 18%, rgba(1,85,124,1) 37%, rgba(0,100,139,1) 51%, rgba(0,113,153,1) 64%, rgba(0,139,180,1) 79%, rgba(0,173,215,1) 100%, rgba(0,212,255,1) 100%);
             }
         </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     </head>
     <body id='gradiente'>
         <!-- <body class="bg-gradient-primary"> -->
@@ -32,7 +34,7 @@
 
             <div class="col-xl-5 col-lg-8 col-md-9" style="margin-top:8%;">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg my-5 animated bounceInDown">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row justify-content-center">
