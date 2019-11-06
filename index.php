@@ -42,7 +42,7 @@ session_start();
 
                 <div class="col-xl-5 col-lg-8 col-md-9" style="margin-top:8%;">
 
-                    <div class="card o-hidden border-0 shadow-lg my-5 animated bounceInDown" >
+                    <div class="card o-hidden border-0 shadow-lg my-5 animated bounceInLeft" >
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
                             <div class="row justify-content-center">
