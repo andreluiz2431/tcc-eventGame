@@ -65,7 +65,10 @@ $fotoPerfil = new Recompensa();
                                     <div class="card-avatar">
                                         <a id="modal-user'" href="#modal-container-user" role="button" data-toggle="modal">
                                             <!--colocar foto do perfil do usuario-->
-                                            <img class="img" src="../examples/foto/<?php echo $fotoPerfil->fotoAplicada($id); ?>" />
+                                            <img class="img" style="height: 80px" src="../examples/foto/<?php // echo $fotoPerfil->fotoAplicada($id); ?>" />
+                                            <?php
+                                            include 'foto_perfil.php';
+                                            ?>
                                         </a>
 
 

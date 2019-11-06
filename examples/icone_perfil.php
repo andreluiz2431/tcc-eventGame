@@ -76,7 +76,7 @@ $quantXP = $xp->quantXP($_SESSION['idUsuario']);
             counter.font = "100% monospace";    //set font size and face
 
             // counter.fillText(no+"%",100,110);       //fillText(text,x,y);
-            counter.fillText("'.$quantXP.'",100,110);
+            counter.fillText("",100,110);
 
             counter.beginPath();
             counter.arc(100,100,17,pointToFill,diff/10+pointToFill);    //arc(x,y,radius,start,stop)
