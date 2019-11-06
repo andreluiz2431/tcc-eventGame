@@ -181,7 +181,7 @@ class Missao{
         }
 
         // se determinada quantidade de progressos em 100% dar level UP para tall nível
-        if($contador == 1 && $contador < 2 && $nivel == 1){
+        if($contador == 1 && $contador <= 2 && $nivel == 1){
             $pontosTotal2 = $pontos+20;
             // upar para level 2, e ganhar 20 pontos
             try {

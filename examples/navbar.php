@@ -44,11 +44,11 @@ $notificacao = new Notificacao();
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">person</i>
-                        <p class="d-lg-none d-md-block">
-                            Conta
-                        </p>
+                    <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php
+                        include 'icone_perfil.php';
+                        ?>
+                        <!-- <i class="material-icons">person</i> -->
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                         <a class="dropdown-item" href="user.php">Perfil</a>

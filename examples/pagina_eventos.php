@@ -1,5 +1,8 @@
 <?php
 include 'class_usuario.php';
+
+include 'class_recompensas.php';
+
 session_start();
 if(isset($_SESSION['nomeUsuario'])){
     $nome = $_SESSION['nomeUsuario'];

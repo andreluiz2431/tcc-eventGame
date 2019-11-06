@@ -21,6 +21,54 @@ class Usuario{
         include '../conexaoBDpdoPOO.php';
     }
 
+    public function quantXP($id){
+        $this->conectarBD();
+
+        $consulta = $this->pdo->query("SELECT * FROM progressomissao WHERE idUsuario = $id");
+
+        $xp = 0;
+        while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            if($linha['progressoMissao'] == 100){
+                $xp++;
+            }
+        }
+
+        $xpTotal = 0;
+        if($xp == 1){
+            $xpTotal = 0;
+        }elseif($xp == 2){
+            $xpTotal = 50;
+        }elseif($xp == 3){
+            $xpTotal = 0;
+        }elseif($xp == 4){
+            $xpTotal = 33;
+        }elseif($xp == 5){
+            $xpTotal = 67;
+        }elseif($xp == 6){
+            $xpTotal = 0;
+        }elseif($xp == 7){
+            $xpTotal = 33;
+        }elseif($xp == 8){
+            $xpTotal = 67;
+        }elseif($xp == 9){
+            $xpTotal = 0;
+        }elseif($xp == 10){
+            $xpTotal = 33;
+        }elseif($xp == 11){
+            $xpTotal = 67;
+        }elseif($xp == 12){
+            $xpTotal = 0;
+        }elseif($xp == 13){
+            $xpTotal = 33;
+        }elseif($xp == 14){
+            $xpTotal = 67;
+        }elseif($xp == 15){
+            $xpTotal = 0;
+        }
+
+        return $xpTotal;
+    }
+
     public function inserir(){
 
         try {
