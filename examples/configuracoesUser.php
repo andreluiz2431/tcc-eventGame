@@ -1,5 +1,6 @@
 <?php
 include 'class_usuario.php';
+include 'class_recompensas.php';
 
 $usuario = new Usuario();
 
