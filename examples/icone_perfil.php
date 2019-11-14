@@ -46,7 +46,7 @@ $quantXP = $xp->quantXP($_SESSION['idUsuario']);
         <div id="circle3"><img style="width: 30px;border-radius: 50%;position: absolute;" src='foto/<?php
             echo $fotoPerfil->fotoAplicada($_SESSION['idUsuario']);
             ?>'></div>
-        <canvas height="200" width="200" id="counter"/>
+        <canvas height="60" width="60" id="counter"/>
     </body>
 
     <?php
@@ -79,7 +79,7 @@ $quantXP = $xp->quantXP($_SESSION['idUsuario']);
             counter.fillText("",100,110);
 
             counter.beginPath();
-            counter.arc(100,100,17,pointToFill,diff/10+pointToFill);    //arc(x,y,radius,start,stop)
+            counter.arc(30,30,17,pointToFill,diff/10+pointToFill);    //arc(x,y,radius,start,stop)
 
             counter.stroke();   // to fill stroke
 
