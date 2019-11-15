@@ -707,7 +707,7 @@ class Evento{
             echo '<div class="col-md-3" id="titulo2">
                 <div class="card" style="width: 18rem;height: 400px; overflow: auto;">
                 <div id="corTitulo">
-                <label class="card-title" style="margin-left:7%; margin-top:5%;margin-right:7%"><b>'.$tituloEvento.'</b></label>
+                <label class="card-title" style="margin-left:7%;margin-right:7%;height: 55px; overflow: auto;"><b>'.$tituloEvento.'</b></label>
                 </div>
                 <div class="card-body" style="overflow: auto;">
                 <p class="card-text"><b>Sobre:</b> '.$sobreEvento.'</p>
