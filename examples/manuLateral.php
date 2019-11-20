@@ -32,7 +32,7 @@ Tip 2: you can also add an image using data-image tag
             }
             ?>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="sobre.php">
                     <i class="material-icons">library_books</i>
                     <p>Sobre</p>
                 </a>
