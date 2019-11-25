@@ -1,6 +1,5 @@
 <?php
 include 'class_usuario.php';
-include 'class_recompensas.php';
 
 $usuario = new Usuario();
 
@@ -22,6 +21,10 @@ if(!empty($_POST['busca'])){
     $busca = new Evento();
     $busca->busca = $_POST['busca'];
 }
+
+include 'class_recompensas.php';
+
+$fotoPerfil = new Recompensa();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,14 +62,60 @@ if(!empty($_POST['busca'])){
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <div class="card-avatar">
-                                        <a href="#">
+                                        <a id="modal-user'" href="#modal-container-user" role="button" data-toggle="modal">
                                             <!--colocar foto do perfil do usuario-->
-                                            <img class="img" src="../assets/img/faces/marc.jpg" />
+                                            <img class="img" style="height: 80px" src="../examples/foto/<?php // echo $fotoPerfil->fotoAplicada($id); ?>" />
+                                            <?php
+                                            include 'foto_perfil.php';
+                                            ?>
                                         </a>
+
+
+
+                                        <div class="modal fade" id="modal-container-user" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content" style="width: 173%;">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel">
+                                                                <b>Alterar skin</b>
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" style="height: 400px; overflow: auto;">
+
+                                                            <div class="content">
+                                                                <div class="container-fluid">
+
+
+                                                                    <?php
+                                                                    $fotoPerfil->skinsDisponiveis($id);
+                                                                    ?>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                Fechar
+                                                            </button>
+                                                            <input type="submit" class="btn btn-primary pull-right" value="Aplicar" style="<?php echo $cor; ?>">
+                                                        </div>
+
+                                                    </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                     <div class="card-body">
                                         <h6 class="card-category text-gray">Usuário</h6>
-                                        <h4 class="card-title"><?php echo utf8_encode($nome); ?></h4>
+                                        <h4 class="card-title"><?php echo $nome; ?></h4>
                                         <a href="sair.php" class="btn btn-primary btn-round" style="<?php include 'condicaoCores2.php'; echo $cor; ?>">Sair</a>
                                     </div>
                                 </div>
